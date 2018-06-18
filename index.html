@@ -10,37 +10,41 @@
 	</head>
 	
   <body>
-	<textarea rows="4" cols="50" id = inputTextToSave>
+  	<!-- Text area to input text -->
+	<textarea rows="4" cols="50" id = Input>
 	</textarea>
-	<a href=downloadLink.href title="Output File" target="_blank">Download</a>
+	 <!-- Button to initiate download -->
+	<input id="clickMe" type="button" value="Download" onclick="saveTextAsFile();" />
   
 	<script>
-function saveTextAsFile()
-{
-    var textToWrite = document.getElementById("inputTextToSave").value;
-    var textFileAsBlob = new Blob([textToWrite], {type:'text/plain'});
-    var fileNameToSaveAs = test.dat;
-      var downloadLink = document.createElement("a");
-    downloadLink.download = fileNameToSaveAs;
-    downloadLink.innerHTML = "Download File";
-    if (window.webkitURL != null)
-    {
-        // Chrome allows the link to be clicked
-        // without actually adding it to the DOM.
-        downloadLink.href = window.webkitURL.createObjectURL(textFileAsBlob);
-    }
-    else
-    {
-        // Firefox requires the link to be added to the DOM
-        // before it can be clicked.
-        downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
-        downloadLink.onclick = destroyClickedElement;
-        downloadLink.style.display = "none";
-        document.body.appendChild(downloadLink);
-    }
-
-    downloadLink.click();
-}
+		function saveTextAsFile()
+		{
+			// Brings in Output from input box
+			var Output = document.getElementById("Input").value;
+			// Creates temporary blob file
+			var File = new Blob([Output], {type:'text/plain'});
+			// Provides file name for file
+			var FileName = "test.dat";
+			//Creates download element
+			var Download = document.createElement("a");
+			Download.download = FileName;
+			Download.innerHTML = "Download File";
+			// For all browsers except Firefox
+			if (window.URL != null)
+			{
+				Download.href = window.URL.createObjectURL(File);
+			}
+			// For Firefox browser to work
+			else
+			{
+				Download.href = window.URL.createObjectURL(File);
+				Download.onclick = destroyClickedElement;
+				Download.style.display = "none";
+				document.body.appendChild(Download);
+			}
+			// Starts download of file
+			Download.click();
+		}
 	</script>
 	</body>
 </html>
