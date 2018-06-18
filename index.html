@@ -11,16 +11,23 @@
 	
   <body>
   	<!-- Text area to input text -->
-	<textarea rows="4" cols="50" id = Input>
-	</textarea>
+	<textarea maxlength="500" "rows="10" cols="50" id = "Input"></textarea>
+	 <!-- Button to convert question -->
+	<input id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
+	<!-- Text area to show coded question -->
+	<textarea maxlength="500" "rows="10" cols="50" id = "Converted"></textarea>
 	 <!-- Button to initiate download -->
-	<input id="clickMe" type="button" value="Download" onclick="saveTextAsFile();" />
+	<input id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
   
 	<script>
-		function saveTextAsFile()
+		function Convert()
 		{
-			// Brings in Output from input box
-			var Output = document.getElementById("Input").value;
+			document.getElementById("Converted").value = document.getElementById("Input").value;
+		}
+		function OutputFile()
+		{
+			// Brings in Output from converted box
+			var Output = document.getElementById("Converted").value;
 			// Creates temporary blob file
 			var File = new Blob([Output], {type:'text/plain'});
 			// Provides file name for file
