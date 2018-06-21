@@ -11,7 +11,11 @@
 	
   <body>
   	<!-- Text area to input text -->
-	<textarea maxlength="500" "rows="10" cols="50" id = "Input"></textarea>
+	<textarea maxlength="500" "rows="10" cols="50" id = "QInput"></textarea>
+	<!-- Button to add in a random number identifier -->
+	<input id="RandomButton" type="button" value="Random" onclick="Random();" />
+	<!-- Box to input desired random number accuracy -->
+	<input type="number" id="RandomAccuracy" value="2">
 	 <!-- Button to convert question -->
 	<input id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
 	<!-- Text area to show coded question -->
@@ -20,9 +24,21 @@
 	<input id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
   
 	<script>
+		function Random()
+		{
+			document.getElementById("QInput").value = document.getElementById("QInput").value + "(random)";
+		}
 		function Convert()
 		{
-			document.getElementById("Converted").value = document.getElementById("Input").value;
+			//Brings in input from question input box
+			var value = document.getElementById("QInput").value;
+			// Finds index for random value identifier
+			var index = value.search("(random)");
+			// Brings in accuracy for random variables
+			var acc = document.getElementById("RandomAccuracy").value;
+			// Creates new string with random variable added
+			value = value.substr(0, n) + Math.random().toFixed(acc) + value.substr(n + acc + 2);
+			document.getElementById("Converted").value = value;
 		}
 		function OutputFile()
 		{
