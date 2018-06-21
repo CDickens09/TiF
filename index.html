@@ -30,17 +30,18 @@
 		}
 		function Convert()
 		{
-			//Brings in input from question input box
+			// Brings in input from question input box
 			var value = document.getElementById("QInput").value;
-			// Sets converted box to show same text
+			// Sets converted box text to match input
 			document.getElementById("Converted").value = value;
-			while(value.search("(random)") != -1)
+			while (document.getElementById("Converted").value.search("(random)") !== -1)
 			{
 				RanGen();
 			}
 		}
 		function RanGen()
 		{
+			//Brings in value from converted box
 			var value = document.getElementById("Converted").value;
 			// Finds index for random value identifier
 			var index = value.search("(random)");
