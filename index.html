@@ -37,7 +37,7 @@
 			// Brings in accuracy for random variables
 			var acc = document.getElementById("RandomAccuracy").value;
 			// Creates new string with random variable added
-			value = value.substr(0, n) + Math.random().toFixed(acc) + value.substr(n + acc + 2);
+			value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + acc + 2);
 			document.getElementById("Converted").value = value;
 		}
 		function OutputFile()
