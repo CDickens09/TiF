@@ -32,22 +32,23 @@
 		{
 			//Brings in input from question input box
 			var value = document.getElementById("QInput").value;
+			// Sets converted box to show same text
+			document.getElementById("Converted").value = value;
 			while(value.search("(random)") != -1)
 			{
-				RanGen(value);
+				RanGen();
 			}
-
-			document.getElementById("Converted").value = value;
 		}
-		function RanGen(value)
+		function RanGen()
 		{
+			var value = document.getElementById("Converted").value;
 			// Finds index for random value identifier
 			var index = value.search("(random)");
 			// Brings in accuracy for random variables
 			var acc = document.getElementById("RandomAccuracy").value;
 			// Creates new string with random variable added
 			value = value.substr(0, index - 1) + Math.random().toFixed(acc) + value.substr(index + 7);
-			return value;
+			document.getElementById("Converted").value = value;
 		}
 		function OutputFile()
 		{
