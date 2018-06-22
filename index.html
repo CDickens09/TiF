@@ -4,81 +4,123 @@
 		<title>TiF</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://chris14552249.github.io/TiF/generalstyle.css">
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
 		</style>
 	</head>
 	
-  <body>
-  	<!-- Text area to input text -->
-	<textarea maxlength="500" "rows="10" cols="50" id = "QInput"></textarea>
-	<!-- Button to add in a random number identifier -->
-	<input id="RandomButton" type="button" value="Random" onclick="Random();" />
-	<!-- Box to input desired random number accuracy -->
-	<input type="number" id="RandomAccuracy" value="2">
-	 <!-- Button to convert question -->
-	<input id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
-	<!-- Text area to show coded question -->
-	<textarea maxlength="500" "rows="10" cols="50" id = "Converted"></textarea>
-	 <!-- Button to initiate download -->
-	<input id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
-  
-	<script>
-		function Random()
+	<body>
+		<!-- Placeholder and script to load navbar -->
+		<div id="navigation-placeholder"></div>
+		<script>
+		$(function()
 		{
-			document.getElementById("QInput").value = document.getElementById("QInput").value + "(random)";
-		}
-		function Convert()
-		{
-			// Brings in input from question input box
-			var value = document.getElementById("QInput").value;
-			// Sets converted box text to match input
-			document.getElementById("Converted").value = value;
-			while (document.getElementById("Converted").value.search("(random)") !== -1)
+			$("#navigation-placeholder").load("navigation.html");
+		});
+		</script>
+		
+		<!-- Header for page and link to instructions -->
+		<div class="header">
+			<h1>Blackboard Question Pool Maker</h1>
+			<p>
+				To view instruction please visit: 
+				<a href="/TiF/Help">Help</a>
+			</p>
+		</div>
+		
+		<div class="row">
+			<div class="column inputs">
+				<!-- Text area to input text -->
+				<textarea width = 30% 1maxlength="500" "rows="10" cols="50" id = "QInput"></textarea>
+			</div>
+			<div class="column buttons">
+				<!-- Box to input desired random number accuracy -->
+				<input type="number" id="RandomAccuracy" value="2">
+				<!-- Button to add in a random number identifier -->
+				<input id="RandomButton" type="button" value="Random" onclick="Random();" />
+				<!-- Button to convert question -->
+				<input id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
+			</div>
+			<div class="column inputs">
+				<!-- Text area to show coded question -->
+				<textarea maxlength="500" "rows="10" cols="50" id = "Converted"></textarea>
+			</div>
+			<div class="column buttons">
+				<!-- Button to initiate download -->
+				<input id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
+			</div>
+		</div>
+
+		<script>
+			function Random()
 			{
-				RanGen();
+				document.getElementById("QInput").value = document.getElementById("QInput").value + "(random)";
 			}
-		}
-		function RanGen()
-		{
-			//Brings in value from converted box
-			var value = document.getElementById("Converted").value;
-			// Finds index for random value identifier
-			var index = value.search("(random)");
-			// Brings in accuracy for random variables
-			var acc = document.getElementById("RandomAccuracy").value;
-			// Creates new string with random variable added
-			value = value.substr(0, index - 1) + Math.random().toFixed(acc) + value.substr(index + 7);
-			document.getElementById("Converted").value = value;
-		}
-		function OutputFile()
-		{
-			// Brings in Output from converted box
-			var Output = document.getElementById("Converted").value;
-			// Creates temporary blob file
-			var File = new Blob([Output], {type:'text/plain'});
-			// Provides file name for file
-			var FileName = "test.dat";
-			//Creates download element
-			var Download = document.createElement("a");
-			Download.download = FileName;
-			Download.innerHTML = "Download File";
-			// For all browsers except Firefox
-			if (window.URL != null)
+			function Convert()
 			{
-				Download.href = window.URL.createObjectURL(File);
+				// Brings in input from question input box
+				var value = document.getElementById("QInput").value;
+				// Sets converted box text to match input
+				document.getElementById("Converted").value = value;
+				while (document.getElementById("Converted").value.search("(random)") !== -1)
+				{
+					RanGen();
+				}
 			}
-			// For Firefox browser to work
-			else
+			function RanGen()
 			{
-				Download.href = window.URL.createObjectURL(File);
-				Download.onclick = destroyClickedElement;
-				Download.style.display = "none";
-				document.body.appendChild(Download);
+				//Brings in value from converted box
+				var value = document.getElementById("Converted").value;
+				// Finds index for random value identifier
+				var index = value.search("(random)");
+				// Brings in accuracy for random variables
+				var acc = document.getElementById("RandomAccuracy").value;
+				// Creates new string with random variable added
+				value = value.substr(0, index - 1) + Math.random().toFixed(acc) + value.substr(index + 7);
+				document.getElementById("Converted").value = value;
 			}
-			// Starts download of file
-			Download.click();
-		}
-	</script>
+			function OutputFile()
+			{
+				// Brings in Output from converted box
+				var Output = document.getElementById("Converted").value;
+				// Creates temporary blob file
+				var File = new Blob([Output], {type:'text/plain'});
+				// Provides file name for file
+				var FileName = "test.dat";
+				//Creates download element
+				var Download = document.createElement("a");
+				Download.download = FileName;
+				Download.innerHTML = "Download File";
+				// For all browsers except Firefox
+				if (window.URL != null)
+				{
+					Download.href = window.URL.createObjectURL(File);
+				}
+				// For Firefox browser to work
+				else
+				{
+					Download.href = window.URL.createObjectURL(File);
+					Download.onclick = destroyClickedElement;
+					Download.style.display = "none";
+					document.body.appendChild(Download);
+				}
+				// Starts download of file
+				Download.click();
+			}
+		</script>
+		
+		<!-- Placeholder and script to load footer -->
+		<div id="footer-placeholder"></div>
+		<script>
+		$(function()
+		{
+			$("#footer-placeholder").load("footer.html");
+		});
+		</script>
 	</body>
 </html>
