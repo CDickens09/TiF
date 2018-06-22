@@ -41,16 +41,15 @@ p
 .column.inputs 
 {
 	width: 40%;
-	height: window.innerHeight;
+	height: 100px;
 }
 .column.buttons 
 {
 	width: 10%;
-	height: window.innerHeight;
+	height: 50px;
 }
 .column.halved {
 	width: 50%;
-	height: window.innerHeight;
 }
 .row
 {
