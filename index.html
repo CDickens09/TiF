@@ -39,10 +39,10 @@
 				<textarea width = 30% 1maxlength="500" "rows="10" cols="50" id = "QInput"></textarea>
 			</div>
 			<div class="column buttons">
-				<!-- Box to input desired random number accuracy -->
-				<input type="number" id="RandomAccuracy" value="2">
 				<!-- Button to add in a random number identifier -->
 				<input id="RandomButton" type="button" value="Random" onclick="Random();" />
+				<!-- Box to input desired random number accuracy -->
+				<input type="number" id="RandomAccuracy" value="2">
 				<!-- Button to convert question -->
 				<input id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
 			</div>
@@ -59,7 +59,7 @@
 		<script>
 			function Random()
 			{
-				document.getElementById("QInput").value = document.getElementById("QInput").value + "(random)";
+				document.getElementById("QInput").value = document.getElementById("QInput").value + "random";
 			}
 			function Convert()
 			{
@@ -67,7 +67,7 @@
 				var value = document.getElementById("QInput").value;
 				// Sets converted box text to match input
 				document.getElementById("Converted").value = value;
-				while (document.getElementById("Converted").value.search("(random)") !== -1)
+				while (document.getElementById("Converted").value.search("random") !== -1)
 				{
 					RanGen();
 				}
@@ -77,11 +77,11 @@
 				//Brings in value from converted box
 				var value = document.getElementById("Converted").value;
 				// Finds index for random value identifier
-				var index = value.search("(random)");
+				var index = value.search("random");
 				// Brings in accuracy for random variables
 				var acc = document.getElementById("RandomAccuracy").value;
 				// Creates new string with random variable added
-				value = value.substr(0, index - 1) + Math.random().toFixed(acc) + value.substr(index + 7);
+				value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
 				document.getElementById("Converted").value = value;
 			}
 			function OutputFile()
