@@ -28,20 +28,27 @@ p
 {
 	margin: 5px 0px 5px 10px;
 }
-.header {
+.header 
+{
 	background-color: #f1f1f1;
 	padding: 20px;
 	text-align: center;
 }
-.column {
+.column 
+{
 	float: left;
 	padding: 10px;
 }
-.column.inputs {
+.column.inputs 
+{
 	width: 40%;
 }
-.column.buttons {
+.column.buttons 
+{
 	width: 10%;
+}
+.column.halved {
+	width: 50%;
 }
 .row:after 
 {
