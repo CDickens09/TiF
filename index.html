@@ -35,23 +35,23 @@
 		<div class="row">
 			<div class="column inputs">
 				<!-- Text area to input text -->
-				<textarea width = 20px 1maxlength="500" "rows="10" cols="50" id = "QInput"></textarea>
+				<textarea style="width:100%; height:100%;" id = "QInput"></textarea>
 			</div>
 			<div class="column buttons">
 				<!-- Button to add in a random number identifier -->
-				<input id="RandomButton" type="button" value="Random" onclick="Random();" />
+				<input style="width:100%" id="RandomButton" type="button" value="Random" onclick="Random();" />
 				<!-- Box to input desired random number accuracy -->
-				<input type="number" id="RandomAccuracy" value="2">
+				<input type="number" style="width:100%" id="RandomAccuracy" value="2">
 				<!-- Button to convert question -->
-				<input id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
+				<input style="width:100%" id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
 			</div>
 			<div class="column inputs">
 				<!-- Text area to show coded question -->
-				<textarea maxlength="500" "rows="10" cols="50" id = "Converted"></textarea>
+				<textarea style="width:100%; height:100%;" id = "Converted"></textarea>
 			</div>
 			<div class="column buttons">
 				<!-- Button to initiate download -->
-				<input id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
+				<input style="width:100%" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
 			</div>
 		</div>
 
