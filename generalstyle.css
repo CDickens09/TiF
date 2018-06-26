@@ -41,10 +41,21 @@ p
 .column.inputs 
 {
 	width: 45%;
+	height: 150px;
+}
+.column.iheaders 
+{
+	width: 45%;
+	height: 70px;
 }
 .column.buttons 
 {
 	width: 10%;
+}
+.column.iheaders 
+{
+	width: 10%;
+	height: 70px;
 }
 .column.halved {
 	width: 50%;
