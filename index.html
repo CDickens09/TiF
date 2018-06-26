@@ -32,6 +32,17 @@
 			</p>
 		</div>
 		
+		<!-- Row to show question box headers-->
+		<div class="row">
+			<div class="column inputs">
+				Question Input:
+			</div>
+			<div class="column inputs">
+				Question Output:
+			</div>
+		</div>
+		
+		<!-- Row to show question boxs-->
 		<div class="row">
 			<div class="column inputs">
 				<!-- Text area to input text -->
@@ -41,25 +52,48 @@
 				<!-- Text area to show coded question -->
 				<textarea style="width:100%; height:100%;" id = "Converted"></textarea>
 			</div>
+		</div>
+		
+		<!-- Row to show button headers-->
+		<div class="row">
 			<div class="column buttons">
-				<!-- Button to initiate download -->
-				<input style="width:100%" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
+				Number of Decimals:
+			</div>
+			<div class="column buttons">
+				Insert Random Value:
+			</div>
+			<div class="column buttons">
+				Convert Button:
 			</div>
 		</div>
+
+		<!-- Row to show Buttons-->
 		<div class="row">
+			<div class="column buttons">
+				<!-- Box to input desired random number accuracy -->
+				<input type="number" style="width:100%" id="RandomAccuracy" value="2">				
+			</div>
 			<div class="column buttons">
 				<!-- Button to add in a random number identifier -->
 				<input style="width:100%" id="RandomButton" type="button" value="Random" onclick="Random();" />
-			</div>
-			<div class="column buttons">
-				<!-- Box to input desired random number accuracy -->
-				<input type="number" style="width:100%" id="RandomAccuracy" value="2">
 			</div>
 			<div class="column buttons">
 				<!-- Button to convert question -->
 				<input style="width:100%" id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
 			</div>
 		</div>
+
+		<!-- Row to show answer box headers-->
+		<div class="row">
+			<div class="column inputs">
+				Answer Input:
+			</div>
+			<div class="column inputs">
+				Answer Output:
+			</div>
+		</div>
+		
+		<!-- Row to show answer boxs-->
 		<div class="row">
 			<div class="column inputs">
 				<!-- Text area to input answer -->
@@ -68,6 +102,10 @@
 			<div class="column inputs">
 				<!-- Text area to show coded answer -->
 				<textarea style="width:100%; height:100%;" id = "Converted"></textarea>
+			</div>
+			<div class="column buttons">
+				<!-- Button to initiate download -->
+				<input style="width:100%" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
 			</div>
 		</div>
 
