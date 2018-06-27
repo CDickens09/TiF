@@ -116,8 +116,8 @@
 		<div class="row">
 			<div class="column inputs">
 				<div id="editor">
-					<textarea :value="input" @input="update"></textarea>
-					<div v-html="compiledMarkdown"></div>
+					<textarea id = "QInput" :value="input" @input="update"></textarea>
+					<div id = "QConverted" v-html="compiledMarkdown"></div>
 					<textarea v-html="compiledCode"></textarea>
 				</div>
 			</div>
@@ -136,28 +136,19 @@
 			
 			function Convert()
 			{
-				// Brings in input from question input box
-				var value = document.getElementById("QInput").value;
-				// Sets converted box text to match input
-				document.getElementById("Converted").value = value;
-				while (document.getElementById("Converted").value.search("random") !== -1)
+				// Brings in current output from question output box
+				var value = document.getElementById("QInput").value
+				while (value.search("random") !== -1)
 				{
-					RanGen();
+					// Finds index for random value identifier
+					var index = value.search("random");
+					// Brings in accuracy for random variables
+					var acc = document.getElementById("RandomAccuracy").value;
+					// Creates new string with random variable added
+					value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
+					document.getElementById("QConverted").innerHTML = value;
 				}
-			}
-			
-			function RanGen()
-			{
-				//Brings in value from converted box
-				var value = document.getElementById("Converted").value;
-				// Finds index for random value identifier
-				var index = value.search("random");
-				// Brings in accuracy for random variables
-				var acc = document.getElementById("RandomAccuracy").value;
-				// Creates new string with random variable added
-				value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
-				document.getElementById("Converted").value = value;
-			}
+			}	
 			
 			function OutputFile()
 			{
@@ -199,13 +190,14 @@
 						return marked(this.input, { sanitize: true })
 					},
 					compiledCode: function () {
-						return marked(this.input, { sanitize: true })
+						return marked(this.input, { sanitize: false })
 					}
 				},
 				methods: {
 					update: _.debounce(function (e) {
 						this.input = e.target.value
 					}, 300)
+					convert()
 				}
 			})
 		</script>
