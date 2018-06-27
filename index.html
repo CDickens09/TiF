@@ -13,6 +13,7 @@
 		<script src="https://unpkg.com/marked@0.3.6"></script>
 		<script src="https://unpkg.com/lodash@4.16.0"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="https://chris14552249.github.io/TiF/Convert.js"></script>
 		<style>
 		</style>
 	</head>
@@ -116,8 +117,8 @@
 		<div class="row">
 			<div class="column inputs">
 				<div id="editor">
-					<textarea id = "QInput" :value="input" @input="update"></textarea>
-					<div id = "QConverted" v-html="compiledMarkdown"></div>
+					<textarea id = "QInput"  :value="input" @input="update"></textarea>
+					<div id = "QConverted" onchange = "Convert(this)" v-html="compiledMarkdown"></div>
 					<textarea v-html="compiledCode"></textarea>
 				</div>
 			</div>
@@ -133,22 +134,6 @@
 			{
 				document.getElementById("QInput").value = document.getElementById("QInput").value + "random";
 			}
-			
-			function Convert()
-			{
-				// Brings in current output from question output box
-				var value = document.getElementById("QInput").value
-				while (value.search("random") !== -1)
-				{
-					// Finds index for random value identifier
-					var index = value.search("random");
-					// Brings in accuracy for random variables
-					var acc = document.getElementById("RandomAccuracy").value;
-					// Creates new string with random variable added
-					value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
-					document.getElementById("QConverted").innerHTML = value;
-				}
-			}	
 			
 			function OutputFile()
 			{
@@ -188,6 +173,7 @@
 				computed: {
 					compiledMarkdown: function () {
 						return marked(this.input, { sanitize: true })
+						return Convert(this)
 					},
 					compiledCode: function () {
 						return marked(this.input, { sanitize: false })
@@ -197,7 +183,6 @@
 					update: _.debounce(function (e) {
 						this.input = e.target.value
 					}, 300)
-					convert()
 				}
 			})
 		</script>
