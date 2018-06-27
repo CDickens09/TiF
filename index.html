@@ -50,7 +50,7 @@
 			<div class="column inputs">
 				<div id="editor">
 					<textarea id = "QInput" :value="input" @input="update" oninput = "update(this)"></textarea>
-					<div id = "QMarked" v-html="compiledMarkdown"></div>
+					<div id = "QMarked" v-html="compiledQMarkdown"></div>
 					<div id = "QConverted"></div>
 				</div>
 			</div>
@@ -100,7 +100,7 @@
 			<div class="column inputs">
 				<div id="editor">
 					<textarea id = "AInput" :value="input" @input="update" oninput = "update(this)"></textarea>
-					<div id = "AMarked" v-html="compiledMarkdown"></div>
+					<div id = "AMarked" v-html="compiledAMarkdown"></div>
 					<div id = "AConverted"></div>
 				</div>
 			</div>
@@ -184,10 +184,10 @@
 					input: ''
 				},
 				computed: {
-					compiledMarkdown: function () {
+					compiledQMarkdown: function () {
 						return marked(this.input, { sanitize: true });
 					},
-					compiledCode: function () {
+					compiledAMarkdown: function () {
 						return marked(this.input, { sanitize: false })
 					}
 				},
