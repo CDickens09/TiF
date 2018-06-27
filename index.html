@@ -13,7 +13,6 @@
 		<script src="https://unpkg.com/marked@0.3.6"></script>
 		<script src="https://unpkg.com/lodash@4.16.0"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<script src="https://chris14552249.github.io/TiF/Convert.js"></script>
 		<style>
 		</style>
 	</head>
@@ -49,12 +48,11 @@
 		<!-- Row to show question boxs-->
 		<div class="row">
 			<div class="column inputs">
-				<!-- Text area to input text -->
-				<!-- <textarea style="width:100%; height:100%;" id = "QInput"></textarea> -->
-			</div>
-			<div class="column inputs">
-				<!-- Text area to show coded question -->
-				<textarea style="width:100%; height:100%;" id = "Converted"></textarea>
+				<div id="editor">
+					<textarea id = "QInput" :value="input" @input="update" oninput = "update(this)"></textarea>
+					<div id = "QMarked" v-html="compiledMarkdown"></div>
+					<div id = "QConverted"></div>
+				</div>
 			</div>
 		</div>
 		
@@ -100,32 +98,15 @@
 		<!-- Row to show answer boxs-->
 		<div class="row">
 			<div class="column inputs">
-				<!-- Text area to input answer -->
-				<textarea style="width:100%; height:100%;" id = "AInput"></textarea>
-			</div>
-			<div class="column inputs">
-				<!-- Text area to show coded answer -->
-				<textarea style="width:100%; height:100%;" id = "Converted"></textarea>
+				<div id="editor">
+					<textarea id = "AInput" :value="input" @input="update" oninput = "update(this)"></textarea>
+					<div id = "AMarked" v-html="compiledMarkdown"></div>
+					<div id = "AConverted"></div>
+				</div>
 			</div>
 			<div class="column buttons">
 				<!-- Button to initiate download -->
 				<input style="width:100%" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
-			</div>
-		</div>
-		
-		<!-- Row to test markdown-->
-		<div class="row">
-			<div class="column inputs">
-				<div id="editor">
-					<textarea id = "QInput"  :value="input" @input="update"></textarea>
-					<div id = "QConverted" onchange = "Convert(this)" v-html="compiledMarkdown"></div>
-					<textarea v-html="compiledCode"></textarea>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="column inputs">
-				<textarea style="width:100%; height:100%;" id = "Converted"></textarea>
 			</div>
 		</div>
 
@@ -133,6 +114,38 @@
 			function Random()
 			{
 				document.getElementById("QInput").value = document.getElementById("QInput").value + "random";
+			}
+			
+			function Convert(input, output)
+			{
+				// Brings in current output from question output box
+				var value = document.getElementById(input).value
+				document.getElementById(output).innerHTML = value;
+				while (value.search("random") !== -1)
+				{
+					// Finds index for random value identifier
+					var index = value.search("random");
+					// Brings in accuracy for random variables
+					var acc = document.getElementById("RandomAccuracy").value;
+					// Creates new string with random variable added
+					value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
+					document.getElementById(output).innerHTML = value;
+				}
+			}	
+			
+			function update(box)
+			{
+				if (box.id.search("Q") == -1)
+				{
+					var input = "AInput";
+					var output = "AConverted";
+				}
+				else 
+				{
+					var input = "QInput";
+					var output = "QConverted";
+				}
+				Convert(input, output)
 			}
 			
 			function OutputFile()
@@ -172,8 +185,7 @@
 				},
 				computed: {
 					compiledMarkdown: function () {
-						return marked(this.input, { sanitize: true })
-						return Convert(this)
+						return marked(this.input, { sanitize: true });
 					},
 					compiledCode: function () {
 						return marked(this.input, { sanitize: false })
@@ -182,7 +194,7 @@
 				methods: {
 					update: _.debounce(function (e) {
 						this.input = e.target.value
-					}, 300)
+					}, 300),
 				}
 			})
 		</script>
