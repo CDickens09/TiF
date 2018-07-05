@@ -101,7 +101,7 @@
 				<div id="editor">
 					<textarea id = "AInput" :value="input" @input="update" oninput = "update(this)"></textarea>
 					<div id = "AMarked" v-html="compiledAMarkdown"></div>
-					<textarea id = "AConverted"></textarea>
+					<textarea id = "AConverted" oninput = "marked(this.input, { sanitize: true })"></textarea>
 				</div>
 			</div>
 			<div class="column buttons">
