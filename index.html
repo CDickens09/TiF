@@ -51,7 +51,6 @@
 				<div id="editor">
 					<textarea id = "QInput" :value="input" @input="update" oninput = "update(this)"></textarea>
 					<div id = "QMarked" style="overflow:auto" v-html="compiledQMarkdown"></div>
-					<textarea id = "QConverted"></textarea>
 				</div>
 			</div>
 		</div>
@@ -101,7 +100,6 @@
 				<div id="editor">
 					<textarea id = "AInput" :value="input" @input="update" oninput = "update(this)"></textarea>
 					<div id = "AMarked" style="overflow:auto" v-html="compiledAMarkdown"></div>
-					<textarea id = "AConverted"></textarea>
 				</div>
 			</div>
 			<div class="column buttons">
