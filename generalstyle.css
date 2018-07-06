@@ -70,6 +70,10 @@ p
 	display: table;
 	clear: both;
 }
+.settings
+{
+	width: 10%;
+}
 @media screen and (max-width: 600px) 
 {
 	.column.side, .column.middle 
