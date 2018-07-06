@@ -6,6 +6,29 @@ body
 {
 	font-size: 18px;
 }
+.column 
+{
+	float: left;
+	padding: 10px;
+}
+.column.buttons 
+{
+	width: 10%;
+}
+.column.halved 
+{
+	width: 50%;
+}
+.column.iheaders 
+{
+	width: 45%;
+	height: 40px;
+}
+.column.inputs 
+{
+	width: 90%;
+	height: 150px;
+}
 h1
 {
 	margin:10px;
@@ -13,6 +36,16 @@ h1
 h2
 {
 	margin: 10px;
+}
+.header 
+{
+	background-color: #f1f1f1;
+	padding: 20px;
+	text-align: center;
+}
+input
+{
+	width: 100%;
 }
 .navbar
 {
@@ -26,39 +59,6 @@ h2
 p
 {
 	margin: 5px 0px 5px 10px;
-}
-.header 
-{
-	background-color: #f1f1f1;
-	padding: 20px;
-	text-align: center;
-}
-.column 
-{
-	float: left;
-	padding: 10px;
-}
-.column.inputs 
-{
-	width: 90%;
-	height: 150px;
-}
-.column.iheaders 
-{
-	width: 45%;
-	height: 40px;
-}
-.column.buttons 
-{
-	width: 10%;
-}
-.column.bheaders 
-{
-	width: 10%;
-	height: 70px;
-}
-.column.halved {
-	width: 50%;
 }
 .row
 {
@@ -75,20 +75,12 @@ p
 	padding: 10px;
 	width: 10%;
 }
-@media screen and (max-width: 600px) 
-{
-	.column.side, .column.middle 
-	{
-		width: 100%;
-	}
-}
 html, body, #questions, #answers {
   margin: 0;
   height: 100%;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #333;
 }
-
 textarea, #questions div, #answers div {
   display: inline-block;
   width: 49%;
@@ -100,13 +92,11 @@ textarea, #questions div, #answers div {
   font-size: 14px;
   border: 1px solid #ccc;
 }
-
 textarea {
   resize: none;
   outline: none;
   font-family: 'Monaco', courier, monospace;
 }
-
 code {
   color: #f66;
 }
