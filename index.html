@@ -113,6 +113,7 @@
 		<script>
 			function Random()
 			{
+				// Adds random string to input box
 				document.getElementById("QInput").value = document.getElementById("QInput").value + "random";
 			}
 			
@@ -135,6 +136,7 @@
 			
 			function update(box)
 			{
+				// If loop to check whether the box being updated is the question or answer row
 				if (box.id.search("Q") == -1)
 				{
 					var input = "AInput";
@@ -145,6 +147,7 @@
 					var input = "QInput";
 					var output = "QConverted";
 				}
+				// Runs the convert function with the desired input and outputs
 				Convert(input, output)
 			}
 			
