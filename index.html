@@ -267,20 +267,19 @@
 				if(numvar != newnumvar)
 				{
 					numvar = newnumvar;
-					document.getElementById("Var" + numvar + "head").style.display = "block";
 					for (i = 0; i <= numvar; i++) 
 					{
-						document.getElementById("Var" + numvar + "head").style.display === "block";
-						document.getElementById("Var" + numvar + "min").style.display === "block";
-						document.getElementById("Var" + numvar + "max").style.display === "block";
-						document.getElementById("Var" + numvar + "dec").style.display === "block";
+						document.getElementById("Var" + numvar + "head").style.display = "block";
+						document.getElementById("Var" + numvar + "min").style.display = "block";
+						document.getElementById("Var" + numvar + "max").style.display = "block";
+						document.getElementById("Var" + numvar + "dec").style.display = "block";
 					}
 					for (i = numvar + 1; i <= 10; i++)
 					{
-						document.getElementById("Var" + numvar + "head").style.display === "none";
-						document.getElementById("Var" + numvar + "min").style.display === "none";
-						document.getElementById("Var" + numvar + "max").style.display === "none";
-						document.getElementById("Var" + numvar + "dec").style.display === "none";
+						document.getElementById("Var" + numvar + "head").style.display = "none";
+						document.getElementById("Var" + numvar + "min").style.display = "none";
+						document.getElementById("Var" + numvar + "max").style.display = "none";
+						document.getElementById("Var" + numvar + "dec").style.display = "none";
 					}
 				}
 			}
