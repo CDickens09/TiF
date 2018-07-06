@@ -46,14 +46,14 @@
 		<div class="row">
 			<div class="column buttons">
 				<!-- Box to input desired random number accuracy -->
-				<input type="number" style="width:100%" id="NumVar" value="1" oninput="updatevar()">				
+				<input type="number" style="width:100%" id="NumVar" value="1" oninput="updatevar(this)">				
 			</div>
 		</div>
 		
 		<!-- Row for variable names to be set in-->
 		<div class="row">
 			<div id="Variable headers">
-				<div>Var 1:</div>
+				<div>Variable 1:</div>
 			</div>
 		</div>
 		
@@ -123,9 +123,19 @@
 		</div>
 
 		<script>
-			function updatevar()
+			function updatevar(this)
 			{
+				var newnumvar = this.value;
+				if(numvar == newnumvar)
+				{
+					
+				}
+				else
+				{
+					numvar = newnumvar;
+				}
 				
+				console.log(numvar);
 			}
 			
 			function Random()
