@@ -48,7 +48,7 @@
 		<!-- Row to show question boxs-->
 		<div class="row">
 			<div class="column inputs">
-				<div id="editor">
+				<div id="Questions">
 					<textarea id = "QInput" :value="input" @input="update" oninput = "update(this)"></textarea>
 					<div id = "QMarked" style="overflow:auto" v-html="compiledQMarkdown"></div>
 				</div>
@@ -97,7 +97,7 @@
 		<!-- Row to show answer boxs-->
 		<div class="row">
 			<div class="column inputs">
-				<div id="editor">
+				<div id="Answers">
 					<textarea id = "AInput" :value="input" @input="update" oninput = "update(this)"></textarea>
 					<div id = "AMarked" style="overflow:auto" v-html="compiledAMarkdown"></div>
 				</div>
@@ -178,16 +178,31 @@
 				Download.click();
 			}
 			
-			// Uses vue element to live update the output boxes
+			// Uses vue element to live update the Question boxes
 			new Vue({
-				el: '#editor',
+				el: '#Questions',
 				data: {
 					input: ''
 				},
 				computed: {
 					compiledQMarkdown: function () {
 						return marked(this.input, { sanitize: true });
-					},
+					}
+				},
+				methods: {
+					update: _.debounce(function (e) {
+						this.input = e.target.value
+					}, 300)
+				}
+			})
+				
+			// Uses vue element to live update the Answer boxes
+			new Vue({
+				el: '#Answers',
+				data: {
+					input: ''
+				},
+				computed: {
 					compiledAMarkdown: function () {
 						return marked(this.input, { sanitize: true })
 					}
