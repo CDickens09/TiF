@@ -239,7 +239,7 @@
 		<div class="row">
 			<div class="column inputs">
 				<div id="questions">
-					<textarea id = "QInput" :value="input" @input="update" oninput = "update(this)"></textarea>
+					<textarea id = "QInput" :value="input" @input="update"></textarea>
 					<div id = "QMarked" style="overflow:auto" v-html="compiledMarkdown"></div>
 				</div>
 			</div>
@@ -259,7 +259,7 @@
 		<div class="row">
 			<div class="column inputs">
 				<div id="answers">
-					<textarea id = "AInput" :value="input" @input="update" oninput = "update(this)"></textarea>
+					<textarea id = "AInput" :value="input" @input="update"></textarea>
 					<div id = "AMarked" style="overflow:auto" v-html="compiledMarkdown"></div>
 				</div>
 			</div>
