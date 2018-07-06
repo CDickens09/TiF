@@ -90,17 +90,16 @@ textarea, #questions div, #answers div {
   height: 100%;
   vertical-align: top;
   box-sizing: border-box;
-  padding: 0 20px;
+  padding: 20px;
   background-color: #f6f6f6;
   font-size: 14px;
+  border: 1px solid #ccc;
 }
 
 textarea {
-  border: 1px solid #ccc;
   resize: none;
   outline: none;
   font-family: 'Monaco', courier, monospace;
-  padding: 20px;
 }
 
 code {
