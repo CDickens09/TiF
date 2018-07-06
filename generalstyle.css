@@ -77,14 +77,14 @@ p
 		width: 100%;
 	}
 }
-html, body, #questions, #answers {
+html, body, #editor {
   margin: 0;
   height: 100%;
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #333;
 }
 
-textarea, #Questions div, #answers div {
+textarea, #editor div {
   display: inline-block;
   width: 49.5%;
   height: 100%;
