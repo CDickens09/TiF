@@ -260,26 +260,44 @@
 		</div>
 
 		<script>
+			// Sets initial number of variables to 1
 			var numvar = 1;
 			function updatevar(box)
 			{
 				var newnumvar = box.value;
+				// Checks if the number of variables has been changed
 				if(numvar != newnumvar)
 				{
 					numvar = newnumvar;
-					for (i = 0; i <= numvar; i++) 
+					if(numvar == 0)
 					{
-						document.getElementById("Var" + i + "head").style.display = "inline-block";
-						document.getElementById("Var" + i + "min").style.display = "inline-block";
-						document.getElementById("Var" + i + "max").style.display = "inline-block";
-						document.getElementById("Var" + i + "dec").style.display = "inline-block";
+						// FOr loop to hide all sections
+						for (i = 0; i <= 10; i++)
+						{
+							document.getElementById("Var" + i + "head").style.display = "none";
+							document.getElementById("Var" + i + "min").style.display = "none";
+							document.getElementById("Var" + i + "max").style.display = "none";
+							document.getElementById("Var" + i + "dec").style.display = "none";
+						}
 					}
-					for (i = numvar + 1; i <= 10; i++)
+					else
 					{
-						document.getElementById("Var" + i + "head").style.display = "none";
-						document.getElementById("Var" + i + "min").style.display = "none";
-						document.getElementById("Var" + i + "max").style.display = "none";
-						document.getElementById("Var" + i + "dec").style.display = "none";
+						// For loop to show necessary sections
+						for (i = 1; i <= numvar; i++) 
+						{
+							document.getElementById("Var" + i + "head").style.display = "inline-block";
+							document.getElementById("Var" + i + "min").style.display = "inline-block";
+							document.getElementById("Var" + i + "max").style.display = "inline-block";
+							document.getElementById("Var" + i + "dec").style.display = "inline-block";
+						}
+						// For loop to hide necessary sections
+						for (i = numvar + 1; i <= 10; i++)
+						{
+							document.getElementById("Var" + i + "head").style.display = "none";
+							document.getElementById("Var" + i + "min").style.display = "none";
+							document.getElementById("Var" + i + "max").style.display = "none";
+							document.getElementById("Var" + i + "dec").style.display = "none";
+						}
 					}
 				}
 			}
