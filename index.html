@@ -97,7 +97,7 @@
 		<!-- Row to show answer boxs-->
 		<div class="row">
 			<div class="column inputs">
-				<div id="editor">
+				<div id="edit">
 					<textarea id = "AInput" :value="input" @input="update" oninput = "update(this)"></textarea>
 					<div id = "AMarked" style="overflow:auto" v-html="compiledAMarkdown"></div>
 				</div>
@@ -185,11 +185,8 @@
 					input: ''
 				},
 				computed: {
-					compiledQMarkdown: function () {
-						return marked(this.input, { sanitize: true });
-					},
 					compiledAMarkdown: function () {
-						return marked(this.input, { sanitize: true })
+						return marked(this.input, { sanitize: true });
 					}
 				},
 				methods: {
