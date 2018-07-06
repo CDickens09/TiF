@@ -35,6 +35,27 @@
 			</p>
 		</div>
 		
+		<!-- Row to show button headers-->
+		<div class="row">
+			<div class="column bheaders">
+				Number of Variables:
+			</div>
+		</div>
+		
+		<!-- Row to show Buttons-->
+		<div class="row">
+			<div class="column buttons">
+				<!-- Box to input desired random number accuracy -->
+				<input type="number" style="width:100%" id="NumVar" value="2">				
+			</div>
+		</div>
+		
+		<!-- Row for variable settings to be set in-->
+		<div class="row">
+			<div id="Variables")
+			</div>
+		</div>
+		
 		<!-- Row to show question box headers-->
 		<div class="row">
 			<div class="column iheaders">
@@ -52,35 +73,6 @@
 					<textarea id = "QInput" :value="input" @input="update" oninput = "update(this)"></textarea>
 					<div id = "QMarked" style="overflow:auto" v-html="compiledMarkdown"></div>
 				</div>
-			</div>
-		</div>
-		
-		<!-- Row to show button headers-->
-		<div class="row">
-			<div class="column bheaders">
-				Number of Decimals:
-			</div>
-			<div class="column bheaders">
-				Insert Random Value:
-			</div>
-			<div class="column bheaders">
-				Convert Button:
-			</div>
-		</div>
-
-		<!-- Row to show Buttons-->
-		<div class="row">
-			<div class="column buttons">
-				<!-- Box to input desired random number accuracy -->
-				<input type="number" style="width:100%" id="RandomAccuracy" value="2">				
-			</div>
-			<div class="column buttons">
-				<!-- Button to add in a random number identifier -->
-				<input style="width:100%" id="RandomButton" type="button" value="Random" onclick="Random();" />
-			</div>
-			<div class="column buttons">
-				<!-- Button to convert question -->
-				<input style="width:100%" id="ConvertButton" type="button" value="Convert" onclick="Convert();" />
 			</div>
 		</div>
 
