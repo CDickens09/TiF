@@ -45,7 +45,7 @@
 		<!-- Row to show number of variables-->
 		<div class="row">
 			<div class="settings">
-				<input type="number" id="NumVar" value="1" oninput="updatevar(this)">				
+				<input type="number" id="NumVar" value="1" oninput="updatevar(this)" max="10">				
 			</div>
 		</div>
 		
@@ -54,11 +54,74 @@
 			<div class="settings" id="Var1head">
 				Variable 1:
 			</div>
+			<div class="settings" id="Var2head" style="display:none;">
+				Variable 2:
+			</div>
+			<div class="settings" id="Var3head" style="display:none;">
+				Variable 3:
+			</div>
+			<div class="settings" id="Var4head" style="display:none;">
+				Variable 4:
+			</div>
+			<div class="settings" id="Var5head" style="display:none;">
+				Variable 5:
+			</div>
+			<div class="settings" id="Var6head" style="display:none;">
+				Variable 6:
+			</div>
+			<div class="settings" id="Var7head" style="display:none;">
+				Variable 7:
+			</div>
+			<div class="settings" id="Var8head" style="display:none;">
+				Variable 8:
+			</div>
+			<div class="settings" id="Var9head" style="display:none;">
+				Variable 9:
+			</div>
+			<div class="settings" id="Var10head" style="display:none;">
+				Variable 10:
+			</div>
 		</div>
 		
 		<!-- Row for variable mins to be set in-->
 		<div class="row" id="Variable mins">
 			<div class="settings" id="Var1min">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var2min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var3min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var4min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var5min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var6min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var7min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var8min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var9min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var10min" style="display:none;">
 				Min: 
 				<input type="number" value="0">
 			</div>
@@ -69,7 +132,43 @@
 			<div class="settings" id="Var1max">
 				Max: 
 				<input type="number" value="1">
-			</div>				
+			</div>
+			<div class="settings" id="Var2max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var3max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var4max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var5max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var6max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var7max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var8max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var9max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var10max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
 		</div>
 		
 		<!-- Row for variable decimal accuracies to be set in-->
@@ -77,7 +176,43 @@
 			<div class="settings" id="Var1dec" >
 				Decimals: 
 				<input type="number" value="2">
-			</div>				
+			</div>
+			<div class="settings" id="Var2dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var3dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var4dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var5dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var6dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var7dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var8dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var9dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var10dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
 		</div>
 		
 		<!-- Row to show question box headers-->
@@ -131,8 +266,22 @@
 				var newnumvar = box.value;
 				if(numvar != newnumvar)
 				{
-					numvar = newnumvar
-					console.log(numvar);
+					numvar = newnumvar;
+					document.getElementById("Var" + numvar + "head").style.display = "block";
+					for (i = 0; i <= numvar; i++) 
+					{
+						document.getElementById("Var" + numvar + "head").style.display === "block";
+						document.getElementById("Var" + numvar + "min").style.display === "block";
+						document.getElementById("Var" + numvar + "max").style.display === "block";
+						document.getElementById("Var" + numvar + "dec").style.display === "block";
+					}
+					for (i = numvar + 1; i <= 10; i++)
+					{
+						document.getElementById("Var" + numvar + "head").style.display === "none";
+						document.getElementById("Var" + numvar + "min").style.display === "none";
+						document.getElementById("Var" + numvar + "max").style.display === "none";
+						document.getElementById("Var" + numvar + "dec").style.display === "none";
+					}
 				}
 			}
 			
