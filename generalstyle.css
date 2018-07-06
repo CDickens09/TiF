@@ -96,8 +96,7 @@ textarea, #questions div, #answers div {
 }
 
 textarea {
-  border: none;
-  border-right: 1px solid #ccc;
+  border: 1px solid #ccc;
   resize: none;
   outline: none;
   font-family: 'Monaco', courier, monospace;
