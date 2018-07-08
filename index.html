@@ -314,10 +314,7 @@
 				}
 			}
 			
-			$(document).ready(function(){
-				var $QMarked = $("#QMarked");
-				$QMarked.bind("DOMSubtreeModified", update("QMarked"));
-			});
+			window.setInterval(update("QMarked", 2000);
 			
 			function update(box)
 			{
