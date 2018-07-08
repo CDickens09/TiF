@@ -316,13 +316,13 @@
 			
 			$(document).ready(function(){
 				var $QMarked = $("#QMarked");
-				$QMarked.bind("DOMSubtreeModified", update($QMarked));
+				$QMarked.bind("DOMSubtreeModified", update("QMarked"));
 			});
 			
 			function update(box)
 			{
 				// If loop to check whether the box being updated is the question or answer row
-				if (box.id.search("Q") == -1)
+				if (box.search("Q") == -1)
 				{
 					var input = "AMarked";
 				}
