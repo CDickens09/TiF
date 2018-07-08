@@ -338,7 +338,7 @@
 						// Brings in accuracy for random variables
 						var acc = document.getElementById("Var" + i + "decval").value;
 						// Generates random number with desired attributes
-						var rand = Math.random() * (max - min) + min;
+						var rand = Math.random().toFixed(acc) * (max - min) + min;
 						// While loop to only run until no more instances of the variable are found in question box
 						while (qvalue.search(placeholder) !== -1)
 						{
@@ -346,7 +346,7 @@
 							var index = qvalue.search(placeholder);
 
 							// Creates new string with random variable added
-							qvalue = qvalue.substr(0, index) + rand.toFixed(acc) + qvalue.substr(index + placeholder.length);
+							qvalue = qvalue.substr(0, index) + rand + qvalue.substr(index + placeholder.length);
 							document.getElementById("QMarked").innerHTML = qvalue;
 						}
 						// While loop to only run until no more instances of the variable are found in answer box
@@ -355,7 +355,7 @@
 							// Finds index for random value identifier
 							var index = avalue.search(placeholder);
 							// Creates new string with random variable added
-							avalue = avalue.substr(0, index) + rand.toFixed(acc) + avalue.substr(index + placeholder.length);
+							avalue = avalue.substr(0, index) + rand + avalue.substr(index + placeholder.length);
 							document.getElementById("AMarked").innerHTML = avalue;
 						}
 					}
