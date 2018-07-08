@@ -313,40 +313,37 @@
 					}
 				}
 			}
+						
+			function update(box)
+			{
+				// If loop to check whether the box being updated is the question or answer row
+				if (box.id.search("Q") == -1)
+				{
+					var input = "AMarked";
+				}
+				else 
+				{
+					var input = "QMarked";
+				}
+				// Runs the convert function with the desired input and outputs
+				Convert(input)
+			}
 			
-			//function Convert(input, output)
-			//{
-			//	// Brings in current output from question output box
-			//	var value = document.getElementById(input).value
-			//	document.getElementById(output).value = value;
-			//	while (value.search("random") !== -1)
-			//	{
-			//		// Finds index for random value identifier
-			//		var index = value.search("random");
-			//		// Brings in accuracy for random variables
-			//		var acc = document.getElementById("RandomAccuracy").value;
-			//		// Creates new string with random variable added
-			//		value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
-			//		document.getElementById(output).value = value;
-			//	}
-			//}	
-			
-			//function update(box)
-			//{
-			//	// If loop to check whether the box being updated is the question or answer row
-			//	if (box.id.search("Q") == -1)
-			//	{
-			//		var input = "AInput";
-			//		var output = "AConverted";
-			//	}
-			//	else 
-			//	{
-			//		var input = "QInput";
-			//		var output = "QConverted";
-			//	}
-			//	// Runs the convert function with the desired input and outputs
-			//	Convert(input, output)
-			//}
+			function Convert(input)
+			{
+				// Brings in current output from output box
+				var value = document.getElementById(input).innerHTML;
+				while (value.search("cat") !== -1)
+				{
+					// Finds index for random value identifier
+					var index = value.search("cat");
+					// Brings in accuracy for random variables
+					var acc = document.getElementById("Var1dec").value;
+					// Creates new string with random variable added
+					value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
+					document.getElementById(output).innerHTML = value;
+				}
+			}	
 			
 			function OutputFile()
 			{
@@ -386,7 +383,6 @@
 				computed: {
 					compiledMarkdown: function () {
 						return marked(this.input, { sanitize: true });
-						$("#QMarked p:contains('cat')").html("dog");
 					}
 				},
 				methods: {
