@@ -49,7 +49,7 @@
 		<div class="row">
 			<div class="column inputs">
 				<div id="questions">
-					<textarea id = "QInput" :value="input" @input="update" oninput="setTimeout(update(this), 1000)"></textarea>
+					<textarea id = "QInput" :value="input" @input="update"></textarea>
 					<div id = "QMarked" style="overflow:auto" v-html="compiledMarkdown"></div>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 		<div class="row">
 			<div class="column inputs">
 				<div id="answers">
-					<textarea id = "AInput" :value="input" @input="update" oninput="setTimeout(update(this), 1000)"></textarea>
+					<textarea id = "AInput" :value="input" @input="update"></textarea>
 					<div id = "AMarked" style="overflow:auto" v-html="compiledMarkdown"></div>
 				</div>
 			</div>
@@ -313,7 +313,12 @@
 					}
 				}
 			}
-						
+			
+			$(document).ready(function(){
+				var $QMarked = $("#QMarked");
+				$QMarked.bind("DOMSubtreeModified", update(document.getElementById(QMarked));
+			});
+			
 			function update(box)
 			{
 				// If loop to check whether the box being updated is the question or answer row
