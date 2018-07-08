@@ -344,7 +344,7 @@
 						// Brings in accuracy for random variables
 						var acc = document.getElementById("Var" + i + "decval").value;
 						// Generates random number with desired attributes
-						var rand = Math.random() * (max - min) + min;
+						var rand = parseFloat(Math.random() * (max - min) + min);
 						// While loop to only run until no more instances of the variable are found in question box
 						while (qvalue.search(placeholder) !== -1)
 						{
