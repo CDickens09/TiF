@@ -352,7 +352,7 @@
 							var index = qvalue.search(placeholder);
 
 							// Creates new string with random variable added
-							qvalue = qvalue.substr(0, index) + rand + qvalue.substr(index + placeholder.length);
+							qvalue = qvalue.substr(0, index) + rand.toFixed(acc); + qvalue.substr(index + placeholder.length);
 							document.getElementById("QMarked").innerHTML = qvalue;
 						}
 						// While loop to only run until no more instances of the variable are found in answer box
@@ -361,7 +361,7 @@
 							// Finds index for random value identifier
 							var index = avalue.search(placeholder);
 							// Creates new string with random variable added
-							avalue = avalue.substr(0, index) + rand + avalue.substr(index + placeholder.length);
+							avalue = avalue.substr(0, index) + rand.toFixed(acc); + avalue.substr(index + placeholder.length);
 							document.getElementById("AMarked").innerHTML = avalue;
 						}
 					}
