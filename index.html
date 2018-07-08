@@ -229,43 +229,43 @@
 		<div class="row" id="Variable decs">
 			<div class="settings" id="Var1dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var1decval" value="2">
 			</div>
 			<div class="settings" id="Var2dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var2decval" value="2">
 			</div>
 			<div class="settings" id="Var3dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var3decval" value="2">
 			</div>
 			<div class="settings" id="Var4dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var4decval" value="2">
 			</div>
 			<div class="settings" id="Var5dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var5decval" value="2">
 			</div>
 			<div class="settings" id="Var6dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var6decval" value="2">
 			</div>
 			<div class="settings" id="Var7dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var7decval" value="2">
 			</div>
 			<div class="settings" id="Var8dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var8decval" value="2">
 			</div>
 			<div class="settings" id="Var9dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var9decval" value="2">
 			</div>
 			<div class="settings" id="Var10dec" style="display:none;">
 				Decimals: 
-				<input type="number" value="2">
+				<input type="number" id="Var10decval" value="2">
 			</div>
 		</div>
 		
@@ -339,7 +339,7 @@
 					// Finds index for random value identifier
 					var index = value.search(placeholder);
 					// Brings in accuracy for random variables
-					var acc = document.getElementById("Var1dec").input.value;
+					var acc = document.getElementById("Var1decval").value;
 					// Creates new string with random variable added
 					value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + placeholder.length);
 					document.getElementById(input).innerHTML = value;
