@@ -35,196 +35,6 @@
 			</p>
 		</div>
 		
-		<!-- Row to show variable heading-->
-		<div class="row">
-			<div class="settings">
-				Number of Variables:
-			</div>
-		</div>
-		
-		<!-- Row to show number of variables-->
-		<div class="row">
-			<div class="settings">
-				<input type="number" id="NumVar" value="1" oninput="updatevar(this)" max="10">				
-			</div>
-		</div>
-		
-		<!-- Row for variable names to be set in-->
-		<div class="row" id="Variable headers">
-			<div class="settings" id="Var1head" style="display:inline-block;">
-				Variable Placeholder:
-				<input type="text" id="Var1name" value="{{Var1}}">
-			</div>
-			<div class="settings" id="Var2head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var2name" value="{{Var2}}">
-			</div>
-			<div class="settings" id="Var3head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var3name" value="{{Var3}}">
-			</div>
-			<div class="settings" id="Var4head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var4name" value="{{Var4}}">
-			</div>
-			<div class="settings" id="Var5head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var5name" value="{{Var5}}">
-			</div>
-			<div class="settings" id="Var6head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var6name" value="{{Var6}}">
-			</div>
-			<div class="settings" id="Var7head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var7name" value="{{Var7}}">
-			</div>
-			<div class="settings" id="Var8head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var8name" value="{{Var8}}">
-			</div>
-			<div class="settings" id="Var9head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var9name" value="{{Var9}}">
-			</div>
-			<div class="settings" id="Var10head" style="display:none;">
-				Variable Placeholder:
-				<input type="text" id="Var10name" value="{{Var10}}">
-			</div>
-		</div>
-		
-		<!-- Row for variable mins to be set in-->
-		<div class="row" id="Variable mins">
-			<div class="settings" id="Var1min" style="display:inline-block;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var2min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var3min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var4min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var5min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var6min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var7min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var8min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var9min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-			<div class="settings" id="Var10min" style="display:none;">
-				Min: 
-				<input type="number" value="0">
-			</div>
-		</div>
-		
-		<!-- Row for variable maxs to be set in-->
-		<div class="row" id="Variable maxs">
-			<div class="settings" id="Var1max" style="display:inline-block;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var2max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var3max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var4max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var5max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var6max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var7max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var8max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var9max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-			<div class="settings" id="Var10max" style="display:none;">
-				Max: 
-				<input type="number" value="1">
-			</div>
-		</div>
-		
-		<!-- Row for variable decimal accuracies to be set in-->
-		<div class="row" id="Variable decs">
-			<div class="settings" id="Var1dec" style="display:inline-block;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var2dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var3dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var4dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var5dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var6dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var7dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var8dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var9dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-			<div class="settings" id="Var10dec" style="display:none;">
-				Decimals: 
-				<input type="number" value="2">
-			</div>
-		</div>
-		
 		<!-- Row to show question box headers-->
 		<div class="row">
 			<div class="column iheaders">
@@ -269,9 +79,199 @@
 			</div>
 		</div>
 
+		<!-- Row to show variable heading-->
+		<div class="row">
+			<div class="settings">
+				Number of Variables:
+			</div>
+		</div>
+		
+		<!-- Row to show number of variables-->
+		<div class="row">
+			<div class="settings">
+				<input type="number" id="NumVar" value="0" oninput="updatevar(this)" max="10">				
+			</div>
+		</div>
+		
+		<!-- Row for variable names to be set in-->
+		<div class="row" id="Variable headers">
+			<div class="settings" id="Var1head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var1name" value="{{Var1}}">
+			</div>
+			<div class="settings" id="Var2head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var2name" value="{{Var2}}">
+			</div>
+			<div class="settings" id="Var3head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var3name" value="{{Var3}}">
+			</div>
+			<div class="settings" id="Var4head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var4name" value="{{Var4}}">
+			</div>
+			<div class="settings" id="Var5head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var5name" value="{{Var5}}">
+			</div>
+			<div class="settings" id="Var6head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var6name" value="{{Var6}}">
+			</div>
+			<div class="settings" id="Var7head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var7name" value="{{Var7}}">
+			</div>
+			<div class="settings" id="Var8head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var8name" value="{{Var8}}">
+			</div>
+			<div class="settings" id="Var9head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var9name" value="{{Var9}}">
+			</div>
+			<div class="settings" id="Var10head" style="display:none;">
+				Variable Placeholder:
+				<input type="text" id="Var10name" value="{{Var10}}">
+			</div>
+		</div>
+		
+		<!-- Row for variable mins to be set in-->
+		<div class="row" id="Variable mins">
+			<div class="settings" id="Var1min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var2min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var3min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var4min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var5min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var6min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var7min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var8min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var9min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+			<div class="settings" id="Var10min" style="display:none;">
+				Min: 
+				<input type="number" value="0">
+			</div>
+		</div>
+		
+		<!-- Row for variable maxs to be set in-->
+		<div class="row" id="Variable maxs">
+			<div class="settings" id="Var1max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var2max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var3max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var4max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var5max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var6max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var7max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var8max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var9max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+			<div class="settings" id="Var10max" style="display:none;">
+				Max: 
+				<input type="number" value="1">
+			</div>
+		</div>
+		
+		<!-- Row for variable decimal accuracies to be set in-->
+		<div class="row" id="Variable decs">
+			<div class="settings" id="Var1dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var2dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var3dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var4dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var5dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var6dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var7dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var8dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var9dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+			<div class="settings" id="Var10dec" style="display:none;">
+				Decimals: 
+				<input type="number" value="2">
+			</div>
+		</div>
+		
 		<script>
-			// Sets initial number of variables to 1
-			var numvar = 1;
+			// Sets initial number of variables to 0
+			var numvar = 0;
 			function updatevar(box)
 			{
 				var newnumvar = box.value;
@@ -313,45 +313,39 @@
 				}
 			}
 			
-			function Random()
-			{
-				// Adds random string to input box
-				document.getElementById("QInput").value = document.getElementById("QInput").value + "random";
-			}
+			//function Convert(input, output)
+			//{
+			//	// Brings in current output from question output box
+			//	var value = document.getElementById(input).value
+			//	document.getElementById(output).value = value;
+			//	while (value.search("random") !== -1)
+			//	{
+			//		// Finds index for random value identifier
+			//		var index = value.search("random");
+			//		// Brings in accuracy for random variables
+			//		var acc = document.getElementById("RandomAccuracy").value;
+			//		// Creates new string with random variable added
+			//		value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
+			//		document.getElementById(output).value = value;
+			//	}
+			//}	
 			
-			function Convert(input, output)
-			{
-				// Brings in current output from question output box
-				var value = document.getElementById(input).value
-				document.getElementById(output).value = value;
-				while (value.search("random") !== -1)
-				{
-					// Finds index for random value identifier
-					var index = value.search("random");
-					// Brings in accuracy for random variables
-					var acc = document.getElementById("RandomAccuracy").value;
-					// Creates new string with random variable added
-					value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + 6);
-					document.getElementById(output).value = value;
-				}
-			}	
-			
-			function update(box)
-			{
-				// If loop to check whether the box being updated is the question or answer row
-				if (box.id.search("Q") == -1)
-				{
-					var input = "AInput";
-					var output = "AConverted";
-				}
-				else 
-				{
-					var input = "QInput";
-					var output = "QConverted";
-				}
-				// Runs the convert function with the desired input and outputs
-				Convert(input, output)
-			}
+			//function update(box)
+			//{
+			//	// If loop to check whether the box being updated is the question or answer row
+			//	if (box.id.search("Q") == -1)
+			//	{
+			//		var input = "AInput";
+			//		var output = "AConverted";
+			//	}
+			//	else 
+			//	{
+			//		var input = "QInput";
+			//		var output = "QConverted";
+			//	}
+			//	// Runs the convert function with the desired input and outputs
+			//	Convert(input, output)
+			//}
 			
 			function OutputFile()
 			{
