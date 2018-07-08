@@ -326,7 +326,7 @@
 					var input = "QMarked";
 				}
 				// Runs the convert function with the desired input and outputs
-				setTimeout(Convert(input), 100);
+				setTimeout(Convert(input), 1000);
 			}
 			
 			function Convert(input)
@@ -339,7 +339,7 @@
 					// Finds index for random value identifier
 					var index = value.search(placeholder);
 					// Brings in accuracy for random variables
-					var acc = document.getElementById("Var1dec").value;
+					var acc = document.getElementById("Var1dec").input.value;
 					// Creates new string with random variable added
 					value = value.substr(0, index) + Math.random().toFixed(acc) + value.substr(index + placeholder.length);
 					document.getElementById(input).innerHTML = value;
