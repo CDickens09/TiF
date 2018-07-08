@@ -386,6 +386,7 @@
 				computed: {
 					compiledMarkdown: function () {
 						return marked(this.input, { sanitize: true });
+						$("#QMarked p:contains('cat')").html("dog");
 					}
 				},
 				methods: {
@@ -412,11 +413,6 @@
 					}, 300)
 				}
 			})
-			$( "#QMarked" )
-				.change(function () 
-				{
-					$("#QMarked p:contains('cat')").html("dog")
-				})
 		</script>
 		
 		<!-- Placeholder and script to load footer -->
