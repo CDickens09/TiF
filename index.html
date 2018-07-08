@@ -314,7 +314,9 @@
 				}
 			}
 			
-			window.setInterval(update("QMarked"), 2000);
+			window.setInterval(function(){
+				update("QMarked");
+			}, 1000);
 			
 			function update(box)
 			{
