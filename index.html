@@ -314,9 +314,6 @@
 				}
 			}
 			
-			// Function call every 200ms to update variables in outputs
-			window.setInterval(function(){ update() }, 200);
-			
 			function update()
 			{
 				// If loop to only update if some variables are active
@@ -325,9 +322,9 @@
 					// For loop to run for all currently active variables
 					for (i = 1; i <= numvar; i++) 
 					{
-						// Brings in current output from question output box
+						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
-						// Brings in current output from answer output box
+						// Brings in current input from answer input box and runs markdown conversion
 						var avalue = marked(document.getElementById("QInput").value, { sanitize: true });
 						// Looks up the placeholder of each variable being used
 						var placeholder = document.getElementById("Var" + i + "name").value;
