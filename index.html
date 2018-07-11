@@ -301,7 +301,7 @@
 			// Function to deal with user inputted csv file
 			function data()
 			{
-				var data = document.getElementById('input').files[0];
+				var data = document.getElementById('CSV').files;
 				var allLines = data.split(/\r\n|\n/);
 				var headers = allLines[0].split(',');
 				var lines = [];
