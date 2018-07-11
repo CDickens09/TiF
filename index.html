@@ -302,7 +302,7 @@
 			// Function to deal with user inputted csv file
 			function data()
 			{
-				var file = document.getElementById('input').files;
+				var file = document.getElementById('input').files[0];
 				var array = file.split(',');
 				console.log(array);
 			}
