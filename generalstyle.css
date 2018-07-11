@@ -6,6 +6,10 @@ body
 {
 	font-size: 18px;
 }
+code 
+{
+  color: #f66;
+}
 .column 
 {
 	float: left;
@@ -44,6 +48,13 @@ h2
 	padding: 20px;
 	text-align: center;
 }
+html, body, #questions, #answers 
+{
+  margin: 0;
+  height: 100%;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  color: #333;
+}
 input
 {
 	width: 100%;
@@ -76,13 +87,40 @@ p
 	padding: 10px;
 	width: 8%;
 }
-html, body, #questions, #answers {
-  margin: 0;
-  height: 100%;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  color: #333;
+.tab 
+{
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
 }
-textarea, #questions div, #answers div {
+.tab button 
+{
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+.tab button:hover 
+{
+    background-color: #ddd;
+}
+.tab button.active 
+{
+    background-color: #ccc;
+}
+.tabcontent 
+{
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+textarea, #questions div, #answers div 
+{
   display: inline-block;
   width: 49%;
   height: 100%;
@@ -97,34 +135,4 @@ textarea {
   resize: none;
   outline: none;
   font-family: 'Monaco', courier, monospace;
-}
-code {
-  color: #f66;
-}
-.tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-}
-.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-}
-.tab button:hover {
-    background-color: #ddd;
-}
-.tab button.active {
-    background-color: #ccc;
-}
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
 }
