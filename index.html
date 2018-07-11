@@ -36,9 +36,9 @@
 		</div>
 		
 		<div class="tab">
-			<button class="tablinks" onclick="openTab(event, 'Previews')">Previews</button>
-  			<button class="tablinks" onclick="openTab(event, 'Random Variables')">Random Variables</button>
-  			<button class="tablinks" onclick="openTab(event, 'CSV Variables')">CSV Variables</button>	
+			<button class="tablinks" id="Previews Button" onclick="openTab(event, 'Previews')">Previews</button>
+  			<button class="tablinks" id="Random Variables Button" onclick="openTab(event, 'Random Variables')">Random Variables</button>
+  			<button class="tablinks" id="CSV Variables Button" onclick="openTab(event, 'CSV Variables')">CSV Variables</button>	
 		</div>
 		
 		<div id="Previews" class="tabcontent">
@@ -287,7 +287,7 @@
 			var numvar = 0;
 			
 			// Has Previews screen open on first page load by default
-			document.getElementById("Previews").click();
+			document.getElementById("Previews Button").click();
 			
 			// Function to open each tab
 			function openTab(evt, tabName) 
