@@ -289,7 +289,7 @@
 		</div>
 		
 		<div id="CSV Variables" class="tabcontent">
-			<input type="file" id="CSV"/>
+			<input type="file" id="CSV" onchange="data()"/>
 		</div>
 		
 		<script>
@@ -299,37 +299,14 @@
 			// Has Previews screen open on first page load by default
 			document.getElementById("Previews Button").click();
 			
-			// Variable to store the contents of csv file
-			var reader = new FileReader();  
-    
-$(document).ready(function() {
-    $.ajax({
-        type: "GET",
-        url: "document.getElementById("CSV")",
-        dataType: "text",
-        success: function(data) {processData(data);}
-     });
-});
-
-function processData(allText) {
-    var allTextLines = allText.split(/\r\n|\n/);
-    var headers = allTextLines[0].split(',');
-    var lines = [];
-
-    for (var i=1; i<allTextLines.length; i++) {
-        var data = allTextLines[i].split(',');
-        if (data.length == headers.length) {
-
-            var tarr = [];
-            for (var j=0; j<headers.length; j++) {
-                tarr.push(headers[j]+":"+data[j]);
-            }
-            lines.push(tarr);
-        }
-    }
-console.log(lines);
-}
-    
+			// Function to deal with user inputted csv file
+			function data()
+			{
+				var file = document.getElementById('input').files;
+				var array = file.split(',');
+				console.log(array);
+			}
+			
 			// Function to open each tab
 			function openTab(evt, tabName) 
 			{
