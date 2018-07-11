@@ -290,6 +290,7 @@
 		<div id="CSV Variables" class="tabcontent">
 			<input type="file" id="CSV" onchange="data()"/>
 		</div>
+		<div id="dvCSV"></div>
 		
 		<script>
 			// Sets initial number of variables to 0
@@ -298,28 +299,67 @@
 			// Has Previews screen open on first page load by default
 			document.getElementById("Previews Button").click();
 			
-			// Function to deal with user inputted csv file
-			function data()
-			{
-				var data = document.getElementById('CSV').files;
-				var allLines = data.split(/\r\n|\n/);
-				var headers = allLines[0].split(',');
-				var lines = [];
-				for (var i=1; i<allTextLines.length; i++) 
+			function Upload() {
+				var fileUpload = document.getElementById("fileUpload");
+				var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+				if (regex.test(fileUpload.value.toLowerCase())) 
 				{
-					var data = allTextLines[i].split(',');
-					if (data.length == headers.length) 
+					if (typeof (FileReader) != "undefined") 
 					{
-						var tarr = [];
-					    	for (var j=0; j<headers.length; j++) 
+						var reader = new FileReader();
+						reader.onload = function (e) 
 						{
-							tarr.push(headers[j]+":"+data[j]);
-					    	}
-					    	lines.push(tarr);
+							var table = document.createElement("table");
+							var rows = e.target.result.split("\n");
+							for (var i = 0; i < rows.length; i++) 
+							{
+								var row = table.insertRow(-1);
+								var cells = rows[i].split(",");
+								for (var j = 0; j < cells.length; j++) 
+								{
+									var cell = row.insertCell(-1);
+									cell.innerHTML = cells[j];
+								}
+							}
+							var dvCSV = document.getElementById("dvCSV");
+							dvCSV.innerHTML = "";
+							dvCSV.appendChild(table);
+						}
+						reader.readAsText(fileUpload.files[0]);
+					} 
+					else 
+					{
+						alert("This browser does not support HTML5.");
 					}
+				} 
+				else 
+				{
+					alert("Please upload a valid CSV file.");
 				}
-				console.log(lines);
 			}
+			
+			// Function to deal with user inputted csv file
+			//function data()
+			//{
+			//	var data = document.getElementById('CSV').files;
+			//	var allLines = data.split(/\r\n|\n/);
+			//	var headers = allLines[0].split(',');
+			//	var lines = [];
+			//	for (var i=1; i<allTextLines.length; i++) 
+			//	{
+			//		var data = allTextLines[i].split(',');
+			//		if (data.length == headers.length) 
+			//		{
+			//			var tarr = [];
+			//		    	for (var j=0; j<headers.length; j++) 
+			//			{
+			//				tarr.push(headers[j]+":"+data[j]);
+			//		    	}
+			//		    	lines.push(tarr);
+			//		}
+			//	}
+			//	console.log(lines);
+			//}
 			
 			// Function to open each tab
 			function openTab(evt, tabName) 
