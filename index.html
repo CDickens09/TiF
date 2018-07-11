@@ -290,6 +290,7 @@
 		<div id="CSV Variables" class="tabcontent">
 			<input type="file" id="CSV" onchange="data()"/>
 		</div>
+		<!-- Div to show table format for csv file-->
 		<div id="dvCSV"></div>
 		
 		<script>
@@ -299,6 +300,7 @@
 			// Has Previews screen open on first page load by default
 			document.getElementById("Previews Button").click();
 			
+			// Function to load data from file and display it in a table below the import box
 			function data() 
 			{
 				var fileUpload = document.getElementById("CSV");
@@ -330,37 +332,16 @@
 					} 
 					else 
 					{
-						alert("This browser does not support HTML5.");
+						// Alert if the browser user is using cannot support HTML5
+						alert("Sorry this browser does not support HTML5, please use a more up to date browser for this feature");
 					}
 				} 
 				else 
 				{
-					alert("Please upload a valid CSV file.");
+					// Error line if uploaded file is not a valid csv format
+					alert("Please upload a valid CSV file");
 				}
 			}
-			
-			// Function to deal with user inputted csv file
-			//function data()
-			//{
-			//	var data = document.getElementById('CSV').files;
-			//	var allLines = data.split(/\r\n|\n/);
-			//	var headers = allLines[0].split(',');
-			//	var lines = [];
-			//	for (var i=1; i<allTextLines.length; i++) 
-			//	{
-			//		var data = allTextLines[i].split(',');
-			//		if (data.length == headers.length) 
-			//		{
-			//			var tarr = [];
-			//		    	for (var j=0; j<headers.length; j++) 
-			//			{
-			//				tarr.push(headers[j]+":"+data[j]);
-			//		    	}
-			//		    	lines.push(tarr);
-			//		}
-			//	}
-			//	console.log(lines);
-			//}
 			
 			// Function to open each tab
 			function openTab(evt, tabName) 
