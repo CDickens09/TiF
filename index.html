@@ -328,29 +328,29 @@
 							{
 								// Assigns variable to store data from CSV
 								var variables = new Array(rows.length - 1);
-							}
-							// For loop to run for every row
-							for (var i = 0; i < rows.length; i++) 
-							{
-								// Inserts each row element into the div table
-								var row = table.insertRow(-1);
-								// Splits the row into each individual cell by the commas
-								var cells = rows[i].split(",");
-								if (cells.length > 2)
+								// For loop to run for every row
+								for (var i = 0; i < rows.length; i++) 
 								{
-									// Set each row in array to have the correct number of columns
-									variables[i] = new Array(cells.length - 2);
-								}
-								// For loop to run for every cell
-								for (var j = 0; j < cells.length; j++) 
-								{
-									// Inserts each cell element into row
-									var cell = row.insertCell(-1);
-									// Adds html element for each cell with text from CSV
-									cell.innerHTML = cells[j];
-									variables[i][j] = cells[j];
-									console.log(variables[i][j]);
-									console.log(cells[j]);
+									// Inserts each row element into the div table
+									var row = table.insertRow(-1);
+									// Splits the row into each individual cell by the commas
+									var cells = rows[i].split(",");
+									if (cells.length > 2)
+									{
+										// Set each row in array to have the correct number of columns
+										variables[i] = new Array(cells.length - 2);
+										// For loop to run for every cell
+										for (var j = 0; j < cells.length; j++) 
+										{
+											// Inserts each cell element into row
+											var cell = row.insertCell(-1);
+											// Adds html element for each cell with text from CSV
+											cell.innerHTML = cells[j];
+											variables[i][j] = cells[j];
+											console.log(variables[i][j]);
+											console.log(cells[j]);
+									}
+									}
 								}
 							}
 							// Finds where to display table on page
