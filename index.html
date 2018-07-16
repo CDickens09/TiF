@@ -460,9 +460,8 @@
 							var max = document.getElementById("Var" + i + "maxval").value;
 							// Brings in accuracy for random variables
 							var acc = document.getElementById("Var" + i + "decval").value;
-							var range = max - min;
 							// Generates random number with desired attributes
-							var rand = parseFloat((Math.random() * range) + +min);
+							var rand = parseFloat(Math.random() * (max - min) + +min);
 							// While loop to only run until no more instances of the variable are found in question box
 							while (qvalue.search(placeholder) !== -1)
 							{
