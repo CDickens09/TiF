@@ -403,7 +403,7 @@
 			function OutputFile()
 			{
 				// Brings in Output from converted box
-				var Output = document.getElementById("QMarked").value + document.getElementById("AMarked").value;
+				var Output = document.getElementById("QMarked").innerHTML + document.getElementById("AMarked").innerHTML;
 				// Creates temporary blob file
 				var File = new Blob([Output], {type:'text/plain'});
 				// Provides file name for file
