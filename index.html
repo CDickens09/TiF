@@ -288,10 +288,12 @@
 		</div>
 		
 		<div id="CSV Variables" class="tabcontent">
+			<!-- Input form to upload a CSV to-->
 			<input type="file" id="CSV" onchange="data()"/>
+			<!-- Div to show table format for csv file-->
+			<div id="dvCSV"></div>
 		</div>
-		<!-- Div to show table format for csv file-->
-		<div id="dvCSV"></div>
+
 		
 		<script>
 			// Sets initial number of variables to 0
@@ -322,6 +324,8 @@
 							var table = document.createElement("table");
 							// Splits input of CSV file into rows
 							var rows = e.target.result.split("\n");
+							// Assigns variable to store data from CSV
+							var variables = new Array(row.length - 1);
 							// For loop to run for every row
 							for (var i = 0; i < rows.length; i++) 
 							{
@@ -329,6 +333,8 @@
 								var row = table.insertRow(-1);
 								// Splits the row into each individual cell by the commas
 								var cells = rows[i].split(",");
+								// Set each row in array to have the correct number of columns
+								variables[i] = new Array(cells.length - 2);
 								// For loop to run for every cell
 								for (var j = 0; j < cells.length; j++) 
 								{
@@ -336,7 +342,8 @@
 									var cell = row.insertCell(-1);
 									// Adds html element for each cell with text from CSV
 									cell.innerHTML = cells[j];
-									console.log(cells.length);
+									variables[i][j] = cells[j];
+									console.log(variables[i][j]);
 									console.log(cells[j]);
 								}
 							}
