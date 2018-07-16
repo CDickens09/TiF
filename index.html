@@ -30,7 +30,7 @@
 		<div class="header">
 			<h1>BlackBoard Question Pool Maker</h1>
 			<p>
-				To view instruction please visit the <a href="/TiF/Help">Help</a> page 
+				To view instructions please visit the <a href="/TiF/Help">Help</a> page 
 			</p>
 		</div>
 		
@@ -400,34 +400,34 @@
 				evt.currentTarget.className += " active";
 			}
 			
-			//function OutputFile()
-			//{
-			//	// Brings in Output from converted box
-			//	var Output = document.getElementById("Converted").value;
-			//	// Creates temporary blob file
-			//	var File = new Blob([Output], {type:'text/plain'});
-			//	// Provides file name for file
-			//	var FileName = "test.dat";
-			//	//Creates download element
-			//	var Download = document.createElement("a");
-			//	Download.download = FileName;
-			//	Download.innerHTML = "Download File";
-			//	// For all browsers except Firefox
-			//	if (window.URL != null)
-			//	{
-			//		Download.href = window.URL.createObjectURL(File);
-			//	}
-			//	// For Firefox browser to work
-			//	else
-			//	{
-			//		Download.href = window.URL.createObjectURL(File);
-			//		Download.onclick = destroyClickedElement;
-			//		Download.style.display = "none";
-			//		document.body.appendChild(Download);
-			//	}
-			//	// Starts download of file
-			//	Download.click();
-			//}
+			function OutputFile()
+			{
+				// Brings in Output from converted box
+				var Output = document.getElementById("QMarked").value + document.getElementById("AMarked").value;
+				// Creates temporary blob file
+				var File = new Blob([Output], {type:'text/plain'});
+				// Provides file name for file
+				var FileName = "test.dat";
+				//Creates download element
+				var Download = document.createElement("a");
+				Download.download = FileName;
+				Download.innerHTML = "Download File";
+				// For all browsers except Firefox
+				if (window.URL != null)
+				{
+					Download.href = window.URL.createObjectURL(File);
+				}
+				// For Firefox browser to work
+				else
+				{
+					Download.href = window.URL.createObjectURL(File);
+					Download.onclick = destroyClickedElement;
+					Download.style.display = "none";
+					document.body.appendChild(Download);
+				}
+				// Starts download of file
+				Download.click();
+			}
 			
 			function update()
 			{
