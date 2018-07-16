@@ -119,6 +119,14 @@ p
     border: 1px solid #ccc;
     border-top: none;
 }
+table 
+{
+    border-collapse: collapse;
+}
+table, td, th 
+{
+    border: 1px solid black;
+}
 textarea, #questions div, #answers div 
 {
   display: inline-block;
