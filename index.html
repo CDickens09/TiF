@@ -394,8 +394,6 @@
 			//	Download.click();
 			//}
 			
-			//
-			
 			function update()
 			{
 				// If loop to only update if some variables are active
@@ -431,7 +429,6 @@
 						{
 							// Finds index for random value identifier
 							var index = qvalue.search(placeholder);
-
 							// Creates new string with random variable added
 							qvalue = qvalue.substr(0, index) + rand.toFixed(acc) + qvalue.substr(index + placeholder.length);
 							document.getElementById("QMarked").innerHTML = qvalue;
@@ -460,7 +457,7 @@
 				}
 			}	
 			
-						function updatevar(box)
+			function updatevar(box)
 			{
 				var newnumvar = box.value;
 				// Checks if the number of variables has been changed
