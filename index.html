@@ -462,7 +462,8 @@
 							var acc = document.getElementById("Var" + i + "decval").value;
 							var range = max - min;
 							// Generates random number with desired attributes
-							var rand = parseFloat(Math.random() * range + min);
+							var value = Math.random() * range + min;
+							var rand = parseFloat(value);
 							// While loop to only run until no more instances of the variable are found in question box
 							while (qvalue.search(placeholder) !== -1)
 							{
