@@ -303,29 +303,45 @@
 			// Function to load data from file and display it in a table below the import box
 			function data() 
 			{
+				// Brings in CSV file from upload point
 				var fileUpload = document.getElementById("CSV");
+				// Variable to store all legal characters
 				var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.csv|.txt)$/;
+				// Checks that all characters in CSV are legal for use in conversion
 				if (regex.test(fileUpload.value.toLowerCase())) 
 				{
+					// Checks if the browser supports HTML5
 					if (typeof (FileReader) != "undefined") 
 					{
+						// Defines reader variable as a file reader
 						var reader = new FileReader();
+						// Whenever reader function is loaded calls the below function
 						reader.onload = function (e) 
 						{
+							// Creates a div table for displaying content of file
 							var table = document.createElement("table");
+							// Splits input of CSV file into rows
 							var rows = e.target.result.split("\n");
+							// For loop to run for every row
 							for (var i = 0; i < rows.length; i++) 
 							{
+								// Inserts each row element into the div table
 								var row = table.insertRow(-1);
+								// Splits the row into each individual cell by the commas
 								var cells = rows[i].split(",");
+								// For loop to run for every cell
 								for (var j = 0; j < cells.length; j++) 
 								{
+									// Inserts each cell element into row
 									var cell = row.insertCell(-1);
+									// Adds html element for each cell with text from CSV
 									cell.innerHTML = cells[j];
 								}
 							}
+							// Finds where to display table on page
 							var dvCSV = document.getElementById("dvCSV");
 							dvCSV.innerHTML = "";
+							// Appends table to the display element on page
 							dvCSV.appendChild(table);
 						}
 						reader.readAsText(fileUpload.files[0]);
@@ -338,7 +354,7 @@
 				} 
 				else 
 				{
-					// Error line if uploaded file is not a valid csv format
+					// Error line if uploaded file is not a valid csv format or has illegal characters
 					alert("Please upload a valid CSV file");
 				}
 			}
