@@ -50,6 +50,16 @@
 				</select>
 			</div>
 			
+			<div class="row">
+				Code used for input: 
+				<!-- Select box to let user decide which code they have used-->
+				<select id="InCode" onchange="update()">
+  					<option value="Mark">Markdown</option>
+  					<option value="HTML">HTML</option>
+					<option value="Latex">Latex</option>
+				</select>
+			</div>
+			
 			<!-- Row to show question box headers-->
 			<div class="row">
 				<div class="column iheaders">
@@ -434,15 +444,32 @@
 				// Checks if Rand variable set is in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
-					// If loop to only update if some variables are active
-					if (numvar != 0)
+					if(document.getElementById("InCode").value == "Mark")
 					{
 						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
-						// Changes question output box to show markdown of question input
-						document.getElementById("QMarked").innerHTML = qvalue;
 						// Brings in current input from answer input box and runs markdown conversion
 						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
+					}
+					else if(document.getElementById("InCode").value == "HTML")
+					{
+						// Brings in current input from question input box
+						var qvalue = document.getElementById("QInput").value;
+						// Brings in current input from answer input box
+						var avalue = document.getElementById("AInput").value;
+					}
+					else
+					{
+						// Brings in current input from question input box and runs latex conversion
+						var qvalue = latex(document.getElementById("QInput").value);
+						// Brings in current input from answer input box and runs latex conversion
+						var avalue = latex(document.getElementById("AInput").value);
+					}
+					// If loop to only update if some variables are active
+					if (numvar != 0)
+					{
+						// Changes question output box to show markdown of question input
+						document.getElementById("QMarked").innerHTML = qvalue;
 						// Changes answer output box to show markdown of answer input
 						document.getElementById("AMarked").innerHTML = avalue;
 						// For loop to run for all currently active variables
@@ -484,27 +511,40 @@
 					}
 					else
 					{
-						// Brings in current input from question input box and runs markdown conversion
-						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
 						// Changes question output box to show markdown of question input
 						document.getElementById("QMarked").innerHTML = qvalue;
-						// Brings in current input from answer input box and runs markdown conversion
-						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
 						// Changes answer output box to show markdown of answer input
 						document.getElementById("AMarked").innerHTML = avalue;
 					}
 				}
 				else
 				{
-					// If loop to only update if some variables are active
-					if (variables.length != 0)
+					if(document.getElementById("InCode").value == "Mark")
 					{
 						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
-						// Changes question output box to show markdown of question input
-						document.getElementById("QMarked").innerHTML = qvalue;
 						// Brings in current input from answer input box and runs markdown conversion
 						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
+					}
+					else if(document.getElementById("InCode").value == "HTML")
+					{
+						// Brings in current input from question input box
+						var qvalue = document.getElementById("QInput").value;
+						// Brings in current input from answer input box
+						var avalue = document.getElementById("AInput").value;
+					}
+					else
+					{
+						// Brings in current input from question input box and runs latex conversion
+						var qvalue = latex(document.getElementById("QInput").value);
+						// Brings in current input from answer input box and runs latex conversion
+						var avalue = latex(document.getElementById("AInput").value);
+					}
+					// If loop to only update if some variables are active
+					if (variables.length != 0)
+					{
+						// Changes question output box to show markdown of question input
+						document.getElementById("QMarked").innerHTML = qvalue;
 						// Changes answer output box to show markdown of answer input
 						document.getElementById("AMarked").innerHTML = avalue;
 						// For loop to run for all currently active variables
@@ -540,12 +580,8 @@
 					}
 					else
 					{
-						// Brings in current input from question input box and runs markdown conversion
-						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
 						// Changes question output box to show markdown of question input
 						document.getElementById("QMarked").innerHTML = qvalue;
-						// Brings in current input from answer input box and runs markdown conversion
-						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
 						// Changes answer output box to show markdown of answer input
 						document.getElementById("AMarked").innerHTML = avalue;
 					}
