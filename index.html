@@ -12,6 +12,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://unpkg.com/marked@0.3.6"></script>
 		<script src="https://unpkg.com/lodash@4.16.0"></script>
+		<script type="text/javascript" async src="https://chris14552249.github.io/TiF/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
 		<style>
 		</style>
 	</head>
@@ -51,12 +53,13 @@
 			</div>
 			
 			<div class="row">
-				Code used for input: 
+				Code used for inputs: 
 				<!-- Select box to let user decide which code they have used-->
 				<select id="InCode" onchange="update()">
-  					<option value="Mark">Markdown</option>
+  					<option value="Markdown">Markdown</option>
   					<option value="HTML">HTML</option>
 					<option value="Latex">Latex</option>
+					<option value="MathJax">MathJax</option>
 				</select>
 			</div>
 			
@@ -388,6 +391,12 @@
 				}
 			}
 			
+			// Function to convert to latex
+			function latex()
+			{
+				
+			}
+			
 			// Function to open each tab
 			function openTab(evt, tabName) 
 			{
@@ -410,6 +419,7 @@
 				evt.currentTarget.className += " active";
 			}
 			
+			// Function to output data for blackboard upload
 			function OutputFile()
 			{
 				// Brings in Output from converted box
@@ -444,7 +454,7 @@
 				// Checks if Rand variable set is in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
-					if(document.getElementById("InCode").value == "Mark")
+					if(document.getElementById("InCode").value == "Markdown")
 					{
 						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
@@ -457,6 +467,13 @@
 						var qvalue = document.getElementById("QInput").value;
 						// Brings in current input from answer input box
 						var avalue = document.getElementById("AInput").value;
+					}
+					else if(document.getElementById("InCode").value == "Latex")
+					{
+						// Brings in current input from question input box and runs latex conversion
+						var qvalue = latex(document.getElementById("QInput").value);
+						// Brings in current input from answer input box and runs latex conversion
+						var avalue = latex(document.getElementById("AInput").value);
 					}
 					else
 					{
