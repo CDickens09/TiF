@@ -12,7 +12,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://unpkg.com/marked@0.3.6"></script>
 		<script src="https://unpkg.com/lodash@4.16.0"></script>
-		<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 		<style>
 		</style>
@@ -465,6 +465,7 @@
 					{
 						// Brings in current input from question input box
 						var qvalue = document.getElementById("QInput").value;
+						qvalue = qvalue.substring(1, mystring.length - 1);
 						// Brings in current input from answer input box
 						var avalue = document.getElementById("AInput").value;
 					}
