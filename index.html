@@ -58,8 +58,6 @@
 				<select id="InCode" onchange="update()">
   					<option value="Markdown">Markdown</option>
   					<option value="HTML">HTML</option>
-					<option value="Latex">Latex</option>
-					<option value="MathJax">MathJax</option>
 				</select>
 			</div>
 			
@@ -102,8 +100,12 @@
 					</div>
 				</div>
 				<div class="column buttons">
+					<!-- Button to save questions for later -->
+					<input style="width:100%; padding:10px" id="SaveButton" type="button" value="Save" onclick="OutputFile();" />
+					<!-- Button to load previous questions -->
+					<input style="width:100%; padding:10px" id="LoadButton" type="button" value="Load" onclick="OutputFile();" />
 					<!-- Button to initiate download -->
-					<input style="width:100%" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
+					<input style="width:100%; padding:10px" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
 				</div>
 			</div>
 		</div>
@@ -391,12 +393,6 @@
 				}
 			}
 			
-			// Function to convert to latex
-			function latex()
-			{
-				
-			}
-			
 			// Function to open each tab
 			function openTab(evt, tabName) 
 			{
@@ -468,20 +464,6 @@
 						// Brings in current input from answer input box
 						var avalue = document.getElementById("AInput").value;
 					}
-					else if(document.getElementById("InCode").value == "Latex")
-					{
-						// Brings in current input from question input box and runs latex conversion
-						var qvalue = latex(document.getElementById("QInput").value);
-						// Brings in current input from answer input box and runs latex conversion
-						var avalue = latex(document.getElementById("AInput").value);
-					}
-					else
-					{
-						// Brings in current input from question input box and runs latex conversion
-						var qvalue = latex(document.getElementById("QInput").value);
-						// Brings in current input from answer input box and runs latex conversion
-						var avalue = latex(document.getElementById("AInput").value);
-					}
 					// If loop to only update if some variables are active
 					if (numvar != 0)
 					{
@@ -549,13 +531,6 @@
 						var qvalue = document.getElementById("QInput").value;
 						// Brings in current input from answer input box
 						var avalue = document.getElementById("AInput").value;
-					}
-					else
-					{
-						// Brings in current input from question input box and runs latex conversion
-						var qvalue = latex(document.getElementById("QInput").value);
-						// Brings in current input from answer input box and runs latex conversion
-						var avalue = latex(document.getElementById("AInput").value);
 					}
 					// If loop to only update if some variables are active
 					if (variables.length != 0)
