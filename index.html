@@ -103,7 +103,7 @@
 					<!-- Button to save questions for later -->
 					<input style="width:100%; margin:10px" id="SaveButton" type="button" value="Save" onclick="SaveQs();" />
 					<!-- Input form to upload question file-->
-					<input type="file" id="Qs" onchange="LoadQs()" value="Load"/>
+					<input type="file" id="Qs" onchange="LoadQs()"/>
 					<!-- Button to initiate download -->
 					<input style="width:100%; margin:10px" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
 				</div>
@@ -479,7 +479,7 @@
 			function SaveQs()
 			{
 				// Brings in inputs from converted box
-				var Output = document.getElementById("QInput").innerHTML + "ANSWER BREAK" + document.getElementById("AInput").innerHTML;
+				var Output = document.getElementById("QInput").value + "ANSWER BREAK" + document.getElementById("AInput").value;
 				// Creates temporary blob file
 				var File = new Blob([Output], {type:'text/plain'});
 				// Provides file name for file
