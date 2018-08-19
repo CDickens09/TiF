@@ -400,7 +400,7 @@
 				var file = document.getElementById("Qs").value;
 				// Defines reader variable as a file reader
 				var reader = new FileReader();
-				var contents = reader.readAsText(file);
+				var contents = reader.result;
 				alert(contents);
 				// Searches contents for the answer break
 				var index = contents.search("ANSWER BREAK");
