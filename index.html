@@ -397,7 +397,7 @@
 			function LoadQs()
 			{
 				// Brings in user inputted file
-				var file = document.getElementById("Qs");
+				var file = document.getElementById("Qs").value;
 				// Defines reader variable as a file reader
 				var reader = new FileReader();
 				var contents = reader.readAsText(file);
