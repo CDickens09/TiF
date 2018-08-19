@@ -101,9 +101,11 @@
 				</div>
 				<div class="column buttons">
 					<!-- Button to save questions for later -->
-					<input style="width:100%; margin:10px" id="SaveButton" type="button" value="Save" onclick="OutputFile();" />
+					<input style="width:100%; margin:10px" id="SaveButton" type="button" value="Save" onclick="SaveQs();" />
+					<!-- Input form to upload question file-->
+					<input type="file" id="Qs" onchange="LoadQs()"/>
 					<!-- Button to load previous questions -->
-					<input style="width:100%; margin:10px" id="LoadButton" type="button" value="Load" onclick="OutputFile();" />
+					<input style="width:100%; margin:10px" id="LoadButton" type="button" value="Load" onclick="LoadQs();" />
 					<!-- Button to initiate download -->
 					<input style="width:100%; margin:10px" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
 				</div>
@@ -393,6 +395,36 @@
 				}
 			}
 			
+			// Function to load question data from earlier
+			function LoadQs()
+			{
+				// Brings in inputs from converted box
+				var Output = document.getElementById("QInput").innerHTML + "ANSWER BREAK" + document.getElementById("AInput").innerHTML;
+				// Creates temporary blob file
+				var File = new Blob([Output], {type:'text/plain'});
+				// Provides file name for file
+				var FileName = "BlackboardQuestions.dat";
+				//Creates download element
+				var Download = document.createElement("a");
+				Download.download = FileName;
+				Download.innerHTML = "Download File";
+				// For all browsers except Firefox
+				if (window.URL != null)
+				{
+					Download.href = window.URL.createObjectURL(File);
+				}
+				// For Firefox browser to work
+				else
+				{
+					Download.href = window.URL.createObjectURL(File);
+					Download.onclick = destroyClickedElement;
+					Download.style.display = "none";
+					document.body.appendChild(Download);
+				}
+				// Starts download of file
+				Download.click();
+			}
+			
 			// Function to open each tab
 			function openTab(evt, tabName) 
 			{
@@ -424,6 +456,36 @@
 				var File = new Blob([Output], {type:'text/plain'});
 				// Provides file name for file
 				var FileName = "test.dat";
+				//Creates download element
+				var Download = document.createElement("a");
+				Download.download = FileName;
+				Download.innerHTML = "Download File";
+				// For all browsers except Firefox
+				if (window.URL != null)
+				{
+					Download.href = window.URL.createObjectURL(File);
+				}
+				// For Firefox browser to work
+				else
+				{
+					Download.href = window.URL.createObjectURL(File);
+					Download.onclick = destroyClickedElement;
+					Download.style.display = "none";
+					document.body.appendChild(Download);
+				}
+				// Starts download of file
+				Download.click();
+			}
+			
+			// Function to save question data for later
+			function SaveQs()
+			{
+				// Brings in inputs from converted box
+				var Output = document.getElementById("QInput").innerHTML + "ANSWER BREAK" + document.getElementById("AInput").innerHTML;
+				// Creates temporary blob file
+				var File = new Blob([Output], {type:'text/plain'});
+				// Provides file name for file
+				var FileName = "BlackboardQuestions.dat";
 				//Creates download element
 				var Download = document.createElement("a");
 				Download.download = FileName;
