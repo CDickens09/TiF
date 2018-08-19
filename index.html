@@ -400,20 +400,24 @@
 				var file = document.getElementById("Qs").value;
 				// Defines reader variable as a file reader
 				var reader = new FileReader();
-				var contents = reader.result;
-				alert(contents);
-				// Searches contents for the answer break
-				var index = contents.search("ANSWER BREAK");
-				// Sets QInput to the content before answer break
-				var QInput = contnets.substr(0, index);
-				// Sets AInput to the content after answer break
-				var AInput = contents.substr(index + 12);
-				// Sets QInput box to hold question from file
-				document.getElementById("QInput").value = QInput;
-				// Sets AInput box to hold answer from file
-				document.getElementById("AInput").value = AInput;
-				// Runs update to get the output boxes converted
-				update();
+				reader.onload = function (e) 
+					{
+						var contents = e.target.result;
+						alert(contents);
+						// Searches contents for the answer break
+						var index = contents.search("ANSWER BREAK");
+						// Sets QInput to the content before answer break
+						var QInput = contnets.substr(0, index);
+						// Sets AInput to the content after answer break
+						var AInput = contents.substr(index + 12);
+						// Sets QInput box to hold question from file
+						document.getElementById("QInput").value = QInput;
+						// Sets AInput box to hold answer from file
+						document.getElementById("AInput").value = AInput;
+						// Runs update to get the output boxes converted
+						update();
+					}
+					reader.readAsText(fileUpload.files[0]);
 			}
 			
 			// Function to open each tab
