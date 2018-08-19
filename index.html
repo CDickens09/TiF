@@ -402,24 +402,24 @@
 				var reader = new FileReader();
 				reader.onload = function(e)
 				{
-				console.log(e.target.result);		
+					console.log(e.target.result);
+					// Sets contents variable as result of file reader
+					var contents = e.target.result;
+					alert(contents);
+					// Searches contents for the answer break
+					var index = contents.search("ANSWER BREAK");
+					// Sets QInput to the content before answer break
+					var QInput = contnets.substr(0, index);
+					// Sets AInput to the content after answer break
+					var AInput = contents.substr(index + 12);
+					// Sets QInput box to hold question from file
+					document.getElementById("QInput").value = QInput;
+					// Sets AInput box to hold answer from file
+					document.getElementById("AInput").value = AInput;
+					// Runs update to get the output boxes converted
+					update();
 				}
-				// Sets contents variable as result of file reader
-				var contents = e.target.result;
 
-				alert(contents);
-				// Searches contents for the answer break
-				var index = contents.search("ANSWER BREAK");
-				// Sets QInput to the content before answer break
-				var QInput = contnets.substr(0, index);
-				// Sets AInput to the content after answer break
-				var AInput = contents.substr(index + 12);
-				// Sets QInput box to hold question from file
-				document.getElementById("QInput").value = QInput;
-				// Sets AInput box to hold answer from file
-				document.getElementById("AInput").value = AInput;
-				// Runs update to get the output boxes converted
-				update();
 			}
 			
 			// Function to open each tab
