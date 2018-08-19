@@ -404,6 +404,8 @@
 					var filereader = new FileReader();
 					// Sets contents variable as result of file reader
 					var contents = filereader.result;
+					alert(filereader.result);
+					alert(contents);
 					// Searches contents for the answer break
 					var index = contents.search("ANSWER BREAK");
 					// Sets QInput to the content before answer break
