@@ -398,26 +398,28 @@
 			{
 				// Brings in user inputted file
 				var file = document.getElementById("Qs").files;
-				// If file exists runs code
-				if (file) {
-					// Creates a new js file reader
-					var filereader = new FileReader();
-					// Sets contents variable as result of file reader
-					var contents = filereader.result;
-					alert(filereader.result);
-					alert(contents);
-					// Searches contents for the answer break
-					var index = contents.search("ANSWER BREAK");
-					// Sets QInput to the content before answer break
-					var QInput = contnets.substr(0, index);
-					// Sets AInput to the content after answer break
-					var AInput = contents.substr(index + 12);
-					// Sets QInput box to hold question from file
-					document.getElementById("QInput").value = QInput;
-					// Sets AInput box to hold answer from file
-					document.getElementById("AInput").value = AInput;
-					// Runs update to get the output boxes converted
-					update();
+				// Creates a new js file reader
+				var reader = new FileReader();
+				reader.onload = function(e)
+				{
+				alert(reader.result);					
+				}
+				// Sets contents variable as result of file reader
+				var contents = reader.result;
+
+				alert(contents);
+				// Searches contents for the answer break
+				var index = contents.search("ANSWER BREAK");
+				// Sets QInput to the content before answer break
+				var QInput = contnets.substr(0, index);
+				// Sets AInput to the content after answer break
+				var AInput = contents.substr(index + 12);
+				// Sets QInput box to hold question from file
+				document.getElementById("QInput").value = QInput;
+				// Sets AInput box to hold answer from file
+				document.getElementById("AInput").value = AInput;
+				// Runs update to get the output boxes converted
+				update();
 				}
 			}
 			
