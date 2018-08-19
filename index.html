@@ -402,8 +402,7 @@
 				var reader = new FileReader();
 				reader.onload = function(e)
 				{
-				console.log(this.result);	
-				console.log(reader.result);		
+				console.log(e.target.result);		
 				}
 				// Sets contents variable as result of file reader
 				var contents = reader.result;
