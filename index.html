@@ -684,7 +684,7 @@
 			}
 			
 			// Function to check if a user has saved before leaving
-			window.onbeforeunload = function() 
+			window.onbeforeunload = function(event) 
 			{
 				// Checks if user has entered any content
 				if (document.getElementById("QInput").value != "" || document.getElementById("AInput").value != "") 
@@ -694,12 +694,12 @@
 					{
 						// Tells user how long it has been since they last saved
 						alert("It has been " + (Date.now() - SaveTime) / 1000 + " seconds since you have saved, if you have edited anything since then please go back and save again.");
-						return "It has been " + (Date.now() - SaveTime) / 1000 + " seconds since you have saved, if you have edited anything since then please go back and save again.";
+						event.returnValue = "It has been " + (Date.now() - SaveTime) / 1000 + " seconds since you have saved, if you have edited anything since then please go back and save again.";
 					}
 					else if (SaveTime == 0)
 					{
 						// Tells user they havent saved there work at all
-						return "You have entered data without saving, please make sure you have saved any work before leaving.";
+						event.returnValue = "You have entered data without saving, please make sure you have saved any work before leaving.";
 					}
 					else
 					{
