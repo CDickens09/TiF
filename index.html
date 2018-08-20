@@ -693,7 +693,10 @@
 					if (((Date.now() - SaveTime) / 1000) > 10)
 					{
 						// Tells user how long it has been since they last saved
-						confirm("It has been " + (Date.now() - SaveTime) / 1000 + " seconds since you have saved, if you have edited anything since then please go back and save again.");
+						if(confirm("It has been " + (Date.now() - SaveTime) / 1000 + " seconds since you have saved, if you have edited anything since then please go back and save again."))
+						{
+							return true;
+						}
 					}
 					else if (SaveTime == 0)
 					{
