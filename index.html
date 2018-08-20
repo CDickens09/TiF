@@ -680,7 +680,7 @@
 			console.log(document.getElementById("QInput").value + "Hello");
 			window.onbeforeunload = function() 
 			{
-				if (data_needs_saving()) 
+				if (document.getElementById("QInput").value == " " && document.getElementById("AInput").value == " ") 
 				{
 					return "You have entered data, please make sure you have saved this work before leaving.";
 				} 
