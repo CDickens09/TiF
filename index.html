@@ -684,7 +684,7 @@
 			}
 			
 			// Function to check if a user has saved before leaving
-			$( window ).unload(function()
+			window.onbeforeunload = function() 
 			{
 				// Checks if user has entered any content
 				if (document.getElementById("QInput").value != "" || document.getElementById("AInput").value != "") 
@@ -710,7 +710,7 @@
 				{
 					return;
 				}
-			});
+			};
 		</script>
 		
 		<!-- Placeholder and script to load footer -->
