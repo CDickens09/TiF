@@ -321,6 +321,9 @@
 			// Declares variables as a global variable
 			var variables;
 			
+			// Sets up variable to store time since save
+			var SaveTime = 0;
+			
 			// Function to load data from file and display it in a table below the import box
 			function data() 
 			{
@@ -499,6 +502,7 @@
 				}
 				// Starts download of file
 				Download.click();
+				SaveTime = Date.now();
 			}
 			
 			function update()
@@ -677,14 +681,24 @@
 				}
 				update();
 			}
-			console.log(document.getElementById("QInput").value + "Hello");
 			window.onbeforeunload = function() 
 			{
 				if (document.getElementById("QInput").value != "" || document.getElementById("AInput").value != "") 
 				{
-					return "You have entered data, please make sure you have saved this work before leaving.";
+					if ((Date.now() - SaveTime) > 10);
+					{
+						return "It has been " + Date.now() - SaveTime + " seconds since you have saved, if you have edited anything since then please go back and save again.";
+					}
+					else()
+					{
+						return "You have entered data without saving, please make sure you have saved any work before leaving.";
+					}
 				} 
-				else 
+				else if (SaveTIme == 0)
+				{
+					return;
+				}
+				else()
 				{
 					return;
 				}
