@@ -683,6 +683,7 @@
 			}
 			window.onbeforeunload = function() 
 			{
+			console.log(Date.now() - SaveTime);
 				if (document.getElementById("QInput").value != "" || document.getElementById("AInput").value != "") 
 				{
 					if (((Date.now() - SaveTime) / 1000) > 10)
