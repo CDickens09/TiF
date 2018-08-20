@@ -677,6 +677,18 @@
 				}
 				update();
 			}
+			console.log(document.getElementById("QInput").value);
+			window.onbeforeunload = function() 
+			{
+				if (data_needs_saving()) 
+				{
+					return "You have entered data, please make sure you have saved this work before leaving.";
+				} 
+				else 
+				{
+					return;
+				}
+			};
 		</script>
 		
 		<!-- Placeholder and script to load footer -->
