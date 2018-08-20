@@ -502,6 +502,7 @@
 				}
 				// Starts download of file
 				Download.click();
+				// Updates save time
 				SaveTime = Date.now();
 			}
 			
@@ -681,21 +682,27 @@
 				}
 				update();
 			}
+			
+			// Function to check if a user has saved before leaving
 			window.onbeforeunload = function() 
 			{
-			console.log(Date.now() - SaveTime);
+				// Checks if user has entered any content
 				if (document.getElementById("QInput").value != "" || document.getElementById("AInput").value != "") 
 				{
+					// Checks if more than 10 seconds have passed since user last saved
 					if (((Date.now() - SaveTime) / 1000) > 10)
 					{
-						return "It has been " + (Date.now() - SaveTime) / 1000 + " seconds since you have saved, if you have edited anything since then please go back and save again.";
+						// Tells user how long it has been since they last saved
+						window.confirm("It has been " + (Date.now() - SaveTime) / 1000 + " seconds since you have saved, if you have edited anything since then please go back and save again.");
 					}
 					else if (SaveTime == 0)
 					{
+						// Tells user they havent saved there work at all
 						return "You have entered data without saving, please make sure you have saved any work before leaving.";
 					}
 					else
 					{
+						// Returns nothing if user has saved in last 10 seconds
 						return;
 					}
 				} 
