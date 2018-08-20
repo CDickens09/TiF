@@ -689,15 +689,15 @@
 					{
 						return "It has been " + Date.now() - SaveTime + " seconds since you have saved, if you have edited anything since then please go back and save again.";
 					}
-					else
+					else if (SaveTime == 0)
 					{
 						return "You have entered data without saving, please make sure you have saved any work before leaving.";
 					}
+					else
+					{
+						return;
+					}
 				} 
-				else if (SaveTIme == 0)
-				{
-					return;
-				}
 				else
 				{
 					return;
