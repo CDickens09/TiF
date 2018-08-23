@@ -26,17 +26,13 @@ code
 }
 .column.iheaders 
 {
-	width: 45%;
+	width: 48%;
 	height: 40px;
 }
 .column.inputs 
 {
-	width: 90%;
+	width: 96%;
 	height: 150px;
-}
-.error.textarea
-{
-  width: 100%;
 }
 h1
 {
@@ -133,7 +129,7 @@ table, td, th
     border: 1px solid black;
 	text-align: center;
 }
-textarea, #questions div, #answers div, #error div
+textarea, #questions div, #answers div
 {
   display: inline-block;
   width: 49%;
