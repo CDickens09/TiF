@@ -651,7 +651,7 @@
 								anvalue = anvalue.substr(0, index) + value + anvalue.substr(index + placeholder.length);
 							}
 						}
-						document.getElementById("ANMarked").innerHTML = anvalue;
+						document.getElementById("ANMarked").innerHTML = eval(anvalue);
 					}
 					else
 					{
@@ -659,8 +659,12 @@
 						document.getElementById("QMarked").innerHTML = qvalue;
 						// Changes answer output box to show markdown of answer input
 						document.getElementById("AMarked").innerHTML = avalue;
+						// Brings in current input from numerical answer intput box and sets output to match
+						document.getElementById("ANMarked").innerHTML = eval(anvalue);
 					}
 				}
+				// Sets Numerical answer output to include error
+				document.getElementById("ANMarked").innerHTML = document.getElementById("ANMarked").innerHTML " + " + document.getElementById("EInput").value;
 			}	
 			
 			function updatevar(box)
