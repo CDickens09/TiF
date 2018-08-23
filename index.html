@@ -524,6 +524,13 @@
 							var index = qvalue.search(lt);
 							// Creates new string with < added
 							qvalue = qvalue.substr(0, index) + "<" + qvalue.substr(index + lt.length);
+						}						
+						while (qvalue.search(gt) !== -1)
+						{
+							// Finds index for less than identifier
+							var index = qvalue.search(gt);
+							// Creates new string with > added
+							qvalue = qvalue.substr(0, index) + ">" + qvalue.substr(index + lt.length);
 						}
 						// Brings in current input from answer input box and runs markdown conversion
 						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
