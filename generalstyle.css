@@ -153,5 +153,13 @@ textarea {
 }
 .numerical, #numerical div
 {
-	width: 32.5%;	
+	width: 32.5%;
+	display: inline-block;
+	height: 100%;
+	vertical-align: top;
+	box-sizing: border-box;
+	padding: 20px;
+	background-color: #f6f6f6;
+	font-size: 14px;
+	border: 1px solid #ccc;
 }
