@@ -53,7 +53,7 @@ h2
 	padding: 20px;
 	text-align: center;
 }
-html, body, #questions, #answers 
+html, body, #questions, #answers, #numerical
 {
   margin: 0;
   height: 100%;
