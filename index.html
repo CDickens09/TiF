@@ -320,9 +320,6 @@
 			// Sets up variable to store time since save
 			var SaveTime = 0;
 			
-			// Sets Mathjax script in string for later use
-			var MathJax = "<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>";
-			
 			// Function to load data from file and display it in a table below the import box
 			function data() 
 			{
@@ -511,9 +508,9 @@
 				if(document.getElementById("VarSet").value == "Rand")
 				{
 					// Brings in current input from question input box and runs markdown conversion
-					var qvalue = MathJax + marked(document.getElementById("QInput").value);
+					var qvalue = marked(document.getElementById("QInput").value);
 					// Brings in current input from answer input box and runs markdown conversion
-					var avalue = MathJax + marked(document.getElementById("AInput").value);
+					var avalue = marked(document.getElementById("AInput").value);
 					// If loop to only update if some variables are active
 					if (numvar != 0)
 					{
@@ -569,9 +566,9 @@
 				else
 				{
 					// Brings in current input from question input box and runs markdown conversion
-					var qvalue = MathJax + marked(document.getElementById("QInput").value);
+					var qvalue = marked(document.getElementById("QInput").value);
 					// Brings in current input from answer input box and runs markdown conversion
-					var avalue = MathJax + marked(document.getElementById("AInput").value);
+					var avalue = marked(document.getElementById("AInput").value);
 					// If loop to only update if some variables are active
 					if (variables.length != 0)
 					{
