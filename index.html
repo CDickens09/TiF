@@ -12,6 +12,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script src="https://unpkg.com/marked@0.3.6"></script>
 		<script src="https://unpkg.com/lodash@4.16.0"></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
 
 		<style>
@@ -682,6 +683,23 @@
 					return;
 				}
 			};
+			
+			MathJax.Hub.Config(
+			{
+				tex2jax: 
+				{
+					inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+					displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+					processEscapes: true,
+					processEnvironments: true
+				},
+				displayAlign: 'center',
+				"HTML-CSS": 
+				{
+					styles: {'.MathJax_Display': {"margin": 0}},
+					linebreaks: { automatic: true }
+				}
+			});
 		</script>
 		
 		<!-- Placeholder and script to load footer -->
