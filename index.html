@@ -513,8 +513,18 @@
 				{
 					if(document.getElementById("InCode").value == "Markdown")
 					{
+						var lt = "&lt;";
+						var gt = "&gt;";
 						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
+						// While loop to only run until no more instances of the variable are found in question box
+						while (qvalue.search(lt) !== -1)
+						{
+							// Finds index for less than identifier
+							var index = qvalue.search(lt);
+							// Creates new string with < added
+							qvalue = qvalue.substr(0, index) + "<" + qvalue.substr(index + lt.length);
+						}
 						// Brings in current input from answer input box and runs markdown conversion
 						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
 					}
@@ -582,10 +592,9 @@
 					if(document.getElementById("InCode").value == "Mark")
 					{
 						// Brings in current input from question input box and runs markdown conversion
-						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
+						var qvalue = marked(document.getElementById("QInput").value);
 						// Brings in current input from answer input box and runs markdown conversion
-						var avalue = marked(document.getElementById("AInput").value
-						);
+						var avalue = marked(document.getElementById("AInput").value);
 					}
 					else if(document.getElementById("InCode").value == "HTML")
 					{
