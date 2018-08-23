@@ -541,7 +541,7 @@
 							qvalue = qvalue.substr(0, index) + "" + qvalue.substr(index + lt.length);
 						}
 						// Brings in current input from answer input box and runs markdown conversion
-						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
+						var avalue = marked(document.getElementById("AInput").value);
 					}
 					else if(document.getElementById("InCode").value == "HTML")
 					{
