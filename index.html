@@ -79,7 +79,7 @@
 				</div>
 			</div>
 
-			<!-- Row to show answer and error box headers-->
+			<!-- Row to show written answer headers-->
 			<div class="row">
 				<div class="column iheaders">
 					Written Answer:
@@ -89,17 +89,12 @@
 				</div>
 			</div>
 			
-			<!-- Row to show answer and error boxs-->
+			<!-- Row to show written answer boxes-->
 			<div class="row">
 				<div class="column inputs">
 					<div id="answers">
 						<textarea id = "AInput" oninput="update()"></textarea>
 						<div id = "AMarked" style="overflow:auto"></div>
-					</div>
-				</div>
-				<div class="column buttons">
-					<div id="error">
-						<textarea id = "EInput" style="width=100%; height=100%" oninput="update()"></textarea>
 					</div>
 				</div>
 			</div>
@@ -113,6 +108,17 @@
 					Accepted Error: (&#177)
 				</div>
 			</div>
+			
+			<!-- Row to show numerical answer and error boxs-->
+			<div class="row">
+				<div class="column inputs">
+					<div id="answers">
+						<textarea id = "AInput" oninput="update()"></textarea>
+					</div>
+					<div id="error">
+						<textarea id = "EInput" oninput="update()"></textarea>
+					</div>
+				</div>
 			
 			<div class="row">
 				<!-- Button to initiate download -->
