@@ -34,6 +34,11 @@ code
 	width: 96%;
 	height: 150px;
 }
+.column.nheaders 
+{
+	width: 33%;
+	height: 40px;
+}
 h1
 {
 	margin:10px;
@@ -129,7 +134,7 @@ table, td, th
     border: 1px solid black;
 	text-align: center;
 }
-textarea, #questions div, #answers div
+textarea, #questions div, #answers div, #numerical div
 {
   display: inline-block;
   width: 49%;

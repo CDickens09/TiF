@@ -101,10 +101,10 @@
 			
 			<!-- Row to show numerical answer and error-->
 			<div class="row">
-				<div class="column iheaders">
+				<div class="column nheaders">
 					Numerical Answer:
 				</div>
-				<div class="column iheaders">
+				<div class="column nheaders">
 					Accepted Error: (&#177)
 				</div>
 			</div>
@@ -115,6 +115,7 @@
 					<div id="numerical">
 						<textarea class="numerical" id = "ANInput" oninput="update()"></textarea>
 						<textarea class="numerical" id = "EInput" oninput="update()"></textarea>
+						<div class="numerical" id = "ANMarked" style="overflow:auto"></div>
 					</div>
 				</div>
 			
@@ -580,7 +581,7 @@
 								var index = anvalue.search(placeholder);
 								// Creates new string with random variable added
 								anvalue = anvalue.substr(0, index) + rand.toFixed(acc) + anvalue.substr(index + placeholder.length);
-								document.getElementById("AMarked").innerHTML = anvalue;
+								document.getElementById("ANMarked").innerHTML = anvalue;
 							}
 						}
 					}
