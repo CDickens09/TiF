@@ -517,7 +517,7 @@
 						var gt = "&gt;";
 						var quote = "&quot;";
 						// Brings in current input from question input box and runs markdown conversion
-						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
+						var qvalue = marked(document.getElementById("QInput").value);
 						// While loop to only run until no more instances of the variable are found in question box
 						while (qvalue.search(lt) !== -1)
 						{
@@ -538,7 +538,7 @@
 							// Finds index for quote than identifier
 							var index = qvalue.search(quote);
 							// Creates new string with " added
-							qvalue = qvalue.substr(0, index) + """ + qvalue.substr(index + lt.length);
+							qvalue = qvalue.substr(0, index) + "" + qvalue.substr(index + lt.length);
 						}
 						// Brings in current input from answer input box and runs markdown conversion
 						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
