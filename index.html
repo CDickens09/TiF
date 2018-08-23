@@ -53,6 +53,13 @@
 				</select>
 			</div>
 			
+			<div class="row">
+				<!-- Button to save questions for later -->
+				<input style="width:100%; margin:10px" id="SaveButton" type="button" value="Save Inputs" onclick="SaveQs();" />
+				<!-- Input form to upload question file-->
+				<input type="file" id="Qs" onchange="LoadQs()"/>
+			</div>
+			
 			<!-- Row to show question box headers-->
 			<div class="row">
 				<div class="column iheaders">
@@ -91,14 +98,15 @@
 						<div id = "AMarked" style="overflow:auto"></div>
 					</div>
 				</div>
-				<div class="column buttons">
-					<!-- Button to save questions for later -->
-					<input style="width:100%; margin:10px" id="SaveButton" type="button" value="Save" onclick="SaveQs();" />
-					<!-- Input form to upload question file-->
-					<input type="file" id="Qs" onchange="LoadQs()"/>
-					<!-- Button to initiate download -->
-					<input style="width:100%; margin:10px" id="DownloadButton" type="button" value="Download" onclick="OutputFile();" />
-				</div>
+			</div>
+			
+			<div class="row">
+				<!-- Button to save questions for later -->
+				<input style="width:100%; margin:10px" id="SaveButton" type="button" value="Save Inputs" onclick="SaveQs();" />
+				<!-- Input form to upload question file-->
+				<input type="file" id="Qs" onchange="LoadQs()"/>
+				<!-- Button to initiate download -->
+				<input style="width:100%; margin:10px" id="DownloadButton" type="button" value="Download Output" onclick="OutputFile();" />
 			</div>
 		</div>
 		
@@ -444,7 +452,7 @@
 				// Creates temporary blob file
 				var File = new Blob([Output], {type:'text/plain'});
 				// Provides file name for file
-				var FileName = "test.dat";
+				var FileName = "Output.html";
 				//Creates download element
 				var Download = document.createElement("a");
 				Download.download = FileName;
