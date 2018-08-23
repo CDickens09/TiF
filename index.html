@@ -101,10 +101,6 @@
 			</div>
 			
 			<div class="row">
-				<!-- Button to save questions for later -->
-				<input style="width:100%; margin:10px" id="SaveButton" type="button" value="Save Inputs" onclick="SaveQs();" />
-				<!-- Input form to upload question file-->
-				<input type="file" id="Qs" onchange="LoadQs()"/>
 				<!-- Button to initiate download -->
 				<input style="width:100%; margin:10px" id="DownloadButton" type="button" value="Download Output" onclick="OutputFile();" />
 			</div>
@@ -512,9 +508,9 @@
 				if(document.getElementById("VarSet").value == "Rand")
 				{
 					// Brings in current input from question input box and runs markdown conversion
-					var qvalue = marked(document.getElementById("QInput").value);
+					var qvalue = "<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>" + marked(document.getElementById("QInput").value);
 					// Brings in current input from answer input box and runs markdown conversion
-					var avalue = marked(document.getElementById("AInput").value);
+					var avalue = "<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>" + marked(document.getElementById("AInput").value);
 					// If loop to only update if some variables are active
 					if (numvar != 0)
 					{
@@ -570,9 +566,9 @@
 				else
 				{
 					// Brings in current input from question input box and runs markdown conversion
-					var qvalue = marked(document.getElementById("QInput").value);
+					var qvalue = "<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>" + marked(document.getElementById("QInput").value);
 					// Brings in current input from answer input box and runs markdown conversion
-					var avalue = marked(document.getElementById("AInput").value);
+					var avalue = "<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>" + marked(document.getElementById("AInput").value);
 					// If loop to only update if some variables are active
 					if (variables.length != 0)
 					{
