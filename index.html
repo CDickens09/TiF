@@ -52,15 +52,6 @@
 				</select>
 			</div>
 			
-			<div class="row">
-				Code used for inputs: 
-				<!-- Select box to let user decide which code they have used-->
-				<select id="InCode" onchange="update()">
-  					<option value="Markdown">Markdown</option>
-  					<option value="HTML">HTML</option>
-				</select>
-			</div>
-			
 			<!-- Row to show question box headers-->
 			<div class="row">
 				<div class="column iheaders">
@@ -511,45 +502,10 @@
 				// Checks if Rand variable set is in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
-					if(document.getElementById("InCode").value == "Markdown")
-					{
-						var lt = "&lt;";
-						var gt = "&gt;";
-						var quote = "&quot;";
-						// Brings in current input from question input box and runs markdown conversion
-						var qvalue = marked(document.getElementById("QInput").value);
-						// While loop to only run until no more instances of the variable are found in question box
-						while (qvalue.search(lt) !== -1)
-						{
-							// Finds index for less than identifier
-							var index = qvalue.search(lt);
-							// Creates new string with < added
-							qvalue = qvalue.substr(0, index) + "<" + qvalue.substr(index + lt.length);
-						}						
-						while (qvalue.search(gt) !== -1)
-						{
-							// Finds index for greater than identifier
-							var index = qvalue.search(gt);
-							// Creates new string with > added
-							qvalue = qvalue.substr(0, index) + ">" + qvalue.substr(index + lt.length);
-						}
-						while (qvalue.search(quote) !== -1)
-						{
-							// Finds index for quote than identifier
-							var index = qvalue.search(quote);
-							// Creates new string with " added
-							qvalue = qvalue.substr(0, index) + "" + qvalue.substr(index + lt.length);
-						}
-						// Brings in current input from answer input box and runs markdown conversion
-						var avalue = marked(document.getElementById("AInput").value);
-					}
-					else if(document.getElementById("InCode").value == "HTML")
-					{
-						// Brings in current input from question input box
-						var qvalue = document.getElementById("QInput").value;
-						// Brings in current input from answer input box
-						var avalue = document.getElementById("AInput").value;
-					}
+					// Brings in current input from question input box and runs markdown conversion
+					var qvalue = marked(document.getElementById("QInput").value);
+					// Brings in current input from answer input box and runs markdown conversion
+					var avalue = marked(document.getElementById("AInput").value);
 					// If loop to only update if some variables are active
 					if (numvar != 0)
 					{
@@ -604,20 +560,10 @@
 				}
 				else
 				{
-					if(document.getElementById("InCode").value == "Mark")
-					{
-						// Brings in current input from question input box and runs markdown conversion
-						var qvalue = marked(document.getElementById("QInput").value);
-						// Brings in current input from answer input box and runs markdown conversion
-						var avalue = marked(document.getElementById("AInput").value);
-					}
-					else if(document.getElementById("InCode").value == "HTML")
-					{
-						// Brings in current input from question input box
-						var qvalue = document.getElementById("QInput").value;
-						// Brings in current input from answer input box
-						var avalue = document.getElementById("AInput").value;
-					}
+					// Brings in current input from question input box and runs markdown conversion
+					var qvalue = marked(document.getElementById("QInput").value);
+					// Brings in current input from answer input box and runs markdown conversion
+					var avalue = marked(document.getElementById("AInput").value);
 					// If loop to only update if some variables are active
 					if (variables.length != 0)
 					{
