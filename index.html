@@ -107,6 +107,9 @@
 				<div class="column nheaders">
 					Accepted Error: (&#177)
 				</div>
+				<div class="column nheaders">
+					Numerical Answer Preview:
+				</div>
 			</div>
 			
 			<!-- Row to show numerical answer and error boxs-->
@@ -601,6 +604,8 @@
 					var qvalue = marked(document.getElementById("QInput").value);
 					// Brings in current input from answer input box and runs markdown conversion
 					var avalue = marked(document.getElementById("AInput").value);
+					// Brings in current input from numerical answer intput box
+					var anvalue = document.getElementById("ANInput").value;
 					// If loop to only update if some variables are active
 					if (variables.length != 0)
 					{
@@ -637,7 +642,15 @@
 								avalue = avalue.substr(0, index) + value + avalue.substr(index + placeholder.length);
 								document.getElementById("AMarked").innerHTML = avalue;
 							}
+							while (anvalue.search(placeholder) !== -1)
+							{
+								// Finds index for random value identifier
+								var index = anvalue.search(placeholder);
+								// Creates new string with random variable added
+								anvalue = anvalue.substr(0, index) + value + anvalue.substr(index + placeholder.length);
+							}
 						}
+						document.getElementById("ANMarked").innerHTML = anvalue;
 					}
 					else
 					{
