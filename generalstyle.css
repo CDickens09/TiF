@@ -31,7 +31,7 @@ code
 }
 .column.inputs 
 {
-	width: 96%;
+	width: 100%;
 	height: 150px;
 }
 .column.nheaders 
@@ -153,5 +153,5 @@ textarea {
 }
 .numerical, #numerical div
 {
-	width: 33%;	
+	width: 32.5%;	
 }
