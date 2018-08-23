@@ -584,7 +584,8 @@
 						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value, { sanitize: true });
 						// Brings in current input from answer input box and runs markdown conversion
-						var avalue = marked(document.getElementById("AInput").value, { sanitize: true });
+						var avalue = marked(document.getElementById("AInput").value
+						);
 					}
 					else if(document.getElementById("InCode").value == "HTML")
 					{
@@ -683,7 +684,7 @@
 				update();
 			}
 			
-			// Function to check if a user has saved before leaving
+			// Function to check if a user has saved before leaving, note that the return messages dont display in some browsers as they have default messages
 			window.onbeforeunload = function() 
 			{
 				// Checks if user has entered any content
