@@ -601,7 +601,7 @@
 							for (i = 0; i < variables[0].length; i++) 
 							{
 								// Looks up the placeholder of each variable being used
-								var placeholder = "{{" + document.getElementById("Var" + i + "name").value + "}}";
+								var placeholder = "{{" + variables[0][i] + "}}";
 								// While loop to only run until no more instances of the variable are found in question box
 								while (qvalue.search(placeholder) !== -1)
 								{
