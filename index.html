@@ -452,8 +452,16 @@
 						var ANInput = contents.substr(0, index);
 						// Sets ANInput box to hold numerical answer from file
 						document.getElementById("ANInput").value = ANInput;
-						// Sets rest of content to go into the error box
-						document.getElementById("EInput").value = contents.substr(index + 15);
+						// Sets contents to the content after error break
+						contents = contents.substr(index + 15);
+						// Searches contents for the numerical break
+						index = contents.search("ERROR BREAK");
+						// Sets ANInput to the content before numerical break
+						var EInput = contents.substr(0, index);
+						// Sets EInput box to hold numerical answer from file
+						document.getElementById("EInput").value = EINPUT;
+						// Sets rest of content to go into the numvar value
+						document.getElementById("NumVar").value = contents.substr(index + 11);
 						// Runs update to get the output boxes converted
 						update();
 					}
@@ -546,8 +554,8 @@
 						// Adds outputs as required
 						Output += "Question: " + "<P>" + qvalue + "</p>" + "<br/>";
 						Output += "Written: " + "<P>" + avalue + "</p>" + "<br/>";
-						Output += "Numerical: " + "<P>" + anvalue + "</p>" + "<br/>";
-						Output += "Error: " + "<P>" + evalue + "</p>" + "<br/>";
+						Output += "Numerical: " + "<P>" + eval(anvalue) + "</p>" + "<br/>";
+						Output += "Error: " + "<P>" + eval(evalue) + "</p>" + "<br/>";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
@@ -631,8 +639,8 @@
 						// Adds outputs as required
 						Output += "Question: " + "<P>" + qvalue + "</p>" + "<br/>";
 						Output += "Written: " + "<P>" + avalue + "</p>" + "<br/>";
-						Output += "Numerical: " + "<P>" + anvalue + "</p>" + "<br/>";
-						Output += "Error: " + "<P>" + evalue + "</p>" + "<br/><br/>";
+						Output += "Numerical: " + "<P>" + eval(anvalue) + "</p>" + "<br/>";
+						Output += "Error: " + "<P>" + eval(evalue) + "</p>" + "<br/><br/>";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
@@ -697,7 +705,8 @@
 				var Output = document.getElementById("QInput").value + "QUESTION BREAK";
 				Output += document.getElementById("AInput").value + "ANSWER BREAK";
 				Output += document.getElementById("ANInput").value + "NUMERICAL BREAK";
-				Output += document.getElementById("EInput").value;
+				Output += document.getElementById("EInput").value + "ERROR BREAK";
+				Output += numvar;
 				// Creates temporary blob file
 				var File = new Blob([Output], {type:'text/plain'});
 				// Provides file name for file
