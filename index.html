@@ -571,37 +571,34 @@
 				}
 				else
 				{
-					variables
+					// Brings in Output from converted box
+					var Output = document.getElementById("QMarked").innerHTML + document.getElementById("AMarked").innerHTML;
+					// Creates temporary blob file
+					var File = new Blob([Output], {type:'text/plain'});
+					// Provides file name for file
+					var FileName = "Output.html";
+					//Creates download element
+					var Download = document.createElement("a");
+					Download.download = FileName;
+					Download.innerHTML = "Download File";
+					// For all browsers except Firefox
+					if (window.URL != null)
+					{
+						Download.href = window.URL.createObjectURL(File);
+					}
+					// For Firefox browser to work
+					else
+					{
+						Download.href = window.URL.createObjectURL(File);
+						Download.onclick = destroyClickedElement;
+						Download.style.display = "none";
+						document.body.appendChild(Download);
+					}
+					// Starts download of file
+					Download.click();
 				}
 			}
-				
-				// Brings in Output from converted box
-				var Output = document.getElementById("QMarked").innerHTML + document.getElementById("AMarked").innerHTML;
-				// Creates temporary blob file
-				var File = new Blob([Output], {type:'text/plain'});
-				// Provides file name for file
-				var FileName = "Output.html";
-				//Creates download element
-				var Download = document.createElement("a");
-				Download.download = FileName;
-				Download.innerHTML = "Download File";
-				// For all browsers except Firefox
-				if (window.URL != null)
-				{
-					Download.href = window.URL.createObjectURL(File);
-				}
-				// For Firefox browser to work
-				else
-				{
-					Download.href = window.URL.createObjectURL(File);
-					Download.onclick = destroyClickedElement;
-					Download.style.display = "none";
-					document.body.appendChild(Download);
-				}
-				// Starts download of file
-				Download.click();
-			}
-			
+
 			// Function to generate random variables
 			function rand()
 			{	
