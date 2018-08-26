@@ -485,6 +485,96 @@
 			// Function to output data for blackboard upload
 			function OutputFile()
 			{
+				var Output;
+				if(document.getElementById("VarSet").value == "Rand")
+				{
+					for(q = 0; q < ranvariables.length; q++)
+					{
+						// Brings in current input from question input box and runs markdown conversion
+						var qvalue = marked(document.getElementById("QInput").value);
+						// Brings in current input from answer input box and runs markdown conversion
+						var avalue = marked(document.getElementById("AInput").value);
+						// Brings in current input from numerical answer input box
+						var anvalue = document.getElementById("ANInput").value;
+						// Brings in current input from error intput box
+						var evalue = document.getElementById("EInput").value;
+						// Only runs if some variables are present
+						if (numvar != 0)
+						{
+							// For loop to run for all currently active variables
+							for (i = 1; i <= numvar; i++) 
+							{
+								// Looks up the placeholder of each variable being used
+								var placeholder = "{{" + document.getElementById("Var" + i + "name").value + "}}";
+								// While loop to only run until no more instances of the variable are found in question box
+								while (qvalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = qvalue.search(placeholder);
+									// Creates new string with random variable added
+									qvalue = qvalue.substr(0, index) + ranvariables[q][i] + qvalue.substr(index + placeholder.length);
+								}
+								// While loop to only run until no more instances of the variable are found in answer box
+								while (avalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = avalue.search(placeholder);
+									// Creates new string with random variable added
+									avalue = avalue.substr(0, index) + ranvariables[q][i] + avalue.substr(index + placeholder.length);
+								}
+								// While loop to only run until no more instances of the variable are found in numerical answer box
+								while (anvalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = anvalue.search(placeholder);
+									// Creates new string with random variable added
+									anvalue = anvalue.substr(0, index) + ranvariables[q][i] + anvalue.substr(index + placeholder.length);
+								}
+								// While loop to only run until no more instances of the variable are found in error box
+								while (evalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = evalue.search(placeholder);
+									// Creates new string with random variable added
+									evalue = evalue.substr(0, index) + ranvariables[q][i] + evalue.substr(index + placeholder.length);
+								}
+							}
+						}
+						Output += "Question: " + q + " " + qvalue+ "\n";
+						Output += "Answer: " + q + " " + avalue+ "\n";
+						Output += "Numerical: " + q + " " + anvalue+ "\n";
+						Output += "Error: " + q + " " + evalue + "\n\n";
+					}
+					// Creates temporary blob file
+					var File = new Blob([Output], {type:'text/plain'});
+					// Provides file name for file
+					var FileName = "Output.html";
+					//Creates download element
+					var Download = document.createElement("a");
+					Download.download = FileName;
+					Download.innerHTML = "Download File";
+					// For all browsers except Firefox
+					if (window.URL != null)
+					{
+						Download.href = window.URL.createObjectURL(File);
+					}
+					// For Firefox browser to work
+					else
+					{
+						Download.href = window.URL.createObjectURL(File);
+						Download.onclick = destroyClickedElement;
+						Download.style.display = "none";
+						document.body.appendChild(Download);
+					}
+					// Starts download of file
+					Download.click();
+				}
+				else
+				{
+					variables
+				}
+			}
+				
 				// Brings in Output from converted box
 				var Output = document.getElementById("QMarked").innerHTML + document.getElementById("AMarked").innerHTML;
 				// Creates temporary blob file
