@@ -140,7 +140,7 @@
 			<!-- Row to show number of variables-->
 			<div class="row">
 				<div class="settings">
-					<input type="number" id="NumVar" value="0" onchange="updatevar(this)" max="10">				
+					<input type="number" id="NumVar" value="0" oninput="updatevar(this)" max="10">				
 				</div>
 			</div>
 
@@ -462,8 +462,8 @@
 						document.getElementById("EInput").value = EInput;
 						// Sets rest of content to go into the numvar value
 						document.getElementById("NumVar").value = contents.substr(index + 11);
-						// Runs update to get the output boxes converted
-						update();
+						// Runs updatevar to get the output boxes converted
+						updatevar(document.getElementById("NumVar"));
 					}
 					reader.readAsText(file.files[0]);
 			}
