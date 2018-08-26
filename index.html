@@ -345,6 +345,9 @@
 			// Declares variables as a global variable
 			var variables;
 			
+			// Declares ranvariables as a global variable
+			var ranvariables;
+			
 			// Sets up variable to store time since save
 			var SaveTime = 0;
 			
@@ -513,7 +516,13 @@
 			
 			// Function to generate random variables
 			function rand()
-			{
+			{	
+				ranvariables = new Array(document.getElementById("NoQuestions").value);
+				for (var i = 0; i < ranvariables.length; i++) 
+				{
+					// Set each row in array to have the correct number of columns
+					ranvariables[i] = new Array(numvar);
+				}
 				// For loop to run for required number of questions
 				for(q = 1; q <= document.getElementById("NoQuestions").value; q++)
 				{
@@ -528,8 +537,8 @@
 						var acc = document.getElementById("Var" + i + "decval").value;
 						// Generates random number with desired attributes
 						var rand = parseFloat(Math.random() * (max - min) + +min);
-						// Sets appropriate avriable element to random number
-						variables[q][i] = rand;
+						// Sets appropriate variable element to random number
+						ranvariables[q][i] = rand;
 					}
 				}
 			}
@@ -604,7 +613,7 @@
 								// Finds index for random value identifier
 								var index = qvalue.search(placeholder);
 								// Creates new string with random variable added
-								qvalue = qvalue.substr(0, index) + variables[0][i] + qvalue.substr(index + placeholder.length);
+								qvalue = qvalue.substr(0, index) + ranvariables[0][i] + qvalue.substr(index + placeholder.length);
 								document.getElementById("QMarked").innerHTML = qvalue;
 							}
 							// While loop to only run until no more instances of the variable are found in answer box
@@ -613,7 +622,7 @@
 								// Finds index for random value identifier
 								var index = avalue.search(placeholder);
 								// Creates new string with random variable added
-								avalue = avalue.substr(0, index) + variables[0][i] + avalue.substr(index + placeholder.length);
+								avalue = avalue.substr(0, index) + ranvariables[0][i] + avalue.substr(index + placeholder.length);
 								document.getElementById("AMarked").innerHTML = avalue;
 							}
 							// While loop to only run until no more instances of the variable are found in numerical answer box
@@ -622,7 +631,7 @@
 								// Finds index for random value identifier
 								var index = anvalue.search(placeholder);
 								// Creates new string with random variable added
-								anvalue = anvalue.substr(0, index) + variables[0][i] + anvalue.substr(index + placeholder.length);
+								anvalue = anvalue.substr(0, index) + ranvariables[0][i] + anvalue.substr(index + placeholder.length);
 							}
 						}
 						document.getElementById("ANMarked").innerHTML = eval(anvalue);
