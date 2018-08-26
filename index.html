@@ -653,53 +653,66 @@
 					var avalue = marked(document.getElementById("AInput").value);
 					// Brings in current input from numerical answer intput box
 					var anvalue = document.getElementById("ANInput").value;
-					// Runs data function to make sure CSV variables are being used
-					data();
-					// If loop to only update if some variables are active
-					if (variables.length != 0)
+					// If loop to check if csv file exists
+					if(document.getElementById("CSV") != "")
 					{
-						// Changes question output box to show markdown of question input
-						document.getElementById("QMarked").innerHTML = qvalue;
-						// Changes answer output box to show markdown of answer input
-						document.getElementById("AMarked").innerHTML = avalue;
-						// For loop to run for all currently active variables
-						for (i = 0; i < variables[0].length; i++) 
+						// Runs data function to make sure CSV variables are being used
+						data();
+						// If loop to only update if some variables are active
+						if (variables.length != 0)
 						{
-							// Brings in current output from question output box
-							var qvalue = document.getElementById("QMarked").innerHTML;
-							// Brings in current output from answer output box
-							var avalue = document.getElementById("AMarked").innerHTML;
-							// Looks up the placeholder of each variable being used
-							var placeholder = "{{" + variables[0][i] + "}}";
-							// Gets value of variable from array
-							var value = variables[1][i];
-							// While loop to only run until no more instances of the variable are found in question box
-							while (qvalue.search(placeholder) !== -1)
+							// Changes question output box to show markdown of question input
+							document.getElementById("QMarked").innerHTML = qvalue;
+							// Changes answer output box to show markdown of answer input
+							document.getElementById("AMarked").innerHTML = avalue;
+							// For loop to run for all currently active variables
+							for (i = 0; i < variables[0].length; i++) 
 							{
-								// Finds index for random value identifier
-								var index = qvalue.search(placeholder);
-								// Creates new string with random variable added
-								qvalue = qvalue.substr(0, index) + value + qvalue.substr(index + placeholder.length);
-								document.getElementById("QMarked").innerHTML = qvalue;
+								// Brings in current output from question output box
+								var qvalue = document.getElementById("QMarked").innerHTML;
+								// Brings in current output from answer output box
+								var avalue = document.getElementById("AMarked").innerHTML;
+								// Looks up the placeholder of each variable being used
+								var placeholder = "{{" + variables[0][i] + "}}";
+								// Gets value of variable from array
+								var value = variables[1][i];
+								// While loop to only run until no more instances of the variable are found in question box
+								while (qvalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = qvalue.search(placeholder);
+									// Creates new string with random variable added
+									qvalue = qvalue.substr(0, index) + value + qvalue.substr(index + placeholder.length);
+									document.getElementById("QMarked").innerHTML = qvalue;
+								}
+								// While loop to only run until no more instances of the variable are found in answer box
+								while (avalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = avalue.search(placeholder);
+									// Creates new string with random variable added
+									avalue = avalue.substr(0, index) + value + avalue.substr(index + placeholder.length);
+									document.getElementById("AMarked").innerHTML = avalue;
+								}
+								while (anvalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = anvalue.search(placeholder);
+									// Creates new string with random variable added
+									anvalue = anvalue.substr(0, index) + value + anvalue.substr(index + placeholder.length);
+								}
 							}
-							// While loop to only run until no more instances of the variable are found in answer box
-							while (avalue.search(placeholder) !== -1)
-							{
-								// Finds index for random value identifier
-								var index = avalue.search(placeholder);
-								// Creates new string with random variable added
-								avalue = avalue.substr(0, index) + value + avalue.substr(index + placeholder.length);
-								document.getElementById("AMarked").innerHTML = avalue;
-							}
-							while (anvalue.search(placeholder) !== -1)
-							{
-								// Finds index for random value identifier
-								var index = anvalue.search(placeholder);
-								// Creates new string with random variable added
-								anvalue = anvalue.substr(0, index) + value + anvalue.substr(index + placeholder.length);
-							}
+							document.getElementById("ANMarked").innerHTML = eval(anvalue);
 						}
-						document.getElementById("ANMarked").innerHTML = eval(anvalue);
+						else
+						{
+							// Changes question output box to show markdown of question input
+							document.getElementById("QMarked").innerHTML = qvalue;
+							// Changes answer output box to show markdown of answer input
+							document.getElementById("AMarked").innerHTML = avalue;
+							// Brings in current input from numerical answer intput box and sets output to match
+							document.getElementById("ANMarked").innerHTML = eval(anvalue);
+						}
 					}
 					else
 					{
