@@ -486,7 +486,7 @@
 			function OutputFile()
 			{
 				// Declares output variable to store string to be outputted
-				var Output;
+				var Output = "";
 				// If loop to check if random or CSV variables in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
@@ -543,11 +543,12 @@
 								}
 							}
 						}
+						var qnum = q + 1;
 						// Adds outputs as required
-						Output += "Question: " + q + " " + qvalue+ "\n";
-						Output += "Answer: " + q + " " + avalue+ "\n";
-						Output += "Numerical: " + q + " " + anvalue+ "\n";
-						Output += "Error: " + q + " " + evalue + "\n\n";
+						Output += "Question: " + qnum + " " + qvalue+ "\n";
+						Output += "Answer: " + qnum + " " + avalue+ "\n";
+						Output += "Numerical: " + qnum + " " + anvalue+ "\n";
+						Output += "Error: " + qnum + " " + evalue + "\n\n";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
@@ -628,11 +629,12 @@
 								}
 							}
 						}
+						var qnum = q + 1;
 						// Adds outputs as required
-						Output += "Question: " + q + " " + qvalue+ "\n";
-						Output += "Answer: " + q + " " + avalue+ "\n";
-						Output += "Numerical: " + q + " " + anvalue+ "\n";
-						Output += "Error: " + q + " " + evalue + "\n\n";
+						Output += "Question: " + qnum + " " + qvalue+ "\n";
+						Output += "Answer: " + qnum + " " + avalue+ "\n";
+						Output += "Numerical: " + qnum + " " + anvalue+ "\n";
+						Output += "Error: " + qnum + " " + evalue + "\n\n";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
