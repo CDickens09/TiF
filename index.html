@@ -515,11 +515,11 @@
 			// Function to generate random variables
 			function rand()
 			{	
-				ranvariables = new Array(document.getElementById("NoQuestions").value);
+				ranvariables = new Array(numvar);
 				for (var i = 0; i < ranvariables.length; i++) 
 				{
 					// Set each row in array to have the correct number of columns
-					ranvariables[i] = new Array(numvar);
+					ranvariables[i] = new Array(document.getElementById("NoQuestions").value);
 				}
 				// For loop to run for required number of questions
 				for(q = 0; q < document.getElementById("NoQuestions").value; q++)
