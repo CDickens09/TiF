@@ -516,6 +516,8 @@
 			function rand()
 			{	
 				var questions = document.getElementById("NoQuestions").value;
+				console.log(questions);
+				// Sets up each row in array
 				ranvariables = new Array(questions);
 				console.log(ranvariables.length);
 				for (var i = 0; i < ranvariables.length; i++)
@@ -653,7 +655,7 @@
 							// Looks up the placeholder of each variable being used
 							var placeholder = "{{" + document.getElementById("Var" + i + "name").value + "}}";
 							// Gets value of variable from array
-							var value = variables[0][i];
+							var value = ranvariables[0][i];
 							// Gets error input value from box
 							var evalue = document.getElementById("EInput").value;
 							// While loop to only run until no more instances of the variable are found in error box
