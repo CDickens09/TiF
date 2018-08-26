@@ -543,12 +543,11 @@
 								}
 							}
 						}
-						var qnum = q + 1;
 						// Adds outputs as required
-						Output += "Question: " + qnum + " " + qvalue+ "\n";
-						Output += "Answer: " + qnum + " " + avalue+ "\n";
-						Output += "Numerical: " + qnum + " " + anvalue+ "\n";
-						Output += "Error: " + qnum + " " + evalue + "\n\n";
+						Output += "Question: " + qvalue + "\n";
+						Output += "Answer: " + avalue + "\n";
+						Output += "Numerical: " + anvalue + "\n";
+						Output += "Error: " + evalue + "\n\n";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
@@ -629,12 +628,11 @@
 								}
 							}
 						}
-						var qnum = q + 1;
 						// Adds outputs as required
-						Output += "Question: " + qnum + " " + qvalue+ "\n";
-						Output += "Answer: " + qnum + " " + avalue+ "\n";
-						Output += "Numerical: " + qnum + " " + anvalue+ "\n";
-						Output += "Error: " + qnum + " " + evalue + "\n\n";
+						Output += "Question: " + qvalue + "\n";
+						Output += "Answer: " + avalue + "\n";
+						Output += "Numerical: " + anvalue + "\n";
+						Output += "Error: " + evalue + "\n\n";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
