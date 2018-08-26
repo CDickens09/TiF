@@ -644,6 +644,29 @@
 						// Brings in current input from numerical answer intput box and sets output to match
 						document.getElementById("ANMarked").innerHTML = eval(anvalue);
 					}
+					if(document.getElementById("EInput").value != "")
+					{
+						// For loop to run for all currently active variables
+						for (i = 0; i < numvar; i++) 
+						{
+							// Looks up the placeholder of each variable being used
+							var placeholder = "{{" + document.getElementById("Var" + i + "name").value + "}}";
+							// Gets value of variable from array
+							var value = variables[0][i];
+							// Gets error input value from box
+							var evalue = document.getElementById("EInput").value;
+							// While loop to only run until no more instances of the variable are found in error box
+							while (evalue.search(placeholder) !== -1)
+							{
+								// Finds index for random value identifier
+								var index = evalue.search(placeholder);
+								// Creates new string with random variable added
+								evalue = evalue.substr(0, index) + value + evalue.substr(index + placeholder.length);
+							}
+							// Sets Numerical answer output to include error
+							document.getElementById("ANMarked").innerHTML = document.getElementById("ANMarked").innerHTML + " &#177 " + evalue;
+						}	
+					}
 				}
 				else
 				{
@@ -694,6 +717,7 @@
 									avalue = avalue.substr(0, index) + value + avalue.substr(index + placeholder.length);
 									document.getElementById("AMarked").innerHTML = avalue;
 								}
+								// While loop to only run until no more instances of the variable are found in numerical answer box
 								while (anvalue.search(placeholder) !== -1)
 								{
 									// Finds index for random value identifier
@@ -723,12 +747,30 @@
 						// Brings in current input from numerical answer intput box and sets output to match
 						document.getElementById("ANMarked").innerHTML = eval(anvalue);
 					}
+					if(document.getElementById("EInput").value != "")
+					{
+						// For loop to run for all currently active variables
+						for (i = 0; i < variables[0].length; i++) 
+						{
+							// Looks up the placeholder of each variable being used
+							var placeholder = "{{" + variables[0][i] + "}}";
+							// Gets value of variable from array
+							var value = variables[1][i];
+							// Gets error input value from box
+							var evalue = document.getElementById("EInput").value;
+							// While loop to only run until no more instances of the variable are found in error box
+							while (evalue.search(placeholder) !== -1)
+							{
+								// Finds index for random value identifier
+								var index = evalue.search(placeholder);
+								// Creates new string with random variable added
+								evalue = evalue.substr(0, index) + value + evalue.substr(index + placeholder.length);
+							}
+							// Sets Numerical answer output to include error
+							document.getElementById("ANMarked").innerHTML = document.getElementById("ANMarked").innerHTML + " &#177 " + evalue;
+						}	
+					}
 				}
-				if(document.getElementById("EInput").value != "")
-				{
-					// Sets Numerical answer output to include error
-					document.getElementById("ANMarked").innerHTML = document.getElementById("ANMarked").innerHTML + " &#177 " + document.getElementById("EInput").value;
-				}	
 			}
 			
 			function updatevar(box)
