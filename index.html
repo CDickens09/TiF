@@ -493,6 +493,8 @@
 			// Function to output data for blackboard upload
 			function OutputFile()
 			{
+				// Runs an update to make sure no changes have been missed
+				update();
 				// Declares output variable to store string to be outputted
 				var Output = "";
 				// If loop to check if random or CSV variables in use
