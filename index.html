@@ -396,9 +396,7 @@
 											// Adds html element for each cell with text from CSV
 											cell.innerHTML = cells[j];
 											variables[i][j] = cells[j];
-											console.log(variables[i][j]);
-											console.log(cells[j]);
-									}
+										}
 									}
 								}
 							}
@@ -524,7 +522,7 @@
 					ranvariables[i] = new Array(numvar);
 				}
 				// For loop to run for required number of questions
-				for(q = 1; q <= document.getElementById("NoQuestions").value; q++)
+				for(q = 0; q < ranvariables.length; q++)
 				{
 					// For loop to run for number of variables
 					for(i = 1; i <= numvar; i++)
