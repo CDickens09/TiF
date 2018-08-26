@@ -586,7 +586,6 @@
 					// For loop to run for all questions
 					for(q = 1; q <= variables.length; q++)
 					{
-						console.log(variables.length);
 						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value);
 						// Brings in current input from answer input box and runs markdown conversion
@@ -599,7 +598,7 @@
 						if (variables[0].length != 0)
 						{
 							// For loop to run for all currently active variables
-							for (i = 1; i <= variables[0].length; i++) 
+							for (i = 0; i < variables[0].length; i++) 
 							{
 								// Looks up the placeholder of each variable being used
 								var placeholder = "{{" + document.getElementById("Var" + i + "name").value + "}}";
