@@ -522,7 +522,7 @@
 					ranvariables[i] = new Array(document.getElementById("NoQuestions").value);
 				}
 				// For loop to run for required number of questions
-				for(q = 0; q < document.getElementById("NoQuestions").value; q++)
+				for(q = 0; q < ranvariables.length; q++)
 				{
 					// For loop to run for number of variables
 					for(i = 1; i <= numvar; i++)
