@@ -795,7 +795,7 @@
 					if(document.getElementById("EInput").value != "")
 					{
 						// For loop to run for all currently active variables
-						for (i = 1; i < numvar; i++) 
+						for (i = 1; i <= numvar; i++) 
 						{
 							// Looks up the placeholder of each variable being used
 							var placeholder = "{{" + document.getElementById("Var" + i + "name").value + "}}";
