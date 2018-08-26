@@ -609,7 +609,7 @@
 									// Finds index for random value identifier
 									var index = qvalue.search(placeholder);
 									// Creates new string with random variable added
-									qvalue = qvalue.substr(0, index) + variables[q][0] + qvalue.substr(index + placeholder.length);
+									qvalue = qvalue.substr(0, index) + variables[q][i] + qvalue.substr(index + placeholder.length);
 								}
 								// While loop to only run until no more instances of the variable are found in answer box
 								while (avalue.search(placeholder) !== -1)
