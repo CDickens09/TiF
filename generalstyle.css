@@ -43,10 +43,12 @@ h1
 {
 	margin:10px;
 }
-h2
+h2, ul, li
 {
 	font-size: 25px;
 	margin: 10px;
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	color: #333;
 }
 .header 
 {
@@ -64,7 +66,7 @@ html, body, #questions, #answers, #numerical
 img.example 
 {
     height: auto;
-    width: 100%;
+    width: 99%;
 }
 input
 {
@@ -78,6 +80,18 @@ input
 {
 	background-color: black;
 	border-color: black;
+}
+.numerical, #numerical div
+{
+	width: 32.5%;
+	display: inline-block;
+	height: 100%;
+	vertical-align: top;
+	box-sizing: border-box;
+	padding: 20px;
+	background-color: #f6f6f6;
+	font-size: 14px;
+	border: 1px solid #ccc;
 }
 p
 {
@@ -156,16 +170,4 @@ textarea {
   resize: none;
   outline: none;
   font-family: 'Monaco', courier, monospace;
-}
-.numerical, #numerical div
-{
-	width: 32.5%;
-	display: inline-block;
-	height: 100%;
-	vertical-align: top;
-	box-sizing: border-box;
-	padding: 20px;
-	background-color: #f6f6f6;
-	font-size: 14px;
-	border: 1px solid #ccc;
 }
