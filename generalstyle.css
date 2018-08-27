@@ -61,6 +61,11 @@ html, body, #questions, #answers, #numerical
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #333;
 }
+img.example 
+{
+    height: auto;
+    width: 100%;
+}
 input
 {
 	width: 100%;
