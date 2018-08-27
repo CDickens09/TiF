@@ -429,43 +429,77 @@
 				// Defines reader variable as a file reader
 				var reader = new FileReader();
 				reader.onload = function (e) 
+				{
+					var contents = e.target.result;
+					// Searches contents for the question break
+					var index = contents.search("QUESTION BREAK");
+					// Sets QInput to the content before question break
+					var QInput = contents.substr(0, index);
+					// Sets QInput box to hold question from file
+					document.getElementById("QInput").value = QInput;
+					// Sets contents to the content after question break
+					contents = contents.substr(index + 14);
+					// Searches contents for the answer break
+					index = contents.search("ANSWER BREAK");
+					// Sets AInput to the content before answer break
+					var AInput = contents.substr(0, index);
+					// Sets AInput box to hold answer from file
+					document.getElementById("AInput").value = AInput;
+					// Sets contents to the content after answer break
+					contents = contents.substr(index + 12);
+					// Searches contents for the numerical break
+					index = contents.search("NUMERICAL BREAK");
+					// Sets ANInput to the content before numerical break
+					var ANInput = contents.substr(0, index);
+					// Sets ANInput box to hold numerical answer from file
+					document.getElementById("ANInput").value = ANInput;
+					// Sets contents to the content after numerical break
+					contents = contents.substr(index + 15);
+					// Searches contents for the numerical break
+					index = contents.search("ERROR BREAK");
+					// Sets ANInput to the content before error break
+					var EInput = contents.substr(0, index);
+					// Sets EInput box to hold numerical answer from file
+					document.getElementById("EInput").value = EInput;
+					// Sets contents to the content after error break
+					contents = contents.substr(index + 11);
+					// Searches contents for the first space
+					index = contents.search(" ");
+					// Sets content before space to go into the numvar value
+					document.getElementById("NumVar").value = contents.substr(0, index);
+					// Runs updatevar to get the output boxes converted
+					updatevar(document.getElementById("NumVar"));
+					for(i = 1; i <= numvar; i++)
 					{
-						var contents = e.target.result;
-						// Searches contents for the question break
-						var index = contents.search("QUESTION BREAK");
-						// Sets QInput to the content before question break
-						var QInput = contents.substr(0, index);
-						// Sets QInput box to hold question from file
-						document.getElementById("QInput").value = QInput;
-						// Sets contents to the content after question break
-						contents = contents.substr(index + 14);
-						// Searches contents for the answer break
-						index = contents.search("ANSWER BREAK");
-						// Sets AInput to the content before answer break
-						var AInput = contents.substr(0, index);
-						// Sets AInput box to hold answer from file
-						document.getElementById("AInput").value = AInput;
-						contents = contents.substr(index + 12);
-						// Searches contents for the numerical break
-						index = contents.search("NUMERICAL BREAK");
-						// Sets ANInput to the content before numerical break
-						var ANInput = contents.substr(0, index);
-						// Sets ANInput box to hold numerical answer from file
-						document.getElementById("ANInput").value = ANInput;
-						// Sets contents to the content after error break
-						contents = contents.substr(index + 15);
-						// Searches contents for the numerical break
-						index = contents.search("ERROR BREAK");
-						// Sets ANInput to the content before numerical break
-						var EInput = contents.substr(0, index);
-						// Sets EInput box to hold numerical answer from file
-						document.getElementById("EInput").value = EInput;
-						// Sets rest of content to go into the numvar value
-						document.getElementById("NumVar").value = contents.substr(index + 11);
-						// Runs updatevar to get the output boxes converted
-						updatevar(document.getElementById("NumVar"));
+						// Sets contents to the content after space break
+						contents = contents.substr(index + 1);
+						// Searches contents for the first space
+						index = contents.search(" ");
+						// Sets placeholder for random variables
+						document.getElementById("Var" + i + "name").value = contents.substr(0, index);
+						// Sets contents to the content after space break
+						contents = contents.substr(index + 1);
+						// Searches contents for the first space
+						index = contents.search(" ");
+						// Sets min for random variables
+						document.getElementById("Var" + i + "minval").value = contents.substr(0, index);
+						// Sets contents to the content after space break
+						contents = contents.substr(index + 1);
+						// Searches contents for the first space
+						index = contents.search(" ");
+						// Sets max for random variables
+						document.getElementById("Var" + i + "maxval").value = contents.substr(0, index);
+						// Sets contents to the content after space break
+						contents = contents.substr(index + 1);
+						// Searches contents for the first space
+						index = contents.search(" ");
+						// Sets accuracy for random variables
+						document.getElementById("Var" + i + "decval").value = contents.substr(0, index);
 					}
-					reader.readAsText(file.files[0]);
+					// Runs updatevar to get the output boxes converted
+					updatevar(document.getElementById("NumVar"));
+				}
+				reader.readAsText(file.files[0]);
 			}
 			
 			// Function to open each tab
@@ -710,6 +744,19 @@
 				Output += document.getElementById("ANInput").value + "NUMERICAL BREAK";
 				Output += document.getElementById("EInput").value + "ERROR BREAK";
 				Output += numvar;
+				for(i = 1; i <= numvar; i++)
+				{
+					// Brings in placeholder for random variables
+					var placeholder = document.getElementById("Var" + i + "name").value;
+					// Brings in min for random variables
+					var min = document.getElementById("Var" + i + "minval").value;
+					// Brings in max for random variables
+					var max = document.getElementById("Var" + i + "maxval").value;
+					// Brings in accuracy for random variables
+					var acc = document.getElementById("Var" + i + "decval").value;
+					// Saves each of the variables attributes to output
+					Output += " " + placeholder + " " + min + " " + max + " " + acc;
+				}
 				// Creates temporary blob file
 				var File = new Blob([Output], {type:'text/plain'});
 				// Provides file name for file
