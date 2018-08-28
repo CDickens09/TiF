@@ -22,11 +22,11 @@ code
 }
 .column.halved 
 {
-	width: 50%;
+	width: 49%;
 }
 .column.iheaders 
 {
-	width: 50%;
+	width: 49%;
 	height: 40px;
 }
 .column.inputs 
@@ -36,7 +36,7 @@ code
 }
 .column.nheaders 
 {
-	width: 33.3%;
+	width: 33%;
 	height: 40px;
 }
 h1
@@ -83,7 +83,7 @@ input
 }
 .numerical, #numerical div
 {
-	width: 33.3%;
+	width: 33%;
 	display: inline-block;
 	height: 100%;
 	vertical-align: top;
@@ -154,10 +154,10 @@ table, td, th
     border: 1px solid black;
 	text-align: center;
 }
-textarea, #questions div, #answers div, #numerical div
+textarea, #questions div, #answers div
 {
   display: inline-block;
-  width: 50%;
+  width: 49%;
   height: 100%;
   vertical-align: top;
   box-sizing: border-box;
