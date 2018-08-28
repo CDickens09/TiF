@@ -63,6 +63,10 @@ html, body, #questions, #answers, #numerical
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #333;
 }
+img
+{
+	padding: 10px;
+}
 img.example 
 {
     height: auto;
