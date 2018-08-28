@@ -43,7 +43,7 @@ h1
 {
 	margin:10px;
 }
-h2, ul, li
+h2, p
 {
 	font-size: 25px;
 	margin: 10px;
@@ -110,6 +110,10 @@ p
 	content: "";
 	display: table;
 	clear: both;
+}
+#row ul, #row li
+{
+	font-size: 25px;
 }
 .settings
 {
