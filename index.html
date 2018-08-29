@@ -463,36 +463,38 @@
 					document.getElementById("EInput").value = EInput;
 					// Sets contents to the content after error break
 					contents = contents.substr(index + 11);
-					// Searches contents for the first Break
-					index = contents.search("BREAK");
-					// Sets content before BREAK to go into the numvar value
+					// Searches contents for the first space
+					index = contents.search(" ");
+					// Sets content before space to go into the numvar value
 					document.getElementById("NumVar").value = contents.substr(0, index);
 					// Runs updatevar to get the output boxes converted
 					updatevar(document.getElementById("NumVar"));
 					for(i = 1; i <= numvar; i++)
 					{
-						// Sets contents to the content after break
-						contents = contents.substr(index + 5);
-						// Searches contents for the first break
-						index = contents.search("BREAK");
+						// Sets contents to the content after space break
+						contents = contents.substr(index + 1);
+						// Searches contents for the first space
+						index = contents.search(" ");
 						// Sets placeholder for random variables
 						document.getElementById("Var" + i + "name").value = contents.substr(0, index);
-						// Sets contents to the content after break
-						contents = contents.substr(index + 5);
-						// Searches contents for the first break
-						index = contents.search("BREAK");
+						console.log(contents.substr(0, index));
+						console.log(document.getElementById("Var" + i + "name").value);
+						// Sets contents to the content after space break
+						contents = contents.substr(index + 1);
+						// Searches contents for the first space
+						index = contents.search(" ");
 						// Sets min for random variables
 						document.getElementById("Var" + i + "minval").value = contents.substr(0, index);
-						// Sets contents to the content after break
-						contents = contents.substr(index + 5);
-						// Searches contents for the first break
-						index = contents.search("BREAK");
+						// Sets contents to the content after space break
+						contents = contents.substr(index + 1);
+						// Searches contents for the first space
+						index = contents.search(" ");
 						// Sets max for random variables
 						document.getElementById("Var" + i + "maxval").value = contents.substr(0, index);
-						// Sets contents to the content after break
-						contents = contents.substr(index + 5);
-						// Searches contents for the first break
-						index = contents.search("BREAK");
+						// Sets contents to the content after space break
+						contents = contents.substr(index + 1);
+						// Searches contents for the first space
+						index = contents.search(" ");
 						// Sets accuracy for random variables
 						document.getElementById("Var" + i + "decval").value = contents.substr(0, index);
 					}
@@ -755,7 +757,7 @@
 					// Brings in accuracy for random variables
 					var acc = document.getElementById("Var" + i + "decval").value;
 					// Saves each of the variables attributes to output
-					Output += "BREAK" + placeholder + "BREAK" + min + "BREAK" + max + "BREAK" + acc;
+					Output += " " + placeholder + " " + min + " " + max + " " + acc;
 				}
 				// Creates temporary blob file
 				var File = new Blob([Output], {type:'text/plain'});
