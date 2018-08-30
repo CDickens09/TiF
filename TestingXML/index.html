@@ -15,7 +15,7 @@
 
 			function myFunction(xml) {
 				var xmlDoc = xml.responseXML;
-				document.getElementByID("Test").innerHTML = xmlDoc.getElementsByTagName("mat_formattedtext")[0].nodeValue;
+				document.getElementById("Test").innerHTML = xmlDoc.getElementsByTagName("mat_formattedtext")[0].nodeValue;
 			}
 		</script>
 	</body>
