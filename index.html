@@ -535,7 +535,7 @@
 				// Runs an update to make sure no changes have been missed
 				update();
 				// Declares output variable to store string to be outputted
-				var Output = '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"><' + '/script>';
+				var Output = '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"><' + '/script>\n';
 				// If loop to check if random or CSV variables in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
@@ -593,10 +593,10 @@
 							}
 						}
 						// Adds outputs as required
-						Output += "<Question" + ">" + qvalue + "<br>";
-						Output += "<Written" + ">" + avalue + "<br>";
-						Output += "<Numerical" + ">" + eval(anvalue) + "<br>";
-						Output += "<Error" + ">" + eval(evalue) + "<br>";
+						Output += "<Question" + ">\n" + qvalue + "<br />";
+						Output += "<Written" + ">\n" + avalue + "<br />";
+						Output += "<Numerical" + ">\n" + eval(anvalue) + "<br />";
+						Output += "<Error" + ">\n" + eval(evalue) + "<br />";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
@@ -679,10 +679,10 @@
 							}
 						}
 						// Adds outputs as required
-						Output += "<Question" + ">" + qvalue + "<br>";
-						Output += "<Written" + ">" + avalue + "<br>";
-						Output += "<Numerical" + ">" + eval(anvalue) + "<br>";
-						Output += "<Error" + ">" + eval(evalue) + "<br>";
+						Output += "<Question" + ">\n" + qvalue + "<br />";
+						Output += "<Written" + ">\n" + avalue + "<br />";
+						Output += "<Numerical" + ">\n" + eval(anvalue) + "<br />";
+						Output += "<Error" + ">\n" + eval(evalue) + "<br />";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
