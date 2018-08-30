@@ -479,8 +479,6 @@
 						index = contents.search(" ");
 						// Sets placeholder for random variables
 						document.getElementById("Var" + i + "name").value = contents.substr(0, index);
-						console.log(contents.substr(0, index));
-						console.log(document.getElementById("Var" + i + "name").value);
 						// Sets contents to the content after space break
 						contents = contents.substr(index + 1);
 						// Searches contents for the first space
@@ -593,10 +591,10 @@
 							}
 						}
 						// Adds outputs as required
-						Output += "<Question" + ">\n" + qvalue + "<br />";
-						Output += "<Written" + ">\n" + avalue + "<br />";
-						Output += "<Numerical" + ">\n" + eval(anvalue) + "<br />";
-						Output += "<Error" + ">\n" + eval(evalue) + "<br />";
+						Output += "<Question" + ">\n" + qvalue + "</Question" + ">" + "<br />\n";
+						Output += "<Written" + ">\n" + avalue + "</Written" + ">" + "<br />\n";
+						Output += "<Numerical" + ">\n" + eval(anvalue) + "</Numerical" + ">" + "<br />\n";
+						Output += "<Error" + ">\n" + eval(evalue) + "</Error" + ">" + "<br />\n";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
@@ -679,10 +677,10 @@
 							}
 						}
 						// Adds outputs as required
-						Output += "<Question" + ">\n" + qvalue + "<br />";
-						Output += "<Written" + ">\n" + avalue + "<br />";
-						Output += "<Numerical" + ">\n" + eval(anvalue) + "<br />";
-						Output += "<Error" + ">\n" + eval(evalue) + "<br />";
+						Output += "<Question" + ">\n" + qvalue + "</Question" + ">" + "<br />\n";
+						Output += "<Written" + ">\n" + avalue + "</Written" + ">" + "<br />\n";
+						Output += "<Numerical" + ">\n" + eval(anvalue) + "</Numerical" + ">" + "<br />\n";
+						Output += "<Error" + ">\n" + eval(evalue) + "</Error" + ">" + "<br />\n";
 					}
 					// Creates temporary blob file
 					var File = new Blob([Output], {type:'text/plain'});
