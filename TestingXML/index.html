@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<div id="Test"></div>
+
+		<script>
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					myFunction(this);
+				}
+			};
+			xhttp.open("GET", "/res00001.dat", true);
+			xhttp.send();
+
+			function myFunction(xml) {
+				var xmlDoc = xml.responseXML;
+				document.getElementbyID("Test").inerhtml = xmlDoc.getElementsByTagName("mat_formattedtext")[0].nodeValue;
+			}
+		</script>
+	</body>
+</html>
