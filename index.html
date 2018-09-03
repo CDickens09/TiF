@@ -534,6 +534,12 @@
 			{
 				// Runs an update to make sure no changes have been missed
 				update();
+				// Sets file as request for xml file
+				var file = new XMLHttpRequest();
+				file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00001.xml", false);
+				file.send();
+				// Saves response as xmlDoc
+				var xmlDoc = file.responseXML;
 				// If loop to check if random or CSV variables in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
