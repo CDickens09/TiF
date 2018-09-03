@@ -4,13 +4,14 @@
 		<div id="Test"></div>
 
 		<script>
-			var xhttp = new XMLHttpRequest();
-			xhttp.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00001.xml", true);
-			xhttp.send();
+			
 
 			myFunction();
 			function myFunction() 
 			{
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00001.xml", true);
+				xhttp.send();
 				var xmlDoc = xhttp.responseXML;
 				qno = 10;
 				for(i = 1; i < qno; i++)
