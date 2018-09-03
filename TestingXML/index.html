@@ -15,7 +15,7 @@
 
 			function myFunction(xml) {
 				var xmlDoc = xml.responseXML;
-				console.log(xmlDoc.getElementsByTagName("bbmd_assessmenttype")[0].nodeValue)
+				console.log(xmlDoc.getElementsByTagName("bbmd_assessmenttype"))
 				document.getElementById("Test").innerHTML = xmlDoc.getElementsByTagName("bbmd_assessmenttype")[0].nodeValue;
 			}
 		</script>
