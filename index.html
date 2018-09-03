@@ -14,6 +14,8 @@
 		<script src="https://unpkg.com/lodash@4.16.0"></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+		<script src="https://stuk.github.io/jszip/dist/jszip.js"></script>
+		<script src="https://stuk.github.io/jszip/vendor/FileSaver.js"></script>
 		<style>
 		</style>
 	</head>
@@ -532,11 +534,14 @@
 			{
 				// Runs an update to make sure no changes have been missed
 				update();
-				// Declares output variable to store string to be outputted
-				var Output = '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"><' + '/script>\n';
 				// If loop to check if random or CSV variables in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
+					for(a = 1; a < ranvariables.length; a++)
+					{
+						// Adds new item node for each question
+						xmlDoc.getElementsByTagName("section")[0].appendChild(xmlDoc.getElementsByTagName("item")[0].cloneNode(true));
+					}
 					// For loop to run for all questions
 					for(q = 0; q < ranvariables.length; q++)
 					{
@@ -590,35 +595,53 @@
 								}
 							}
 						}
-						// Adds outputs as required
-						Output += "<Question" + ">\n" + qvalue + "</Question" + ">" + "<br />\n";
-						Output += "<Written" + ">\n" + avalue + "</Written" + ">" + "<br />\n";
-						Output += "<Numerical" + ">\n" + eval(anvalue) + "\n</Numerical" + ">" + "<br />\n";
-						Output += "<Error" + ">\n" + eval(evalue) + "\n</Error" + ">" + "<br />\n";
+						// Adds question text to xml as well as MathJax
+						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * i) - 1].innerHTML = qvalue + '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"><' + '/script>';
+						// Adds question text to xml
+						// xmlDoc.getElementsByTagName("???")[i].innerHTML = avalue;
+						// Adds answer to xml
+						xmlDoc.getElementsByTagName("varequal")[i].innerHTML = eval(anvalue);
+						// Adds answer - error to xml
+						xmlDoc.getElementsByTagName("vargte")[i].innerHTML = eval(anvalue) - eval(evalue);
+						// Adds answer + error to xml
+						xmlDoc.getElementsByTagName("varlte")[i].innerHTML = eval(anvalue) + eval(evalue);
 					}
-					// Creates temporary blob file
-					var File = new Blob([Output], {type:'text/plain'});
-					// Provides file name for file
-					var FileName = "Output.html";
-					//Creates download element
-					var Download = document.createElement("a");
-					Download.download = FileName;
-					Download.innerHTML = "Download File";
-					// For all browsers except Firefox
-					if (window.URL != null)
+					// Sets output to a string
+					var Output = new XMLSerializer().serializeToString(xmlDoc);
+					// Sets up zip file
+					var zip = new JSZip();
+					// Adds output to zip file as res00001.dat
+					zip.file("res00001.dat", Output);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00002.dat", false);
+					file.send();
+					// Adds res0002.dat to file
+					zip.file("res00002.dat", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00003.dat", false);
+					file.send();
+					// Adds res0003.dat to file
+					zip.file("res00003.dat", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00004.dat", false);
+					file.send();
+					// Adds res0004.dat to file
+					zip.file("res00004.dat", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00005.dat", false);
+					file.send();
+					// Adds res0005.dat to file
+					zip.file("res00005.dat", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/.bb-package-info", false);
+					file.send();
+					// Adds .bb-package-info to file
+					zip.file(".bb-package-info", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/imsmanifest.xml", false);
+					file.send();
+					// Adds ismanifest.xml to file
+					zip.file("imsmanifest.xml", file.responseText);
+					// Generates and outputs zip file
+					zip.generateAsync({type:"blob"})
+					.then(function (blob) 
 					{
-						Download.href = window.URL.createObjectURL(File);
-					}
-					// For Firefox browser to work
-					else
-					{
-						Download.href = window.URL.createObjectURL(File);
-						Download.onclick = destroyClickedElement;
-						Download.style.display = "none";
-						document.body.appendChild(Download);
-					}
-					// Starts download of file
-					Download.click();
+						saveAs(blob, "BlackboardPool.zip");
+					});
 				}
 				else
 				{
