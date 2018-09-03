@@ -22,6 +22,7 @@
 				for(i = 1; i < qno; i++)
 				{
 					xmlDoc.getElementsByTagName("section")[0].appendChild(xmlDoc.getElementsByTagName("item")[0].cloneNode(true));
+					xmlDoc.getElementsByTagName("mat_formattedtext")[3*i].innerHTML = "Test";
 				}
 				for(i = 0; i < xmlDoc.getElementsByTagName("mat_formattedtext").length; i++)
 				{
