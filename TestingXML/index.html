@@ -17,7 +17,10 @@
 				for(i = 1; i < qno; i++)
 				{
 					xmlDoc.getElementsByTagName("section")[0].appendChild(xmlDoc.getElementsByTagName("item")[0].cloneNode(true));
-					xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * i) - 1].innerHTML = "Test";
+					xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * i) - 1].innerHTML = "Question";
+					xmlDoc.getElementsByTagName("varequal")[i].innerHTML = "Numerical Answer";
+					xmlDoc.getElementsByTagName("vargte")[i].innerHTML = "Numerical Answer - Error";
+					xmlDoc.getElementsByTagName("varlte")[i].innerHTML = "Numerical Answer + Error";
 				}
 				for(i = 0; i < xmlDoc.getElementsByTagName("mat_formattedtext").length; i++)
 				{
