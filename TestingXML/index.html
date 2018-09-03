@@ -15,8 +15,8 @@
 
 			function myFunction(xml) {
 				var xmlDoc = xml.responseXML;
-				console.log(xmlDoc.getElementsByTagName("mat_formattedtext")[0].innerHTML)
-				document.getElementById("Test").innerHTML = xmlDoc.getElementsByTagName("bbmd_assessmenttype")[0].nodeValue;
+				for(i = 0; i < sizeof(xmlDoc.getElementsByTagName("bbmd_assessmenttype")); i++)
+				document.getElementById("Test").innerHTML += xmlDoc.getElementsByTagName("bbmd_assessmenttype")[i].innerHTML;
 			}
 		</script>
 	</body>
