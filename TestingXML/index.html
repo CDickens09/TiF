@@ -11,7 +11,7 @@
 			{
 				var xhttp = new XMLHttpRequest();
 				xhttp.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00001.xml", true);
-				xhttp.send();
+				
 				var xmlDoc = xhttp.responseXML;
 				qno = 10;
 				for(i = 1; i < qno; i++)
@@ -26,6 +26,7 @@
 				}
 				var Output = new XMLSerializer().serializeToString(xmlDoc);
 				console.log(Output);
+				xhttp.send();
 			}
 		</script>
 	</body>
