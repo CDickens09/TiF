@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<body>
-		<div id="Test">p</div>
+		<div id="Test"></div>
 
 		<script>
 			var xhttp = new XMLHttpRequest();
@@ -15,7 +15,8 @@
 
 			function myFunction(xml) {
 				var xmlDoc = xml.responseXML;
-				for(i = 0; i < sizeof(xmlDoc.getElementsByTagName("bbmd_assessmenttype")); i++)
+				var notags = xmlDoc.getElementsByTagName("bbmd_assessmenttype")
+				for(i = 0; i < sizeof(notags); i++)
 				document.getElementById("Test").innerHTML += xmlDoc.getElementsByTagName("bbmd_assessmenttype")[i].innerHTML;
 			}
 		</script>
