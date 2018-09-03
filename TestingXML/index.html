@@ -29,6 +29,8 @@
 					document.getElementById("Test").innerHTML += xmlDoc.getElementsByTagName("mat_formattedtext")[i].innerHTML;
 					console.log(xmlDoc.getElementsByTagName("mat_formattedtext")[i].innerHTML);
 				}
+				var Output = new XMLSerializer().serializeToString(xmlDoc);
+				console.log(Output);
 			}
 		</script>
 	</body>
