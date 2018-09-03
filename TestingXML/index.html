@@ -28,7 +28,10 @@
 				console.log(Output);
 				var zip = new JSZip();
 				zip.file("res00001.dat", Output);
-				zip.file("res00002.dat", "/res00002.dat");
+				var res2 = new XMLHttpRequest();
+				res2.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00002.dat", false);
+				res2.send();
+				zip.file("res00002.dat", res2.responseText);
 				zip.generateAsync({type:"blob"})
 				.then(function (blob) 
 				{
