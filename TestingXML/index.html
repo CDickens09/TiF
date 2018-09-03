@@ -18,7 +18,7 @@
 			function myFunction(xml) 
 			{
 				var xmlDoc = xml.responseXML;
-				xmlDoc.getElementsByTagName("section").appendChild(xmlDoc.getElementsByTagName("item").cloneNode(true));
+				xmlDoc.getElementsByTagName("section").appendChild(xmlDoc.getElementsByTagName("item")[0].cloneNode(true));
 				for(i = 0; i < xmlDoc.getElementsByTagName("mat_formattedtext").length; i++)
 				{
 					document.getElementById("Test").innerHTML += xmlDoc.getElementsByTagName("mat_formattedtext")[i].innerHTML;
