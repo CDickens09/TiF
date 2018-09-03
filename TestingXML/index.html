@@ -28,6 +28,7 @@
 				console.log(Output);
 				var zip = new JSZip();
 				zip.file("res00001.dat", Output);
+				zip.file("/res00002.dat");
 				zip.generateAsync({type:"blob"})
 				.then(function (blob) 
 				{
