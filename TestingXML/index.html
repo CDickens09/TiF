@@ -5,14 +5,19 @@
 
 		<script>
 			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() 
+			{
+				if (this.readyState == 4 && this.status == 200) 
+				{
+					myFunction(this);
+				}
+			};
 			xhttp.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00001.xml", true);
 			xhttp.send();
-			
-			myFunction(xhttp);
-			
+
 			function myFunction(xml) 
 			{
-				var xmlDoc = xml.responseXML;
+				var xmlDoc = xhttp.responseXML;
 				qno = 10;
 				for(i = 1; i < qno; i++)
 				{
