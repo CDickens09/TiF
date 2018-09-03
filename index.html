@@ -634,7 +634,7 @@
 					file.send();
 					// Adds res0005.dat to file
 					zip.file("res00005.dat", file.responseText);
-					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/.bb-package-info", false);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/bb-package-info.txt", false);
 					file.send();
 					// Adds .bb-package-info to file
 					zip.file(".bb-package-info", file.responseText);
@@ -651,6 +651,11 @@
 				}
 				else
 				{
+					for(a = 1; a < variables.length - 1; a++)
+					{
+						// Adds new item node for each question
+						xmlDoc.getElementsByTagName("section")[0].appendChild(xmlDoc.getElementsByTagName("item")[0].cloneNode(true));
+					}
 					// For loop to run for all questions
 					for(q = 1; q < variables.length; q++)
 					{
