@@ -726,35 +726,69 @@
 								}
 							}
 						}
-						// Adds outputs as required
-						Output += "<Question" + ">\n" + qvalue + "</Question" + ">" + "<br />\n";
-						Output += "<Written" + ">\n" + avalue + "</Written" + ">" + "<br />\n";
-						Output += "<Numerical" + ">\n" + eval(anvalue) + "\n</Numerical" + ">" + "<br />\n";
-						Output += "<Error" + ">\n" + eval(evalue) + "\n</Error" + ">" + "<br />\n";
+						// While loop to replace all <
+						while(qvalue.search("<") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = qvalue.search("<");
+							// Creates new string with random variable added
+							qvalue = qvalue.substr(0, index) + "&lt;" + qvalue.substr(index + 1);
+						}
+						// While loop to replace all >
+						while(qvalue.search(">") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = qvalue.search(">");
+							// Creates new string with random variable added
+							qvalue = qvalue.substr(0, index) + "&gt;" + qvalue.substr(index + 1);
+						}
+						// Adds question text to xml as well as MathJax
+						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * q) - 1].innerHTML = qvalue + '&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"&gt;&lt;/script&gt;';
+						// Adds question text to xml
+						// xmlDoc.getElementsByTagName("???")[i].innerHTML = avalue;
+						// Adds answer to xml
+						xmlDoc.getElementsByTagName("varequal")[q - 1].innerHTML = eval(anvalue);
+						// Adds answer - error to xml
+						xmlDoc.getElementsByTagName("vargte")[q - 1].innerHTML = eval(anvalue) - eval(evalue);
+						// Adds answer + error to xml
+						xmlDoc.getElementsByTagName("varlte")[q - 1].innerHTML = eval(anvalue) + eval(evalue);
 					}
-					// Creates temporary blob file
-					var File = new Blob([Output], {type:'text/plain'});
-					// Provides file name for file
-					var FileName = "Output.html";
-					//Creates download element
-					var Download = document.createElement("a");
-					Download.download = FileName;
-					Download.innerHTML = "Download File";
-					// For all browsers except Firefox
-					if (window.URL != null)
+					// Sets output to a string
+					var Output = new XMLSerializer().serializeToString(xmlDoc);
+					// Sets up zip file
+					var zip = new JSZip();
+					// Adds output to zip file as res00001.dat
+					zip.file("res00001.dat", Output);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00002.dat", false);
+					file.send();
+					// Adds res0002.dat to file
+					zip.file("res00002.dat", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00003.dat", false);
+					file.send();
+					// Adds res0003.dat to file
+					zip.file("res00003.dat", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00004.dat", false);
+					file.send();
+					// Adds res0004.dat to file
+					zip.file("res00004.dat", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00005.dat", false);
+					file.send();
+					// Adds res0005.dat to file
+					zip.file("res00005.dat", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/bb-package-info.txt", false);
+					file.send();
+					// Adds .bb-package-info to file
+					zip.file(".bb-package-info", file.responseText);
+					file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/imsmanifest.xml", false);
+					file.send();
+					// Adds ismanifest.xml to file
+					zip.file("imsmanifest.xml", file.responseText);
+					// Generates and outputs zip file
+					zip.generateAsync({type:"blob"})
+					.then(function (blob) 
 					{
-						Download.href = window.URL.createObjectURL(File);
-					}
-					// For Firefox browser to work
-					else
-					{
-						Download.href = window.URL.createObjectURL(File);
-						Download.onclick = destroyClickedElement;
-						Download.style.display = "none";
-						document.body.appendChild(Download);
-					}
-					// Starts download of file
-					Download.click();
+						saveAs(blob, "BlackboardPool.zip");
+					});
 				}
 			}
 
