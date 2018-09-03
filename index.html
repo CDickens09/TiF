@@ -606,11 +606,11 @@
 						// Adds question text to xml
 						// xmlDoc.getElementsByTagName("???")[i].innerHTML = avalue;
 						// Adds answer to xml
-						xmlDoc.getElementsByTagName("varequal")[q + 1].innerHTML = eval(anvalue);
+						xmlDoc.getElementsByTagName("varequal")[q].innerHTML = eval(anvalue);
 						// Adds answer - error to xml
-						xmlDoc.getElementsByTagName("vargte")[q + 1].innerHTML = eval(anvalue) - eval(evalue);
+						xmlDoc.getElementsByTagName("vargte")[q].innerHTML = eval(anvalue) - eval(evalue);
 						// Adds answer + error to xml
-						xmlDoc.getElementsByTagName("varlte")[q + 1].innerHTML = eval(anvalue) + eval(evalue);
+						xmlDoc.getElementsByTagName("varlte")[q].innerHTML = eval(anvalue) + eval(evalue);
 					}
 					// Sets output to a string
 					var Output = new XMLSerializer().serializeToString(xmlDoc);
