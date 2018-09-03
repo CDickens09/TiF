@@ -15,8 +15,8 @@
 
 			function myFunction(xml) {
 				var xmlDoc = xml.responseXML;
-				for(i = 0; i < xmlDoc.getElementsByTagName("mat_formattedtext").length; i++)
-				document.getElementById("Test").innerHTML += xmlDoc.getElementsByTagName("mat_formattedtext")[i].innerHTML;
+				for(i = 0; i < xmlDoc.getElementsByTagName("item").getElementsByTagName("mat_formattedtext").length; i++)
+				document.getElementById("Test").innerHTML += xmlDoc.getElementsByTagName("item").getElementsByTagName("mat_formattedtext")[i].innerHTML;
 			}
 		</script>
 	</body>
