@@ -9,10 +9,10 @@
 			myFunction();
 			function myFunction() 
 			{
-				var xhttp = new XMLHttpRequest();
-				xhttp.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00001.xml", false);
-				xhttp.send();
-				var xmlDoc = xhttp.responseXML;
+				var file = new XMLHttpRequest();
+				file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00001.xml", false);
+				file.send();
+				var xmlDoc = file.responseXML;
 				qno = 10;
 				for(i = 1; i < qno; i++)
 				{
@@ -28,9 +28,24 @@
 				console.log(Output);
 				var zip = new JSZip();
 				zip.file("res00001.dat", Output);
-				xhttp.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00002.dat", false);
-				xhttp.send();
-				zip.file("res00002.dat", xhttp.responseText);
+				file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00002.dat", false);
+				file.send();
+				zip.file("res00002.dat", file.responseText);
+				file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00003.dat", false);
+				file.send();
+				zip.file("res00003.dat", file.responseText);
+				file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00004.dat", false);
+				file.send();
+				zip.file("res00004.dat", file.responseText);
+				file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00005.dat", false);
+				file.send();
+				zip.file("res00005.dat", file.responseText);
+				file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/.bb-package-info", false);
+				file.send();
+				zip.file(".bb-package-info", file.responseText);
+				file.open("GET", "https://chris14552249.github.io/TiF/TestingXML/imsmanifest.xml", false);
+				file.send();
+				zip.file("imsmanifest.xml", file.responseText);
 				zip.generateAsync({type:"blob"})
 				.then(function (blob) 
 				{
