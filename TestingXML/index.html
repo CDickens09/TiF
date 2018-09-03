@@ -28,7 +28,6 @@
 				console.log(Output);
 				var zip = new JSZip();
 				zip.file("res00001.dat", Output);
-				xhttp.close();
 				xhttp.open("GET", "https://chris14552249.github.io/TiF/TestingXML/res00002.dat", false);
 				xhttp.send();
 				zip.file("res00002.dat", xhttp.responseText);
