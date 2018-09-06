@@ -548,7 +548,7 @@
 				var xmlDoc = file.responseXML;
 				// Gets title from input box
 				var title = document.getElementById("TInput").value;
-				xmlDoc.getElementsByTagName("assessment").attributes[0].nodeValue = title;
+				xmlDoc.getElementsByTagName("assessment")[0].attributes[0].nodeValue = title;
 				// If loop to check if random or CSV variables in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
