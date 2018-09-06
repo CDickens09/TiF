@@ -61,6 +61,12 @@
 				<input type="file" id="Qs" onchange="LoadQs()"/>
 			</div>
 			
+			<div class="row">
+				Pool Title: 
+				<!-- Input form to let user decide on a pool title-->
+				<textarea id = "TInput"></textarea>
+			</div>
+			
 			<!-- Row to show question box headers-->
 			<div class="row">
 				<div class="column iheaders">
@@ -540,6 +546,9 @@
 				file.send();
 				// Saves response as xmlDoc
 				var xmlDoc = file.responseXML;
+				// Gets title from input box
+				var title = document.getElementById("TInput").value;
+				xmlDoc.getElementsByTagName("assessment").attributes[0].nodeValue = title;
 				// If loop to check if random or CSV variables in use
 				if(document.getElementById("VarSet").value == "Rand")
 				{
