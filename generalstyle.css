@@ -45,10 +45,13 @@ h1
 }
 h2, p
 {
-	font-size: 14px;
 	margin: 10px;
 	font-family: 'Helvetica Neue', Arial, sans-serif;
 	color: #333;
+}
+h2
+{
+	font-size: 25px;
 }
 .header 
 {
@@ -100,6 +103,7 @@ input
 p
 {
 	margin: 5px 0px 5px 10px;
+	font-size: 14px;
 }
 .row
 {
