@@ -623,7 +623,7 @@
 						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * (q + 1)) + 1].innerHTML = fvalue;
 						// Adds answer to xml
 						xmlDoc.getElementsByTagName("varequal")[q].innerHTML = eval(anvalue);
-						if (evalue = "")
+						if (evalue.length == 0)
 						{
 							// Adds answer - error to xml
 							xmlDoc.getElementsByTagName("vargte")[q].innerHTML = eval(anvalue);
@@ -758,7 +758,7 @@
 						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * q) + 1].innerHTML = fvalue;
 						// Adds answer to xml
 						xmlDoc.getElementsByTagName("varequal")[q - 1].innerHTML = eval(anvalue);
-						if (evalue = "")
+						if (evalue.length == 0)
 						{
 							// Adds answer - error to xml
 							xmlDoc.getElementsByTagName("vargte")[q].innerHTML = eval(anvalue);
