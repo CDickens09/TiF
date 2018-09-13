@@ -626,6 +626,22 @@
 							// Creates new string with random variable added
 							qvalue = qvalue.substr(0, index) + "&gt;" + qvalue.substr(index + 1);
 						}
+						// While loop to replace all <
+						while(fvalue.search("<") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = fvalue.search("<");
+							// Creates new string with random variable added
+							fvalue = fvalue.substr(0, index) + "&lt;" + fvalue.substr(index + 1);
+						}
+						// While loop to replace all >
+						while(fvalue.search(">") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = fvalue.search(">");
+							// Creates new string with random variable added
+							fvalue = fvalue.substr(0, index) + "&gt;" + fvalue.substr(index + 1);
+						}
 						// Adds question text to xml as well as MathJax
 						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * (q + 1)) - 1].innerHTML = qvalue + '&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"&gt;&lt;/script&gt;';
 						// Adds incorrect answer feedback to xml
@@ -760,6 +776,22 @@
 							var index = qvalue.search(">");
 							// Creates new string with random variable added
 							qvalue = qvalue.substr(0, index) + "&gt;" + qvalue.substr(index + 1);
+						}
+						// While loop to replace all <
+						while(fvalue.search("<") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = fvalue.search("<");
+							// Creates new string with random variable added
+							fvalue = fvalue.substr(0, index) + "&lt;" + fvalue.substr(index + 1);
+						}
+						// While loop to replace all >
+						while(fvalue.search(">") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = fvalue.search(">");
+							// Creates new string with random variable added
+							fvalue = fvalue.substr(0, index) + "&gt;" + fvalue.substr(index + 1);
 						}
 						// Adds question text to xml as well as MathJax
 						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * q) - 1].innerHTML = qvalue + '&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"&gt;&lt;/script&gt;';
