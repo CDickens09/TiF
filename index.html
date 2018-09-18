@@ -103,8 +103,27 @@
 			<div class="row">
 				<div class="column inputs">
 					<div id="answers">
-						<textarea id = "FInput" oninput="update()"></textarea>
-						<div id = "AMarked" style="overflow:auto"></div>
+						<textarea id = "IFInput" oninput="update()"></textarea>
+						<div id = "AIMarked" style="overflow:auto"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="column iheaders">
+					Correct Answer Feedback:
+				</div>
+				<div class="column iheaders">
+					Answer Preview:
+				</div>
+			</div>
+			
+			<!-- Row to show written answer boxes-->
+			<div class="row">
+				<div class="column inputs">
+					<div id="answers">
+						<textarea id = "CFInput" oninput="update()"></textarea>
+						<div id = "ACMarked" style="overflow:auto"></div>
 					</div>
 				</div>
 			</div>
@@ -444,6 +463,14 @@
 				reader.onload = function (e) 
 				{
 					var contents = e.target.result;
+					// Searches contents for the title break
+					var index = contents.search("TITLE BREAK");
+					// Sets TInput to the content before title break
+					var TInput = contents.substr(0, index);
+					// Sets TInput box to hold title from file
+					document.getElementById("TInput").value = TInput;
+					// Sets contents to the content after title break
+					contents = contents.substr(index + 11);
 					// Searches contents for the question break
 					var index = contents.search("QUESTION BREAK");
 					// Sets QInput to the content before question break
@@ -452,14 +479,22 @@
 					document.getElementById("QInput").value = QInput;
 					// Sets contents to the content after question break
 					contents = contents.substr(index + 14);
-					// Searches contents for the answer break
-					index = contents.search("ANSWER BREAK");
-					// Sets FInput to the content before answer break
-					var FInput = contents.substr(0, index);
-					// Sets FInput box to hold answer from file
-					document.getElementById("FInput").value = FInput;
+					// Searches contents for the Ianswer break
+					index = contents.search("IANSWER BREAK");
+					// Sets IFInput to the content before answer break
+					var IFInput = contents.substr(0, index);
+					// Sets IFInput box to hold answer from file
+					document.getElementById("IFInput").value = IFInput;
 					// Sets contents to the content after answer break
-					contents = contents.substr(index + 12);
+					contents = contents.substr(index + 13);
+					// Searches contents for the canswer break
+					index = contents.search("CANSWER BREAK");
+					// Sets CFInput to the content before answer break
+					var CFInput = contents.substr(0, index);
+					// Sets CFInput box to hold answer from file
+					document.getElementById("CFInput").value = CFInput;
+					// Sets contents to the content after answer break
+					contents = contents.substr(index + 13);
 					// Searches contents for the numerical break
 					index = contents.search("NUMERICAL BREAK");
 					// Sets ANInput to the content before numerical break
@@ -564,8 +599,10 @@
 					{
 						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value);
-						// Brings in current input from answer input box and runs markdown conversion
-						var fvalue = marked(document.getElementById("FInput").value);
+						// Brings in current input from incorrect answer input box and runs markdown conversion
+						var ifvalue = marked(document.getElementById("IFInput").value);
+						// Brings in current input from correct answer input box and runs markdown conversion
+						var cfvalue = marked(document.getElementById("CFInput").value);
 						// Brings in current input from numerical answer input box
 						var anvalue = document.getElementById("ANInput").value;
 						// Brings in current input from error intput box
@@ -587,12 +624,20 @@
 									qvalue = qvalue.substr(0, index) + ranvariables[q][i] + qvalue.substr(index + placeholder.length);
 								}
 								// While loop to only run until no more instances of the variable are found in answer box
-								while (fvalue.search(placeholder) !== -1)
+								while (ifvalue.search(placeholder) !== -1)
 								{
 									// Finds index for random value identifier
-									var index = fvalue.search(placeholder);
+									var index = ifvalue.search(placeholder);
 									// Creates new string with random variable added
-									fvalue = fvalue.substr(0, index) + ranvariables[q][i] + fvalue.substr(index + placeholder.length);
+									ifvalue = ifvalue.substr(0, index) + ranvariables[q][i] + ifvalue.substr(index + placeholder.length);
+								}
+								// While loop to only run until no more instances of the variable are found in answer box
+								while (cfvalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = cfvalue.search(placeholder);
+									// Creates new string with random variable added
+									cfvalue = cfvalue.substr(0, index) + ranvariables[q][i] + cfvalue.substr(index + placeholder.length);
 								}
 								// While loop to only run until no more instances of the variable are found in numerical answer box
 								while (anvalue.search(placeholder) !== -1)
@@ -629,25 +674,42 @@
 							qvalue = qvalue.substr(0, index) + "&gt;" + qvalue.substr(index + 1);
 						}
 						// While loop to replace all <
-						while(fvalue.search("<") !== -1)
+						while(ifvalue.search("<") !== -1)
 						{
 							// Finds index for random value identifier
-							var index = fvalue.search("<");
+							var index = ifvalue.search("<");
 							// Creates new string with random variable added
-							fvalue = fvalue.substr(0, index) + "&lt;" + fvalue.substr(index + 1);
+							ifvalue = ifvalue.substr(0, index) + "&lt;" + ifvalue.substr(index + 1);
 						}
 						// While loop to replace all >
-						while(fvalue.search(">") !== -1)
+						while(ifvalue.search(">") !== -1)
 						{
 							// Finds index for random value identifier
-							var index = fvalue.search(">");
+							var index = ifvalue.search(">");
 							// Creates new string with random variable added
-							fvalue = fvalue.substr(0, index) + "&gt;" + fvalue.substr(index + 1);
+							ifvalue = ifvalue.substr(0, index) + "&gt;" + ifvalue.substr(index + 1);
+						}
+						while(cfvalue.search("<") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = cfvalue.search("<");
+							// Creates new string with random variable added
+							cfvalue = cfvalue.substr(0, index) + "&lt;" + cfvalue.substr(index + 1);
+						}
+						// While loop to replace all >
+						while(cfvalue.search(">") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = cfvalue.search(">");
+							// Creates new string with random variable added
+							cfvalue = cfvalue.substr(0, index) + "&gt;" + cfvalue.substr(index + 1);
 						}
 						// Adds question text to xml as well as MathJax
 						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * (q + 1)) - 1].innerHTML = qvalue + '&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"&gt;&lt;/script&gt;';
 						// Adds incorrect answer feedback to xml
-						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * (q + 1)) + 1].innerHTML = fvalue;
+						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * (q + 1)) + 1].innerHTML = ifvalue;
+						// Adds correct answer feedback to xml
+						xmlDoc.getElementsByTagName("mat_formattedtext")[3 * (q + 1)].innerHTML = cfvalue;
 						// Adds answer to xml
 						xmlDoc.getElementsByTagName("varequal")[q].innerHTML = eval(anvalue);
 						if (evalue.length == 0)
@@ -715,8 +777,10 @@
 					{
 						// Brings in current input from question input box and runs markdown conversion
 						var qvalue = marked(document.getElementById("QInput").value);
-						// Brings in current input from answer input box and runs markdown conversion
-						var fvalue = marked(document.getElementById("FInput").value);
+						// Brings in current input from incorrect answer input box and runs markdown conversion
+						var ifvalue = marked(document.getElementById("IFInput").value);
+						// Brings in current input from correct answer input box and runs markdown conversion
+						var cfvalue = marked(document.getElementById("CFInput").value);
 						// Brings in current input from numerical answer input box
 						var anvalue = document.getElementById("ANInput").value;
 						// Brings in current input from error intput box
@@ -738,12 +802,20 @@
 									qvalue = qvalue.substr(0, index) + variables[q][i] + qvalue.substr(index + placeholder.length);
 								}
 								// While loop to only run until no more instances of the variable are found in answer box
-								while (fvalue.search(placeholder) !== -1)
+								while (ifvalue.search(placeholder) !== -1)
 								{
 									// Finds index for random value identifier
-									var index = fvalue.search(placeholder);
+									var index = ifvalue.search(placeholder);
 									// Creates new string with random variable added
-									fvalue = fvalue.substr(0, index) + variables[q][i] + fvalue.substr(index + placeholder.length);
+									ifvalue = ifvalue.substr(0, index) + variables[q][i] + ifvalue.substr(index + placeholder.length);
+								}
+								// While loop to only run until no more instances of the variable are found in answer box
+								while (cfvalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = cfvalue.search(placeholder);
+									// Creates new string with random variable added
+									cfvalue = cfvalue.substr(0, index) + variables[q][i] + cfvalue.substr(index + placeholder.length);
 								}
 								// While loop to only run until no more instances of the variable are found in numerical answer box
 								while (anvalue.search(placeholder) !== -1)
@@ -780,25 +852,43 @@
 							qvalue = qvalue.substr(0, index) + "&gt;" + qvalue.substr(index + 1);
 						}
 						// While loop to replace all <
-						while(fvalue.search("<") !== -1)
+						while(ifvalue.search("<") !== -1)
 						{
 							// Finds index for random value identifier
-							var index = fvalue.search("<");
+							var index = ifvalue.search("<");
 							// Creates new string with random variable added
-							fvalue = fvalue.substr(0, index) + "&lt;" + fvalue.substr(index + 1);
+							ifvalue = ifvalue.substr(0, index) + "&lt;" + ifvalue.substr(index + 1);
 						}
 						// While loop to replace all >
-						while(fvalue.search(">") !== -1)
+						while(ifvalue.search(">") !== -1)
 						{
 							// Finds index for random value identifier
-							var index = fvalue.search(">");
+							var index = ifvalue.search(">");
 							// Creates new string with random variable added
-							fvalue = fvalue.substr(0, index) + "&gt;" + fvalue.substr(index + 1);
+							ifvalue = ifvalue.substr(0, index) + "&gt;" + ifvalue.substr(index + 1);
+						}
+						// While loop to replace all <
+						while(cfvalue.search("<") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = cfvalue.search("<");
+							// Creates new string with random variable added
+							cfvalue = cfvalue.substr(0, index) + "&lt;" + cfvalue.substr(index + 1);
+						}
+						// While loop to replace all >
+						while(cfvalue.search(">") !== -1)
+						{
+							// Finds index for random value identifier
+							var index = cfvalue.search(">");
+							// Creates new string with random variable added
+							cfvalue = cfvalue.substr(0, index) + "&gt;" + cfvalue.substr(index + 1);
 						}
 						// Adds question text to xml as well as MathJax
 						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * q) - 1].innerHTML = qvalue + '&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"&gt;&lt;/script&gt;';
 						// Adds incorrect answer feedback to xml
-						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * q) + 1].innerHTML = fvalue;
+						xmlDoc.getElementsByTagName("mat_formattedtext")[(3 * q) + 1].innerHTML = ifvalue;
+						// Adds correct answer feedback to xml
+						xmlDoc.getElementsByTagName("mat_formattedtext")[3 * q].innerHTML = cfvalue;
 						// Adds answer to xml
 						xmlDoc.getElementsByTagName("varequal")[q - 1].innerHTML = eval(anvalue);
 						if (evalue.length == 0)
@@ -890,8 +980,10 @@
 			function SaveQs()
 			{
 				// Brings in inputs from relevant boxes
-				var Output = document.getElementById("QInput").value + "QUESTION BREAK";
-				Output += document.getElementById("FInput").value + "ANSWER BREAK";
+				var Output = document.getElementById("TInput").value + "TITLE BREAK";
+				Output += document.getElementById("QInput").value + "QUESTION BREAK";
+				Output += document.getElementById("IFInput").value + "IANSWER BREAK";
+				Output += document.getElementById("CFInput").value + "CANSWER BREAK";
 				Output += document.getElementById("ANInput").value + "NUMERICAL BREAK";
 				Output += document.getElementById("EInput").value + "ERROR BREAK";
 				Output += numvar;
@@ -942,8 +1034,10 @@
 				{
 					// Brings in current input from question input box and runs markdown conversion
 					var qvalue = marked(document.getElementById("QInput").value);
-					// Brings in current input from answer input box and runs markdown conversion
-					var fvalue = marked(document.getElementById("FInput").value);
+					// Brings in current input from ianswer input box and runs markdown conversion
+					var ifvalue = marked(document.getElementById("IFInput").value);
+					// Brings in current input from canswer input box and runs markdown conversion
+					var cfvalue = marked(document.getElementById("CFInput").value);
 					// Brings in current input from numerical answer intput box
 					var anvalue = document.getElementById("ANInput").value;
 					// If loop to only update if some variables are active
@@ -953,15 +1047,19 @@
 						rand();
 						// Changes question output box to show markdown of question input
 						document.getElementById("QMarked").innerHTML = qvalue;
-						// Changes answer output box to show markdown of answer input
-						document.getElementById("AMarked").innerHTML = fvalue;
+						// Changes answer output box to show markdown of ianswer input
+						document.getElementById("AIMarked").innerHTML = ifvalue;
+						// Changes answer output box to show markdown of canswer input
+						document.getElementById("ACMarked").innerHTML = cfvalue;
 						// For loop to run for all currently active variables
 						for (i = 1; i <= numvar; i++) 
 						{
 							// Brings in current output from question output box
 							var qvalue = document.getElementById("QMarked").innerHTML;
-							// Brings in current output from answer output box
-							var fvalue = document.getElementById("AMarked").innerHTML;
+							// Brings in current output from ianswer output box
+							var ifvalue = document.getElementById("AIMarked").innerHTML;
+							// Brings in current output from canswer output box
+							var cfvalue = document.getElementById("ACMarked").innerHTML;
 							// Looks up the placeholder of each variable being used
 							var placeholder = "{{" + document.getElementById("Var" + i + "name").value + "}}";
 							// While loop to only run until no more instances of the variable are found in question box
@@ -973,14 +1071,23 @@
 								qvalue = qvalue.substr(0, index) + ranvariables[0][i] + qvalue.substr(index + placeholder.length);
 								document.getElementById("QMarked").innerHTML = qvalue;
 							}
-							// While loop to only run until no more instances of the variable are found in answer box
-							while (fvalue.search(placeholder) !== -1)
+							// While loop to only run until no more instances of the variable are found in ianswer box
+							while (ifvalue.search(placeholder) !== -1)
 							{
 								// Finds index for random value identifier
-								var index = fvalue.search(placeholder);
+								var index = ifvalue.search(placeholder);
 								// Creates new string with random variable added
-								fvalue = fvalue.substr(0, index) + ranvariables[0][i] + fvalue.substr(index + placeholder.length);
-								document.getElementById("AMarked").innerHTML = fvalue;
+								ifvalue = ifvalue.substr(0, index) + ranvariables[0][i] + ifvalue.substr(index + placeholder.length);
+								document.getElementById("AIMarked").innerHTML = ifvalue;
+							}
+							// While loop to only run until no more instances of the variable are found in canswer box
+							while (cfvalue.search(placeholder) !== -1)
+							{
+								// Finds index for random value identifier
+								var index = cfvalue.search(placeholder);
+								// Creates new string with random variable added
+								cfvalue = cfvalue.substr(0, index) + ranvariables[0][i] + cfvalue.substr(index + placeholder.length);
+								document.getElementById("ACMarked").innerHTML = cfvalue;
 							}
 							// While loop to only run until no more instances of the variable are found in numerical answer box
 							while (anvalue.search(placeholder) !== -1)
@@ -997,8 +1104,10 @@
 					{
 						// Changes question output box to show markdown of question input
 						document.getElementById("QMarked").innerHTML = qvalue;
-						// Changes answer output box to show markdown of answer input
-						document.getElementById("AMarked").innerHTML = fvalue;
+						// Changes answer output box to show markdown of ianswer input
+						document.getElementById("AIMarked").innerHTML = ifvalue;
+						// Changes answer output box to show markdown of canswer input
+						document.getElementById("ACMarked").innerHTML = cfvalue;
 						// Brings in current input from numerical answer intput box and sets output to match
 						document.getElementById("ANMarked").innerHTML = eval(anvalue);
 					}
@@ -1030,8 +1139,10 @@
 				{
 					// Brings in current input from question input box and runs markdown conversion
 					var qvalue = marked(document.getElementById("QInput").value);
-					// Brings in current input from answer input box and runs markdown conversion
-					var fvalue = marked(document.getElementById("FInput").value);
+					// Brings in current input from ianswer input box and runs markdown conversion
+					var ifvalue = marked(document.getElementById("IFInput").value);
+					// Brings in current input from canswer input box and runs markdown conversion
+					var cfvalue = marked(document.getElementById("CFInput").value);
 					// Brings in current input from numerical answer intput box
 					var anvalue = document.getElementById("ANInput").value;
 					// If loop to check if csv file exists
@@ -1051,8 +1162,10 @@
 							{
 								// Brings in current output from question output box
 								var qvalue = document.getElementById("QMarked").innerHTML;
-								// Brings in current output from answer output box
-								var fvalue = document.getElementById("AMarked").innerHTML;
+								// Brings in current output from ianswer output box
+								var ifvalue = document.getElementById("AIMarked").innerHTML;
+								// Brings in current output from canswer output box
+								var cfvalue = document.getElementById("ACMarked").innerHTML;
 								// Looks up the placeholder of each variable being used
 								var placeholder = "{{" + variables[0][i] + "}}";
 								// Gets value of variable from array
@@ -1067,13 +1180,22 @@
 									document.getElementById("QMarked").innerHTML = qvalue;
 								}
 								// While loop to only run until no more instances of the variable are found in answer box
-								while (fvalue.search(placeholder) !== -1)
+								while (ifvalue.search(placeholder) !== -1)
 								{
 									// Finds index for random value identifier
-									var index = fvalue.search(placeholder);
+									var index = ifvalue.search(placeholder);
 									// Creates new string with random variable added
-									fvalue = fvalue.substr(0, index) + value + fvalue.substr(index + placeholder.length);
-									document.getElementById("AMarked").innerHTML = fvalue;
+									ifvalue = ifvalue.substr(0, index) + value + ifvalue.substr(index + placeholder.length);
+									document.getElementById("AIMarked").innerHTML = ifvalue;
+								}
+								// While loop to only run until no more instances of the variable are found in answer box
+								while (cfvalue.search(placeholder) !== -1)
+								{
+									// Finds index for random value identifier
+									var index = cfvalue.search(placeholder);
+									// Creates new string with random variable added
+									cfvalue = cfvalue.substr(0, index) + value + cfvalue.substr(index + placeholder.length);
+									document.getElementById("ACMarked").innerHTML = cfvalue;
 								}
 								// While loop to only run until no more instances of the variable are found in numerical answer box
 								while (anvalue.search(placeholder) !== -1)
@@ -1090,8 +1212,10 @@
 						{
 							// Changes question output box to show markdown of question input
 							document.getElementById("QMarked").innerHTML = qvalue;
-							// Changes answer output box to show markdown of answer input
-							document.getElementById("AMarked").innerHTML = fvalue;
+							// Changes ianswer output box to show markdown of ianswer input
+							document.getElementById("AIMarked").innerHTML = ifvalue;
+							// Changes canswer output box to show markdown of canswer input
+							document.getElementById("ACMarked").innerHTML = cfvalue;
 							// Brings in current input from numerical answer intput box and sets output to match
 							document.getElementById("ANMarked").innerHTML = eval(anvalue);
 						}
@@ -1100,8 +1224,10 @@
 					{
 						// Changes question output box to show markdown of question input
 						document.getElementById("QMarked").innerHTML = qvalue;
-						// Changes answer output box to show markdown of answer input
-						document.getElementById("AMarked").innerHTML = fvalue;
+						// Changes ianswer output box to show markdown of ianswer input
+						document.getElementById("AIMarked").innerHTML = ifvalue;
+						// Changes canswer output box to show markdown of canswer input
+						document.getElementById("ACMarked").innerHTML = cfvalue;
 						// Brings in current input from numerical answer intput box and sets output to match
 						document.getElementById("ANMarked").innerHTML = eval(anvalue);
 					}
@@ -1179,7 +1305,7 @@
 			window.onbeforeunload = function() 
 			{
 				// Checks if user has entered any content
-				if (document.getElementById("QInput").value != "" || document.getElementById("FInput").value != "") 
+				if (document.getElementById("QInput").value != "" || document.getElementById("IFInput").value != "" || document.getElementById("CFInput").value != "" ) 
 				{
 					// Checks if more than 10 seconds have passed since user last saved
 					if (((Date.now() - SaveTime) / 1000) > 10)
