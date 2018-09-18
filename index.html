@@ -1100,7 +1100,14 @@
 								anvalue = anvalue.substr(0, index) + ranvariables[0][i] + anvalue.substr(index + placeholder.length);
 							}
 						}
-						document.getElementById("ANMarked").innerHTML = eval(anvalue);
+						if(eval(anvalue) == null)
+						{
+							document.getElementById("ANMarked").innerHTML = "";
+						}
+						else
+						{
+							document.getElementById("ANMarked").innerHTML = eval(anvalue);
+						}
 					}
 					else
 					{
@@ -1111,7 +1118,14 @@
 						// Changes answer output box to show markdown of canswer input
 						document.getElementById("ACMarked").innerHTML = cfvalue;
 						// Brings in current input from numerical answer intput box and sets output to match
-						document.getElementById("ANMarked").innerHTML = eval(anvalue);
+						if(eval(anvalue) == null)
+						{
+							document.getElementById("ANMarked").innerHTML = "";
+						}
+						else
+						{
+							document.getElementById("ANMarked").innerHTML = eval(anvalue);
+						}
 					}
 					if(document.getElementById("EInput").value != "")
 					{	
@@ -1208,7 +1222,14 @@
 									anvalue = anvalue.substr(0, index) + value + anvalue.substr(index + placeholder.length);
 								}
 							}
-							document.getElementById("ANMarked").innerHTML = eval(anvalue);
+							if(eval(anvalue) == null)
+							{
+								document.getElementById("ANMarked").innerHTML = "";
+							}
+							else
+							{
+								document.getElementById("ANMarked").innerHTML = eval(anvalue);
+							}
 						}
 						else
 						{
@@ -1219,7 +1240,14 @@
 							// Changes canswer output box to show markdown of canswer input
 							document.getElementById("ACMarked").innerHTML = cfvalue;
 							// Brings in current input from numerical answer intput box and sets output to match
-							document.getElementById("ANMarked").innerHTML = eval(anvalue);
+							if(eval(anvalue) == null)
+							{
+								document.getElementById("ANMarked").innerHTML = "";
+							}
+							else
+							{
+								document.getElementById("ANMarked").innerHTML = eval(anvalue);
+							}
 						}
 					}
 					else
@@ -1231,7 +1259,14 @@
 						// Changes canswer output box to show markdown of canswer input
 						document.getElementById("ACMarked").innerHTML = cfvalue;
 						// Brings in current input from numerical answer intput box and sets output to match
-						document.getElementById("ANMarked").innerHTML = eval(anvalue);
+						if(eval(anvalue) == null)
+						{
+							document.getElementById("ANMarked").innerHTML = "";
+						}
+						else
+						{
+							document.getElementById("ANMarked").innerHTML = eval(anvalue);
+						}
 					}
 					if(document.getElementById("EInput").value != "")
 					{
