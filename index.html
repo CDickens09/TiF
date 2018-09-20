@@ -1171,8 +1171,10 @@
 						{
 							// Changes question output box to show markdown of question input
 							document.getElementById("QMarked").innerHTML = qvalue;
-							// Changes answer output box to show markdown of answer input
-							document.getElementById("AMarked").innerHTML = fvalue;
+							// Changes answer output box to show markdown of ianswer input
+							document.getElementById("AIMarked").innerHTML = ifvalue;
+							// Changes answer output box to show markdown of canswer input
+							document.getElementById("ACMarked").innerHTML = cfvalue;
 							// For loop to run for all currently active variables
 							for (i = 0; i < variables[0].length; i++) 
 							{
